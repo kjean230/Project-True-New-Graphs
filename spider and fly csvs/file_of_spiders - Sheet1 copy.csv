@@ -1,0 +1,516 @@
+id,observed_on,quality_grade,place_guess,latitude,longitude,species_guess,scientific_name,common_name,iconic_taxon_name
+5740011,2017-04-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.89118333,-73.893875,Running Crab Spiders,Philodromidae,Running Crab Spiders,Arachnida
+6709308,2017-06-17,research,"Broadway and Vancortlandt Park S, Bronx, NY 10462, United States",40.8979346,-73.8859514,Leucauge venusta,Leucauge venusta,Orchard Orbweaver,Arachnida
+6860081,2017-06-30,research,"Van Cortlandt Park, New York, NY, US",40.90817167,-73.88923667,Whitman's Jumping Spider,Phidippus whitmani,Whitman's Jumping Spider,Arachnida
+16335616,2018-09-08,research,Van Cortlandt Park,40.888975,-73.8799,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+256690496,2018-10-06,research,"Van Cortlandt Park, New York, NY, US",40.89355833,-73.891495,Spotted Orbweaver,Neoscona crucifera,Spotted Orbweaver,Arachnida
+27272267,2019-06-19,needs_id,"Van Cortlandt Park, New York, NY, US",40.9029181,-73.89448302,Trochosa,Trochosa,,Arachnida
+27280656,2019-06-19,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.89539667,-73.89150333,,Oxyopes,Grass Lynx Spiders,Arachnida
+27287691,2019-06-19,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.89576781,-73.8914815,Tangleweb Spiders,Theridion,,Arachnida
+27287715,2019-06-19,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.89539667,-73.89150333,Striped Lynx Spider,Oxyopes salticus,Striped Lynx Spider,Arachnida
+27581629,2019-06-24,research,"Van Cortlandt Park, New York, NY, US",40.90723164,-73.89440708,Sylvan Jumping Spider,Colonus sylvanus,Sylvan Jumping Spider,Arachnida
+27582098,2019-06-24,research,"Van Cortlandt Park, New York, NY, US",40.90693731,-73.89350988,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+27813048,2019-06-28,needs_id,"Van Cortlandt Park, New York, NY, US",40.897655,-73.88215,Ghost Spiders,Anyphaena,,Arachnida
+28297300,2019-07-06,needs_id,"Van Cortlandt Park, New York, NY, US",40.90735301,-73.89033481,,Dysdera crocata,Woodlouse Spider,Arachnida
+28383737,2019-07-07,research,"Van Cortlandt Park, New York, NY, US",40.90240772,-73.89408756,Thin-spined Jumping Spider,Tutelina elegans,Thin-spined Jumping Spider,Arachnida
+28555664,2019-07-10,needs_id,"Van Cortlandt Park, New York, NY, US",40.89207483,-73.88930715,Fishing Spiders,Dolomedes triton,Six-spotted Fishing Spider,Arachnida
+28676832,2019-07-12,research,"Van Cortlandt Park, Yonkers, NY, US",40.90805772,-73.88580381,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+29411931,2019-07-23,research,"Van Cortlandt Park, New York, NY, US",40.90339536,-73.87275312,Northern Black Widow,Latrodectus variolus,Northern Black Widow,Arachnida
+29554260,2019-07-25,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.89298833,-73.89033667,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+29578748,2019-07-26,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.892525,-73.889855,Dolomedes triton,Dolomedes triton,Six-spotted Fishing Spider,Arachnida
+29578853,2019-07-26,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.89252833,-73.88989167,Six-spotted Fishing Spider,Dolomedes triton,Six-spotted Fishing Spider,Arachnida
+29736973,2019-07-28,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.892895,-73.889075,Colonus,Colonus,,Arachnida
+30693182,2019-08-06,needs_id,"Van Cortlandt Park, New York, NY, US",40.9028606,-73.89443041,,Salticidae,Jumping Spiders,Arachnida
+32834930,2019-09-16,needs_id,"Van Cortlandt Park, New York, NY, US",40.89218667,-73.88618333,Spotted Orbweavers,Neoscona,Spotted Orbweavers,Arachnida
+33130002,2019-09-21,needs_id,"Van Cortlandt Park, New York, NY, US",40.89062167,-73.89518,,Neoscona crucifera,Spotted Orbweaver,Arachnida
+33130622,2019-09-21,needs_id,"Van Cortlandt Park, New York, NY, US",40.890195,-73.89514167,,Araneus,Angulate and Roundshouldered Orbweavers,Arachnida
+33427882,2019-09-21,needs_id,"Van Cortlandt Park, New York, NY, US",40.90299777,-73.89413567,Funnel Weavers,Agelenidae,Funnel Weavers,Arachnida
+33527402,2019-09-28,needs_id,"Van Cortlandt Nature Center, 246 Broadway, The Bronx, NY 10471, United States",40.8910886,-73.89382089,Dysdera,Dysdera crocata,Woodlouse Spider,Arachnida
+33821124,2019-09-30,research,"Van Cortlandt Park, New York, NY, US",40.88977833,-73.89367,Six-spotted Fishing Spider,Dolomedes triton,Six-spotted Fishing Spider,Arachnida
+33699308,2019-10-01,needs_id,"Van Cortlandt Park, New York, NY, US",40.891225,-73.89389167,Spotted Orbweavers,Neoscona,Spotted Orbweavers,Arachnida
+35653471,2019-11-13,research,"Van Cortlandt Park, New York, NY, US",40.89125,-73.89404167,Broad-Faced Sac Spider,Trachelas tranquillus,Broad-faced Sac Spider,Arachnida
+41430289,2020-04-05,research,"Van Cortlandt Park, New York, NY, US",40.89374279,-73.8892616,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+42243389,2020-04-06,needs_id,"Van Cortlandt Park, New York, NY, US",40.90288883,-73.89411441,Running Crab Spiders,Philodromidae,Running Crab Spiders,Arachnida
+44792006,2020-05-03,needs_id,"Van Cortlandt Park, New York, NY, US",40.90110829,-73.88269757,Conical Trashline Orbweaver,Cyclosa conica,Conical Trashline Orbweaver,Arachnida
+51782335,2020-06-30,research,"Van Cortlandt Park, New York, NY, US",40.89233,-73.889795,Six-spotted Fishing Spider,Dolomedes triton,Six-spotted Fishing Spider,Arachnida
+52195685,2020-07-06,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88893667,-73.89263833,Cobweb Spiders,Theridiidae,Comb-footed Spiders,Arachnida
+53119862,2020-07-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.90286652,-73.89439916,Cobweb Spiders,Theridiidae,Comb-footed Spiders,Arachnida
+55790520,2020-08-08,research,"Van Cortlandt Park, New York, NY, US",40.90831167,-73.89373833,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+56132961,2020-08-11,needs_id,"Van Cortlandt Park, New York, NY, US",40.90292577,-73.89443996,Thin-spined Jumping Spider,Tutelina elegans,Thin-spined Jumping Spider,Arachnida
+57044578,2020-08-20,needs_id,"Van Cortlandt Golf House, The Bronx, NY 10471, USA",40.888808,-73.89242036,Spiders,Araneae,Spiders,Arachnida
+57154746,2020-08-21,research,"Van Cortlandt Park, New York, NY, US",40.90818333,-73.8938,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+60152684,2020-08-30,research,"Van Cortlandt Park, New York, NY, US",40.88532054,-73.89037464,American Green Crab Spider,Misumessus oblongus,American Green Crab Spider,Arachnida
+58503930,2020-09-04,needs_id,"Van Cortlandt Park, New York, NY, US",40.90710365,-73.88559116,,Tetragnatha,,Arachnida
+61305853,2020-09-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.88978119,-73.89379425,,Araneidae,Orbweavers,Arachnida
+62360461,2020-10-11,needs_id,"Van Cortlandt Lake, New York, NY, US",40.88944667,-73.89303667,Running Crab Spiders,Philodromus,Running Crab Spiders,Arachnida
+62360473,2020-10-11,research,"Van Cortlandt Lake, New York, NY, US",40.89235,-73.88964167,Zebra Jumping Spider,Salticus scenicus,Zebra Jumping Spider,Arachnida
+64467627,2020-11-08,needs_id,"Van Cortlandt Lake, New York, NY, US",40.889355,-73.892175,Thin-legged Wolf Spiders,Pardosa,Thin-legged Wolf Spiders,Arachnida
+64467674,2020-11-08,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88928667,-73.892145,,Araneae,Spiders,Arachnida
+64467815,2020-11-08,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88923833,-73.892175,,Araneae,Spiders,Arachnida
+65986681,2020-11-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.89381167,-73.896155,Spiders,Araneae,Spiders,Arachnida
+71806628,2021-03-21,needs_id,"Van Cortlandt Lake, New York, NY, US",40.889355,-73.89218,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+71806715,2021-03-21,needs_id,"Van Cortlandt Lake, New York, NY, US",40.88958667,-73.89215833,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+71806922,2021-03-21,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.8893,-73.892175,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+72061929,2021-03-25,needs_id,"Van Cortlandt Park, New York, NY, US",40.88947,-73.89610333,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+72062195,2021-03-25,needs_id,"Van Cortlandt Stadium, New York, NY, US",40.88938833,-73.89739167,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+72062239,2021-03-25,needs_id,"Van Cortlandt Park, New York, NY, US",40.88955,-73.89605833,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+72742110,2021-04-01,needs_id,"Van Cortlandt Park, New York, NY, US",40.8994,-73.890075,,Araneidae,Orbweavers,Arachnida
+74469705,2021-04-18,needs_id,"Van Cortlandt Park, New York, NY, US",40.89125,-73.894745,Philodromus,Philodromus,Running Crab Spiders,Arachnida
+78283432,2021-05-10,needs_id,"Van Cortlandt Park, New York, NY, US",40.90060833,-73.88793,Trochosa,Trochosa,,Arachnida
+78781040,2021-05-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.88988667,-73.89527833,,Trochosa,,Arachnida
+78781280,2021-05-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.88985,-73.89518667,,Trochosa,,Arachnida
+78782716,2021-05-14,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88916167,-73.89291333,Black-palped Jumping Spider,Pseudeuophrys erratica,Black-palped Jumping Spider,Arachnida
+79099724,2021-05-16,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.88902,-73.89229667,Zebra Jumping Spider,Salticus scenicus,Zebra Jumping Spider,Arachnida
+79100362,2021-05-16,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88919667,-73.89254667,,Araneidae,Orbweavers,Arachnida
+79100537,2021-05-16,needs_id,"Van Cortlandt Lake, New York, NY, US",40.88929667,-73.89253333,Araneoid Spiders,Araneoidea,Orbweavers and Allies,Arachnida
+79721219,2021-05-21,research,"Van Cortlandt Park, New York, NY, US",40.896255,-73.88371333,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+80674750,2021-05-28,research,"Van Cortlandt Park, New York, NY, US",40.89993333,-73.87371167,Anyphaena,Anyphaena,,Arachnida
+81976708,2021-06-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.89097167,-73.89468333,,Araneae,Spiders,Arachnida
+82173321,2021-06-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.89910991,-73.89035326,Entelegyne Spiders,Entelegynae,Entelegyne Spiders,Arachnida
+81978453,2021-06-06,needs_id,"Van Cortlandt Lake, New York, NY, US",40.88932,-73.89302,Philodromus,Philodromus,Running Crab Spiders,Arachnida
+82364580,2021-06-09,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88907,-73.89267833,Maevia,Maevia,,Arachnida
+82370052,2021-06-09,needs_id,"Van Cortlandt Park, New York, NY, US",40.90723833,-73.88563667,,Araneae,Spiders,Arachnida
+82370276,2021-06-09,needs_id,"Van Cortlandt Park, New York, NY, US",40.90734667,-73.88572,,Araneae,Spiders,Arachnida
+82370387,2021-06-09,needs_id,"Van Cortlandt Park, New York, NY, US",40.88970333,-73.89274667,Orbweavers and Allies,Araneoidea,Orbweavers and Allies,Arachnida
+82634872,2021-06-11,needs_id,"Van Cortlandt Park, New York, NY, US",40.88957,-73.89604167,,Oxyopes,Grass Lynx Spiders,Arachnida
+82635117,2021-06-11,needs_id,"Van Cortlandt Park, New York, NY, US",40.88967833,-73.89607167,,Oxyopes,Grass Lynx Spiders,Arachnida
+82635231,2021-06-11,needs_id,"Van Cortlandt Park, New York, NY, US",40.88944167,-73.896225,Striped Lynx Spider,Oxyopes salticus,Striped Lynx Spider,Arachnida
+82772518,2021-06-12,needs_id,"Van Cortlandt Park, New York, NY, US",40.89010167,-73.8945,,Tetragnatha,,Arachnida
+82772949,2021-06-12,needs_id,"Van Cortlandt Park, New York, NY, US",40.88996833,-73.894745,Tetragnatha,Tetragnatha,,Arachnida
+82774818,2021-06-12,needs_id,"Van Cortlandt Park, New York, NY, US",40.88953583,-73.89550384,Dendryphantina,Dendryphantina,,Arachnida
+82775032,2021-06-12,needs_id,"Van Cortlandt Park, New York, NY, US",40.88954706,-73.89552857,White-cheeked Jumping Spiders,Pelegrina,,Arachnida
+82932076,2021-06-13,needs_id,"Van Cortlandt Park, New York, NY, US",40.89092167,-73.894395,Ant-eating Spiders,Euryopis,Ant-eating Spiders,Arachnida
+82932439,2021-06-13,needs_id,"Van Cortlandt Park, New York, NY, US",40.89095219,-73.89429006,Naphrys,Naphrys pulex,flea jumping spider,Arachnida
+83067960,2021-06-14,research,"Van Cortlandt Park, New York, NY, US",40.89937667,-73.88964833,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+83068467,2021-06-14,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.90041167,-73.88729167,Thin-spined Jumping Spider,Tutelina elegans,Thin-spined Jumping Spider,Arachnida
+83597366,2021-06-18,needs_id,"Van Cortlandt Lake, New York, NY, US",40.88945333,-73.89302,,Araneae,Spiders,Arachnida
+83597762,2021-06-18,needs_id,"Van Cortlandt Park, New York, NY, US",40.89020333,-73.890945,Wolf Spiders,Lycosidae,Wolf Spiders,Arachnida
+83597837,2021-06-18,needs_id,"Van Cortlandt Park, New York, NY, US",40.89032,-73.89096167,Wolf Spiders,Lycosidae,Wolf Spiders,Arachnida
+83790335,2021-06-19,needs_id,"Van Cortlandt Park, New York, NY, US",40.89106,-73.89449333,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+83790374,2021-06-19,needs_id,"Van Cortlandt Park, New York, NY, US",40.89082167,-73.89428,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+83793873,2021-06-19,needs_id,"Van Cortlandt Park, New York, NY, US",40.89043833,-73.894905,Arabesque Orbweaver,Neoscona arabesca,Arabesque Orbweaver,Arachnida
+83909633,2021-06-20,research,"Van Cortlandt Park, New York, NY, US",40.89108333,-73.89462167,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+83909856,2021-06-20,needs_id,"Van Cortlandt Park, New York, NY, US",40.89108333,-73.89462167,,Salticidae,Jumping Spiders,Arachnida
+83909955,2021-06-20,needs_id,"Van Cortlandt Park, New York, NY, US",40.89108333,-73.89462167,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+83910010,2021-06-20,needs_id,"Van Cortlandt Park, New York, NY, US",40.89108333,-73.89462167,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+83910504,2021-06-20,needs_id,"Van Cortlandt Park, New York, NY, US",40.89118,-73.89460833,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+83911024,2021-06-20,needs_id,"Van Cortlandt Park, New York, NY, US",40.89039667,-73.89523333,Cobweb Spiders,Theridiidae,Comb-footed Spiders,Arachnida
+84038197,2021-06-21,research,"Van Cortlandt Park, New York, NY, US",40.89939167,-73.88967833,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+84038505,2021-06-21,research,"Van Cortlandt Park, New York, NY, US",40.89943333,-73.88957167,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+84038849,2021-06-21,needs_id,"Van Cortlandt Park, New York, NY, US",40.89918833,-73.88961167,,Araneae,Spiders,Arachnida
+84038861,2021-06-21,research,"Van Cortlandt Park, New York, NY, US",40.899295,-73.88967167,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+84815707,2021-06-27,needs_id,"Van Cortlandt Park, New York, NY, US",40.89131333,-73.89443833,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+84815816,2021-06-27,needs_id,"Van Cortlandt Park, New York, NY, US",40.89119667,-73.89460833,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+84816553,2021-06-27,needs_id,"Van Cortlandt Park, New York, NY, US",40.890205,-73.89523333,,Oxyopes,Grass Lynx Spiders,Arachnida
+84971307,2021-06-28,research,"Van Cortlandt Park, New York, NY, US",40.89114667,-73.89386667,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+85222947,2021-06-30,needs_id,"Van Cortlandt Park, New York, NY, US",40.89092389,-73.89356109,Theridiidae,Theridiidae,Comb-footed Spiders,Arachnida
+85223219,2021-06-30,needs_id,"Van Cortlandt Park, New York, NY, US",40.89094971,-73.89352748,Araneidae,Araneidae,Orbweavers,Arachnida
+85223583,2021-06-30,needs_id,"Van Cortlandt Park, New York, NY, US",40.89106,-73.89373833,Typical Spiders,Araneomorphae,Typical Spiders,Arachnida
+85531253,2021-07-03,needs_id,"Van Cortlandt Park, New York, NY, US",40.89064,-73.89444,Spiders,Araneae,Spiders,Arachnida
+85733199,2021-07-04,needs_id,"Van Cortlandt Park, New York, NY, US",40.89089167,-73.89437167,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+85733330,2021-07-04,needs_id,"Van Cortlandt Park, New York, NY, US",40.89083,-73.89428,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+85733407,2021-07-04,needs_id,"Van Cortlandt Park, New York, NY, US",40.89083,-73.89428,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+85733869,2021-07-04,needs_id,"Van Cortlandt Park, New York, NY, US",40.89091833,-73.89431833,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+85733977,2021-07-04,needs_id,"Van Cortlandt Park, New York, NY, US",40.89091833,-73.89431833,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+85734010,2021-07-04,needs_id,"Van Cortlandt Park, New York, NY, US",40.89100667,-73.894355,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+85735262,2021-07-04,needs_id,"Van Cortlandt Park, New York, NY, US",40.89114667,-73.89437167,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+85735568,2021-07-04,needs_id,"Van Cortlandt Park, New York, NY, US",40.89108333,-73.89458667,Jumping Spiders,Salticidae,Jumping Spiders,Arachnida
+85735658,2021-07-04,needs_id,"Van Cortlandt Park, New York, NY, US",40.89112833,-73.89441667,Jumping Spiders,Salticidae,Jumping Spiders,Arachnida
+86368839,2021-07-09,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88894667,-73.89281333,,Salticinae,Typical Jumping Spiders,Arachnida
+86953376,2021-07-12,needs_id,"Van Cortlandt Park, New York, NY, US",40.89016167,-73.89508,Synageles,Synageles,,Arachnida
+87677457,2021-07-18,needs_id,"Van Cortlandt Park, New York, NY, US",40.8914,-73.89466167,Entelegyne Spiders,Entelegynae,Entelegyne Spiders,Arachnida
+87876672,2021-07-19,needs_id,"Van Cortlandt Park, New York, NY, US",40.89077,-73.89358667,,Salticidae,Jumping Spiders,Arachnida
+88627893,2021-07-25,research,"Van Cortlandt Park, New York, NY, US",40.88923333,-73.893105,Golden Jumping Spider,Paraphidippus aurantius,Golden Jumping Spider,Arachnida
+89026881,2021-07-28,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.89265833,-73.88883833,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+89027897,2021-07-28,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88933667,-73.89192167,Tetragnatha,Tetragnatha,,Arachnida
+89027921,2021-07-28,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88933667,-73.89192167,Long-jawed Orbweavers,Tetragnatha,,Arachnida
+89289994,2021-07-30,research,"Van Cortlandt Park, New York, NY, US",40.90814667,-73.89379167,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+89431905,2021-07-31,needs_id,"Van Cortlandt Park, New York, NY, US",40.890995,-73.89460833,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+89595727,2021-08-01,needs_id,"Van Cortlandt Park, New York, NY, US",40.89106167,-73.89457833,Araneoid Spiders,Araneoidea,Orbweavers and Allies,Arachnida
+89596197,2021-08-01,research,"Van Cortlandt Park, New York, NY, US",40.89115333,-73.89454667,Lyric Cobweaver,Yunohamella lyrica,Lyric Cobweaver,Arachnida
+89596809,2021-08-01,needs_id,"Van Cortlandt Park, New York, NY, US",40.89111333,-73.89451667,,Salticidae,Jumping Spiders,Arachnida
+89829249,2021-08-02,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.888945,-73.89262167,Zebra Jumping Spider,Salticus scenicus,Zebra Jumping Spider,Arachnida
+89829490,2021-08-02,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88921167,-73.89208833,Thin-legged Wolf Spiders,Pardosa,Thin-legged Wolf Spiders,Arachnida
+89829756,2021-08-02,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88912,-73.89206667,Thin-legged Wolf Spiders,Pardosa,Thin-legged Wolf Spiders,Arachnida
+89829865,2021-08-02,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88938833,-73.89202833,Thin-legged Wolf Spiders,Pardosa,Thin-legged Wolf Spiders,Arachnida
+89830168,2021-08-02,needs_id,"Van Cortlandt Lake, New York, NY, US",40.88933667,-73.892395,Larinioides,Larinioides,Furrow Spiders,Arachnida
+89929583,2021-08-02,research,"Van Cortlandt Park, New York, NY, US",40.90588333,-73.89141167,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+89936892,2021-08-04,research,"Van Cortlandt Park, New York, NY, US",40.89432833,-73.88446167,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+89937559,2021-08-04,research,"Van Cortlandt Park, New York, NY, US",40.89440333,-73.884545,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+89982312,2021-08-04,needs_id,"Van Cortlandt Park, New York, NY, US",40.89041333,-73.89492,Thin-legged Wolf Spiders,Pardosa,Thin-legged Wolf Spiders,Arachnida
+90493338,2021-08-08,research,"Van Cortlandt Park, New York, NY, US",40.89107,-73.89451667,Putnam's Jumping Spider,Phidippus putnami,Putnam's Jumping Spider,Arachnida
+90493425,2021-08-08,needs_id,"Van Cortlandt Park, New York, NY, US",40.89099667,-73.89461333,,Araneae,Spiders,Arachnida
+90493515,2021-08-08,needs_id,"Van Cortlandt Park, New York, NY, US",40.89126167,-73.89471333,,Salticinae,Typical Jumping Spiders,Arachnida
+90493569,2021-08-08,needs_id,"Van Cortlandt Park, New York, NY, US",40.89126167,-73.89471333,Asiatic Wall Jumping Spider,Attulus fasciger,Asiatic Wall Jumping Spider,Arachnida
+90680795,2021-08-09,research,"Van Cortlandt Lake, New York, NY, US",40.8895,-73.89195333,Zebra Jumping Spider,Salticus scenicus,Zebra Jumping Spider,Arachnida
+91370515,2021-08-15,needs_id,"Van Cortlandt Lake, New York, NY, US",40.8894,-73.89243333,,Araneidae,Orbweavers,Arachnida
+91372051,2021-08-15,research,"Van Cortlandt Park, New York, NY, US",40.89095,-73.8936,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+91372114,2021-08-15,research,"Van Cortlandt Park, New York, NY, US",40.89085833,-73.89363,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+91372356,2021-08-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.890055,-73.89512833,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+91372473,2021-08-15,research,"Van Cortlandt Park, New York, NY, US",40.88996167,-73.89508833,Bold Jumping Spider,Phidippus audax,Bold Jumping Spider,Arachnida
+91706733,2021-08-18,research,"Van Cortlandt Park, New York, NY, US",40.90288,-73.894255,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+91708458,2021-08-18,needs_id,"Van Cortlandt Park, New York, NY, US",40.89067833,-73.895095,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+92064548,2021-08-21,needs_id,"Van Cortlandt Park, New York, NY, US",40.89046333,-73.89527167,,Araneae,Spiders,Arachnida
+92877994,2021-08-28,needs_id,"Van Cortlandt Park, New York, NY, US",40.89126667,-73.89467,Thin-legged Wolf Spiders,Pardosa,Thin-legged Wolf Spiders,Arachnida
+93818687,2021-09-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.891145,-73.8946,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+93818746,2021-09-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.891145,-73.8946,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+93819015,2021-09-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.89109667,-73.89462167,,Salticidae,Jumping Spiders,Arachnida
+93819073,2021-09-05,research,"Van Cortlandt Park, New York, NY, US",40.89046167,-73.89495333,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+93996356,2021-09-06,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.89957833,-73.88626167,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+93996613,2021-09-06,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.89966333,-73.8861,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+94029985,2021-09-07,needs_id,"Van Cortlandt Park, New York, NY, US",40.89110333,-73.89422,,Neoscona crucifera,Spotted Orbweaver,Arachnida
+94413179,2021-09-10,research,"Van Cortlandt Park, New York, NY, US",40.89889167,-73.88472667,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+94931962,2021-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.89442833,-73.89571333,Grass Spiders,Agelenopsis,Grass Spiders,Arachnida
+95521646,2021-09-19,needs_id,"Van Cortlandt Park, New York, NY, US",40.8876,-73.89537833,Spotted Orbweaver,Neoscona crucifera,Spotted Orbweaver,Arachnida
+95538739,2021-09-19,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88928167,-73.89016,,Araneae,Spiders,Arachnida
+95821936,2021-09-22,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88940833,-73.89063333,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+96234622,2021-09-25,needs_id,"Van Cortlandt Park, New York, NY, US",40.89013667,-73.89516333,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+96272335,2021-09-25,needs_id,"Van Cortlandt Park, New York, NY, US",40.890255,-73.89513333,Long-jawed Jumping Spiders,Hentzia,Long-jawed Jumping Spiders,Arachnida
+96475319,2021-09-27,research,"Van Cortlandt Park, New York, NY, US",40.901205,-73.88226333,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+96643412,2021-09-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.90183833,-73.88641333,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+96852851,2021-10-01,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88878667,-73.892045,humping,Salticidae,Jumping Spiders,Arachnida
+97025324,2021-10-02,needs_id,"Van Cortlandt Park, New York, NY, US",40.889965,-73.89459167,,Araneidae,Orbweavers,Arachnida
+97103875,2021-10-03,needs_id,"Van Cortlandt Lake, New York, NY, US",40.88928167,-73.89254833,,Araneidae,Orbweavers,Arachnida
+97103963,2021-10-03,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88926667,-73.89237167,,Araneidae,Orbweavers,Arachnida
+97104027,2021-10-03,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.88926667,-73.89237167,Zebra Jumping Spider,Salticus scenicus,Zebra Jumping Spider,Arachnida
+97104070,2021-10-03,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88927,-73.892355,,Agelenopsis,Grass Spiders,Arachnida
+97105068,2021-10-03,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88943167,-73.89177,,Araneidae,Orbweavers,Arachnida
+97415385,2021-10-06,needs_id,"Van Cortlandt Park, New York, NY, US",40.89210657,-73.88990889,,Araneae,Spiders,Arachnida
+98266786,2021-10-14,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88922833,-73.89237167,,Larinioides,Furrow Spiders,Arachnida
+98266802,2021-10-14,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88921667,-73.89232833,,Larinioides,Furrow Spiders,Arachnida
+98357206,2021-10-15,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88930333,-73.89018833,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+98574692,2021-10-17,needs_id,"Van Cortlandt Lake, New York, NY, US",40.88943,-73.89198333,Long-jawed Jumping Spiders,Hentzia,Long-jawed Jumping Spiders,Arachnida
+98575664,2021-10-17,needs_id,"Van Cortlandt Lake, New York, NY, US",40.88949667,-73.89189167,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+98843218,2021-10-20,needs_id,"Van Cortlandt Park, New York, NY, US",40.907455,-73.88488,,Araneidae,Orbweavers,Arachnida
+99046066,2021-10-22,needs_id,"Van Cortlandt Park, New York, NY, US",40.89112167,-73.89096,Ant-eating Spiders,Euryopis,Ant-eating Spiders,Arachnida
+99046205,2021-10-22,needs_id,"Van Cortlandt Park, New York, NY, US",40.89118167,-73.89099833,,Araneinae,Typical Orbweavers,Arachnida
+99046455,2021-10-22,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.889,-73.89271333,Phidippus,Phidippus,,Arachnida
+99046548,2021-10-22,needs_id,"Van Cortlandt Park, New York, NY, US",40.90148667,-73.89063333,,Araneae,Spiders,Arachnida
+99046740,2021-10-22,needs_id,"Van Cortlandt Park, New York, NY, US",40.901425,-73.89054167,Dendryphantina,Dendryphantina,,Arachnida
+99046877,2021-10-22,research,"Van Cortlandt Park, New York, NY, US",40.90157833,-73.89050333,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+99046928,2021-10-22,needs_id,"Van Cortlandt Park, New York, NY, US",40.90166167,-73.89048833,Fishing Spiders,Dolomedes,Fishing Spiders,Arachnida
+99046989,2021-10-22,research,"Van Cortlandt Park, New York, NY, US",40.90168,-73.89037167,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+99047037,2021-10-22,needs_id,"Van Cortlandt Park, New York, NY, US",40.901755,-73.89036333,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+99047070,2021-10-22,needs_id,"Van Cortlandt Park, New York, NY, US",40.90171167,-73.89043667,,Araneae,Spiders,Arachnida
+99048147,2021-10-22,needs_id,"Van Cortlandt Park, New York, NY, US",40.90169667,-73.89056333,,Araneidae,Orbweavers,Arachnida
+99335483,2021-10-24,needs_id,"Van Cortlandt Park, New York, NY, US",40.89101167,-73.895355,Running Crab Spiders,Philodromidae,Running Crab Spiders,Arachnida
+99675839,2021-10-28,needs_id,"Van Cortlandt Park, New York, NY, US",40.891095,-73.89066333,,Araneidae,Orbweavers,Arachnida
+100709075,2021-11-09,needs_id,"Van Cortlandt Park, New York, NY, US",40.90291167,-73.89437167,Spiders,Trochosa,,Arachnida
+102477304,2021-12-04,needs_id,"Van Cortlandt Park, New York, NY, US",40.88818,-73.87862167,Ant-eating Spiders,Euryopis,Ant-eating Spiders,Arachnida
+106845019,2022-02-14,research,"Van Cortlandt Park, New York, NY, US",40.90639167,-73.88968667,Basilica Orbweaver,Mecynogea lemniscata,Basilica Orbweaver,Arachnida
+107330319,2022-02-23,research,"Van Cortlandt Park, New York, NY, US",40.88959167,-73.89482167,Arachosia cubana,Arachosia cubana,,Arachnida
+108652107,2022-03-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.90285011,-73.8942139,Common Cellar Spiders,Pholcus,Common Cellar Spiders,Arachnida
+108678664,2022-03-15,research,"Van Cortlandt Park, New York, NY, US",40.90272598,-73.89434251,Bold Jumping Spider,Phidippus audax,Bold Jumping Spider,Arachnida
+108780064,2022-03-16,needs_id,"Van Cortlandt Lake, New York, NY, US",40.88945333,-73.89238,,Pardosa,Thin-legged Wolf Spiders,Arachnida
+109923485,2022-03-30,research,"Van Cortlandt Park, New York, NY, US",40.90213333,-73.88009667,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+109967224,2022-03-30,research,"Van Cortlandt Park, New York, NY, US",40.902145,-73.88012,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+110912882,2022-04-08,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88902833,-73.89227167,White-jawed Jumping Spider,Hentzia mitrata,White-jawed Jumping Spider,Arachnida
+110922037,2022-04-08,needs_id,"Van Cortlandt Park, New York, NY, US",40.90115333,-73.87503,,Araneoidea,Orbweavers and Allies,Arachnida
+110922077,2022-04-08,needs_id,"Van Cortlandt Park, New York, NY, US",40.90118333,-73.87490833,,Araneoidea,Orbweavers and Allies,Arachnida
+111225396,2022-04-12,research,"Van Cortlandt Park, New York, NY, US",40.90266167,-73.89430333,Bold Jumping Spider,Phidippus audax,Bold Jumping Spider,Arachnida
+111692042,2022-04-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.90575333,-73.89423333,,Araneae,Spiders,Arachnida
+111698690,2022-04-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.90128667,-73.87507,Anyphaeninae,Anyphaeninae,,Arachnida
+112501596,2022-04-20,needs_id,"Van Cortlandt Park, New York, NY, US",40.90282775,-73.89447594,,Philodromidae,Running Crab Spiders,Arachnida
+112475922,2022-04-22,research,"Van Cortlandt Park, New York, NY, US",40.902355,-73.89126667,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+112674564,2022-04-24,research,"Van Cortlandt Park, New York, NY, US",40.90317167,-73.893105,Conical Trashline Orbweaver,Cyclosa conica,Conical Trashline Orbweaver,Arachnida
+113104079,2022-04-27,needs_id,"Van Cortlandt Park, New York, NY, US",40.89139167,-73.89077,Cicurina,Cicurina,,Arachnida
+113115411,2022-04-27,needs_id,"Van Cortlandt Park, New York, NY, US",40.89152167,-73.890455,Cicurina,Cicurina,,Arachnida
+113260613,2022-04-28,research,"Van Cortlandt Park, New York, NY, US",40.89125833,-73.89048833,Dark Fishing Spider,Dolomedes tenebrosus,Dark Fishing Spider,Arachnida
+113261114,2022-04-28,research,"Van Cortlandt Park, New York, NY, US",40.89003333,-73.892695,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+113267788,2022-04-28,research,"Van Cortlandt Park, New York, NY, US",40.89129667,-73.890595,Ariadna bicolor,Ariadna bicolor,,Arachnida
+113400437,2022-04-29,research,"Van Cortlandt Park, New York, NY, US",40.89334667,-73.89083,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+113426460,2022-04-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.8939413,-73.8910119,,Araneae,Spiders,Arachnida
+113428383,2022-04-29,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.893995,-73.89099667,,Araneae,Spiders,Arachnida
+113429787,2022-04-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.89398,-73.89103,,Araneae,Spiders,Arachnida
+113437040,2022-04-29,research,"Van Cortlandt Park, New York, NY, US",40.89367167,-73.89103,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+113475006,2022-04-29,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88905,-73.89271333,Long-jawed Jumping Spiders,Hentzia,Long-jawed Jumping Spiders,Arachnida
+113475646,2022-04-29,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.889095,-73.89270833,Zebra Jumping Spider,Salticus scenicus,Zebra Jumping Spider,Arachnida
+113491261,2022-04-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.90075,-73.889855,Spiders,Araneae,Spiders,Arachnida
+113498693,2022-04-29,research,"Van Cortlandt Park, New York, NY, US",40.90466167,-73.89022,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+113511180,2022-04-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.90501167,-73.88992167,,Araneae,Spiders,Arachnida
+113522571,2022-04-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.90813,-73.88923667,Spiders,Araneae,Spiders,Arachnida
+113526162,2022-04-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.90816167,-73.889895,Orbweavers,Araneidae,Orbweavers,Arachnida
+113544190,2022-04-29,research,"Van Cortlandt Park, New York, NY, US",40.90633333,-73.89341667,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+113554300,2022-04-29,research,"Van Cortlandt Park, New York, NY, US",40.905125,-73.89407167,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+113554448,2022-04-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.90523,-73.89383667,,Araneae,Spiders,Arachnida
+113682230,2022-04-29,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88908,-73.89270833,,Salticinae,Typical Jumping Spiders,Arachnida
+113685191,2022-04-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.90488667,-73.88991333,Araneoid Spiders,Araneoidea,Orbweavers and Allies,Arachnida
+113687271,2022-04-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.90917,-73.89181333,,Araneae,Spiders,Arachnida
+113689502,2022-04-29,research,"Van Cortlandt Park, New York, NY, US",40.90509667,-73.893705,Dark Fishing Spider,Dolomedes tenebrosus,Dark Fishing Spider,Arachnida
+113745353,2022-04-29,research,"Van Cortlandt Park, New York, NY, US",40.90507833,-73.89383667,Dark Fishing Spider,Dolomedes tenebrosus,Dark Fishing Spider,Arachnida
+113789234,2022-04-30,needs_id,"Van Cortlandt Park, New York, NY, US",40.90270333,-73.89418833,,Dendryphantina,,Arachnida
+113801419,2022-04-30,needs_id,"Van Cortlandt Park, New York, NY, US",40.901875,-73.89330333,Wolf Spiders,Lycosidae,Wolf Spiders,Arachnida
+113801982,2022-04-30,needs_id,"Van Cortlandt Park, New York, NY, US",40.90190333,-73.89322833,Ero,Ero,Pirate Spiders,Arachnida
+113802338,2022-04-30,needs_id,"Van Cortlandt Park, New York, NY, US",40.90237676,-73.89339429,Lycosinae,Lycosinae,,Arachnida
+113812623,2022-04-30,casual,"Van Cortlandt Park, New York, NY, US",40.90405389,-73.89309791,Entelegyne Spiders,Entelegynae,Entelegyne Spiders,Arachnida
+113823142,2022-04-30,research,"Van Cortlandt Park, New York, NY, US",40.90448669,-73.89348331,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+113823960,2022-04-30,research,"Van Cortlandt Park, New York, NY, US",40.90439667,-73.89343833,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+113825207,2022-04-30,research,"Van Cortlandt Park, New York, NY, US",40.90442,-73.893455,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+113827706,2022-04-30,research,"Van Cortlandt Park, New York, NY, US",40.90331333,-73.89604167,Ariadna bicolor,Ariadna bicolor,,Arachnida
+113828060,2022-04-30,research,"Van Cortlandt Park, New York, NY, US",40.90513833,-73.89350333,Ariadna bicolor,Ariadna bicolor,,Arachnida
+113828255,2022-04-30,research,"Van Cortlandt Park, New York, NY, US",40.90513667,-73.893495,Ariadna bicolor,Ariadna bicolor,,Arachnida
+113831779,2022-04-30,needs_id,"Van Cortlandt Park, New York, NY, US",40.90686167,-73.89360833,Meshweavers and Allies,Marronoid clade,Meshweavers and Allies,Arachnida
+113841257,2022-04-30,research,"Van Cortlandt Park, New York, NY, US",40.90965333,-73.89385333,Ariadna bicolor,Ariadna bicolor,,Arachnida
+113846600,2022-04-30,needs_id,"Van Cortlandt Park, New York, NY, US",40.910055,-73.89341667,Meshweavers and Allies,Marronoid clade,Meshweavers and Allies,Arachnida
+113846605,2022-04-30,needs_id,"Van Cortlandt Park, New York, NY, US",40.91049372,-73.8932041,Entelegyne Spiders,Entelegynae,Entelegyne Spiders,Arachnida
+113897003,2022-04-30,needs_id,"Van Cortlandt Park, New York, NY, US",40.89873667,-73.88288,Jumping Spiders,Hentzia,Long-jawed Jumping Spiders,Arachnida
+113905186,2022-04-30,research,"Van Cortlandt Park, New York, NY, US",40.90036875,-73.88165468,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+114216154,2022-05-01,research,"Van Cortlandt Park, New York, NY, US",40.89946281,-73.87575768,Tuft-legged Orbweaver,Mangora placida,Tuft-legged Orbweaver,Arachnida
+114235385,2022-05-01,needs_id,"Van Cortlandt Park, New York, NY, US",40.89009667,-73.89468333,Spiders,Araneae,Spiders,Arachnida
+114260247,2022-05-01,research,"Van Cortlandt Park, New York, NY, US",40.89127167,-73.89053333,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+114264857,2022-05-01,needs_id,"Van Cortlandt Park, New York, NY, US",40.89145141,-73.89071099,,Ero,Pirate Spiders,Arachnida
+114268545,2022-05-01,needs_id,"Van Cortlandt Park, New York, NY, US",40.89146333,-73.89044167,Spiders,Araneae,Spiders,Arachnida
+114271667,2022-05-01,needs_id,"Van Cortlandt Park, New York, NY, US",40.89187981,-73.89039416,Spiders,Araneae,Spiders,Arachnida
+114280822,2022-05-01,casual,"Van Cortlandt Park, New York, NY, US",40.8978745,-73.88164952,Typical Spiders,Araneomorphae,Typical Spiders,Arachnida
+114284698,2022-05-01,needs_id,"Van Cortlandt Park, New York, NY, US",40.89529157,-73.89136761,Jumping Spiders,Salticidae,Jumping Spiders,Arachnida
+114291799,2022-05-01,needs_id,"Van Cortlandt Park, New York, NY, US",40.8953268,-73.89142292,Jumping Spiders,Hentzia mitrata,White-jawed Jumping Spider,Arachnida
+114307460,2022-05-01,needs_id,"Van Cortlandt Park, New York, NY, US",40.89800371,-73.89268737,Jumping Spiders,Phidippus,,Arachnida
+114374005,2022-05-01,research,"Van Cortlandt Park, New York, NY, US",40.90142042,-73.87770805,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+114880558,2022-05-02,needs_id,"Van Cortlandt Park, New York, NY, US",40.88479699,-73.89042897,Spiders,Araneae,Spiders,Arachnida
+115163384,2022-05-03,research,"Van Cortlandt Park, New York, NY, US",40.89131167,-73.89054667,Dark Fishing Spider,Dolomedes tenebrosus,Dark Fishing Spider,Arachnida
+115618105,2022-05-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.88980833,-73.89383,,Araneae,Spiders,Arachnida
+115807759,2022-05-06,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.890525,-73.88852833,,Araneae,Spiders,Arachnida
+116550642,2022-05-11,research,"Van Cortlandt Park, New York, NY, US",40.90267,-73.894325,garden ghost spider,Hibana gracilis,garden ghost spider,Arachnida
+116694968,2022-05-12,research,"Van Cortlandt Lake, New York, NY, US",40.889275,-73.892525,Triangulate Combfoot,Steatoda triangulosa,Triangulate Combfoot,Arachnida
+116695111,2022-05-12,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.889225,-73.892525,Cellar Spider,Pholcus manueli,Manuel's Cellar Spider,Arachnida
+116698216,2022-05-12,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.88912167,-73.892555,Barn Funnel Weaver,Tegenaria domestica,Barn Funnel Weaver,Arachnida
+116702404,2022-05-12,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.889055,-73.89273,Black-palped Jumping Spider,Pseudeuophrys erratica,Black-palped Jumping Spider,Arachnida
+116703151,2022-05-12,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88908833,-73.892655,Common Cellar Spiders,Pholcus,Common Cellar Spiders,Arachnida
+116703516,2022-05-12,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.88911333,-73.89260833,Cellar Spider,Pholcus manueli,Manuel's Cellar Spider,Arachnida
+116828460,2022-05-13,research,"Van Cortlandt Park, New York, NY, US",40.90181167,-73.88629167,Big-eyed Thick-jawed Spider,Pachygnatha autumnalis,Big-eyed Thick-jawed Spider,Arachnida
+116829456,2022-05-13,needs_id,"Van Cortlandt Park, New York, NY, US",40.90185333,-73.88629167,,Araneae,Spiders,Arachnida
+116837042,2022-05-13,needs_id,"Van Cortlandt Park, New York, NY, US",40.90173,-73.88651333,Ground Crab Spiders,Xysticus,Ground Crab Spiders,Arachnida
+116840782,2022-05-13,needs_id,"Van Cortlandt Park, New York, NY, US",40.90158833,-73.88648,,Araneae,Spiders,Arachnida
+116844581,2022-05-13,needs_id,"Van Cortlandt Park, New York, NY, US",40.90205,-73.88626167,,Araneae,Spiders,Arachnida
+116844604,2022-05-13,needs_id,"Van Cortlandt Park, New York, NY, US",40.90178833,-73.88628333,,Araneidae,Orbweavers,Arachnida
+117590291,2022-05-18,research,"Van Cortlandt Park, New York, NY, US",40.90619667,-73.891595,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+117597877,2022-05-18,needs_id,"Van Cortlandt Park, New York, NY, US",40.906025,-73.89133667,Ground Crab Spiders,Xysticus,Ground Crab Spiders,Arachnida
+117598012,2022-05-18,needs_id,"Van Cortlandt Park, New York, NY, US",40.906045,-73.89140333,Araneoid Spiders,Micrathena gracilis,Spined Micrathena,Arachnida
+117601958,2022-05-18,research,"Van Cortlandt Park, New York, NY, US",40.90607999,-73.8915043,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+117602706,2022-05-18,research,"Van Cortlandt Park, New York, NY, US",40.90612,-73.89161167,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+117604198,2022-05-18,research,"Van Cortlandt Park, New York, NY, US",40.905705,-73.89132833,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+117607091,2022-05-18,needs_id,"Van Cortlandt Park, New York, NY, US",40.90156167,-73.893105,Meshweavers and Allies,Marronoid clade,Meshweavers and Allies,Arachnida
+117614530,2022-05-18,needs_id,"Van Cortlandt Park, New York, NY, US",40.90457833,-73.89173833,,Hibana gracilis,garden ghost spider,Arachnida
+117767544,2022-05-19,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88918667,-73.892495,,Larinioides sclopetarius,Grey Cross Spider,Arachnida
+117782608,2022-05-19,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.888945,-73.892395,Philodromus,Philodromus,Running Crab Spiders,Arachnida
+118023729,2022-05-21,research,"Van Cortlandt Park, New York, NY, US",40.90567,-73.891245,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+118028366,2022-05-21,needs_id,"Van Cortlandt Park, New York, NY, US",40.90578,-73.891355,,Hibana,,Arachnida
+118057864,2022-05-21,needs_id,"Van Cortlandt Park, New York, NY, US",40.90272,-73.879255,,Xysticus,Ground Crab Spiders,Arachnida
+118098007,2022-05-21,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.89975,-73.88614667,,Castianeira longipalpus,Long-palped Ant-mimic Sac Spider,Arachnida
+118307914,2022-05-22,research,"Van Cortlandt Park, New York, NY, US",40.90741333,-73.89223667,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+118308415,2022-05-22,needs_id,"Van Cortlandt Park, New York, NY, US",40.90100942,-73.89233861,Anyphaena,Anyphaena,,Arachnida
+118411492,2022-05-23,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.88918,-73.892555,Zebra Jumping Spider,Salticus scenicus,Zebra Jumping Spider,Arachnida
+118502563,2022-05-24,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88803667,-73.894455,,Parasteatoda tepidariorum,Common House Spider,Arachnida
+118641535,2022-05-25,research,"Van Cortlandt Park, New York, NY, US",40.90242,-73.89407167,Pholcus crypticolens,Pholcus crypticolens,,Arachnida
+118663829,2022-05-25,research,"Van Cortlandt Park, New York, NY, US",40.902725,-73.89428,Zebra Jumping Spider,Salticus scenicus,Zebra Jumping Spider,Arachnida
+118665549,2022-05-25,needs_id,"Van Cortlandt Park, New York, NY, US",40.90265333,-73.89421167,Wolf Spiders,Lycosidae,Wolf Spiders,Arachnida
+118669776,2022-05-25,needs_id,"Van Cortlandt Park, New York, NY, US",40.90273533,-73.89439752,,Hentzia mitrata,White-jawed Jumping Spider,Arachnida
+118677061,2022-05-25,needs_id,"Van Cortlandt Park, New York, NY, US",40.90152,-73.89289667,,Araneoidea,Orbweavers and Allies,Arachnida
+118681025,2022-05-25,needs_id,"Van Cortlandt Park, New York, NY, US",40.90250333,-73.89187833,,Araneae,Spiders,Arachnida
+118737160,2022-05-25,needs_id,"Van Cortlandt Park, New York, NY, US",40.90191333,-73.89233333,Lycosinae,Lycosinae,,Arachnida
+118908122,2022-05-27,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88918333,-73.892425,Common Cellar Spiders,Pholcus manueli,Manuel's Cellar Spider,Arachnida
+119002705,2022-05-27,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88914167,-73.89254667,Jumping Spiders,Paraphidippus aurantius,Golden Jumping Spider,Arachnida
+119270561,2022-05-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.90349167,-73.89099167,,Maevia,,Arachnida
+119592467,2022-05-31,research,"Van Cortlandt Park, New York, NY, US",40.89828571,-73.89244327,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+119744190,2022-06-01,research,"Van Cortlandt Park, New York, NY, US",40.896,-73.89178667,Golden Jumping Spider,Paraphidippus aurantius,Golden Jumping Spider,Arachnida
+119837671,2022-06-01,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.88911167,-73.89260833,Zebra Jumping Spider,Salticus scenicus,Zebra Jumping Spider,Arachnida
+119837985,2022-06-01,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88897,-73.89263,Black-palped Jumping Spider,Pseudeuophrys erratica,Black-palped Jumping Spider,Arachnida
+119838756,2022-06-01,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88893667,-73.89243833,,Salticidae,Jumping Spiders,Arachnida
+119838910,2022-06-01,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88913,-73.89281333,Tenuiphantes,Tenuiphantes,,Arachnida
+119862399,2022-06-02,needs_id,"Van Cortlandt Park, New York, NY, US",40.89437833,-73.89168667,Cellar Spiders,Pholcidae,Cellar Spiders,Arachnida
+119867093,2022-06-02,needs_id,"Van Cortlandt Lake, New York, NY, US",40.88937833,-73.89231167,Zoicinae,Zoicinae,Pirate Wolf Spiders and Allies,Arachnida
+119912538,2022-06-02,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88806333,-73.89453,,Steatoda,False Widow Spiders,Arachnida
+119949022,2022-06-02,research,"Van Cortlandt Park, New York, NY, US",40.88974667,-73.89363,Six-spotted Fishing Spider,Dolomedes triton,Six-spotted Fishing Spider,Arachnida
+119949543,2022-06-02,needs_id,"Van Cortlandt Park, New York, NY, US",40.89428333,-73.89167,Wolf Spiders,Lycosidae,Wolf Spiders,Arachnida
+120005594,2022-06-02,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88905,-73.89278333,Asiatic Wall Jumping Spider,Attulus fasciger,Asiatic Wall Jumping Spider,Arachnida
+120007541,2022-06-03,needs_id,"Van Cortlandt Park, New York, NY, US",40.90182167,-73.88629167,,Castianeira longipalpus,Long-palped Ant-mimic Sac Spider,Arachnida
+120008640,2022-06-03,needs_id,"Van Cortlandt Park, New York, NY, US",40.90175333,-73.88631333,,Trochosa ruricola,Rustic Wolf Spider,Arachnida
+120013920,2022-06-03,needs_id,"Van Cortlandt Park, New York, NY, US",40.90164167,-73.88632167,,Araneae,Spiders,Arachnida
+120014781,2022-06-03,needs_id,"Van Cortlandt Park, New York, NY, US",40.90166333,-73.88631333,,Pityohyphantes,,Arachnida
+120016700,2022-06-03,needs_id,"Van Cortlandt Park, New York, NY, US",40.901825,-73.88629167,Typical Cobweb Spiders,Theridion,,Arachnida
+120017250,2022-06-03,needs_id,"Van Cortlandt Park, New York, NY, US",40.901825,-73.886305,Tangleweb Spiders,Theridion,,Arachnida
+120023344,2022-06-03,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.89939167,-73.886895,,Trochosa ruricola,Rustic Wolf Spider,Arachnida
+120045478,2022-06-03,research,"Van Cortlandt Park, New York, NY, US",40.90627,-73.892695,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+120046301,2022-06-03,research,"Van Cortlandt Park, New York, NY, US",40.90551167,-73.892355,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+120046970,2022-06-03,needs_id,"Van Cortlandt Park, New York, NY, US",40.90553833,-73.892045,,Naphrys pulex,flea jumping spider,Arachnida
+120049407,2022-06-03,research,"Van Cortlandt Park, New York, NY, US",40.905055,-73.89267,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+120051769,2022-06-03,needs_id,"Van Cortlandt Park, New York, NY, US",40.90181333,-73.89318,Colonus,Colonus,,Arachnida
+120368699,2022-06-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.899875,-73.88932833,Salticinae,Salticinae,Typical Jumping Spiders,Arachnida
+120378811,2022-06-05,research,"Van Cortlandt Park, New York, NY, US",40.89986333,-73.88073,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+120379526,2022-06-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.90053667,-73.88058667,Cobweb Spiders,Theridiidae,Comb-footed Spiders,Arachnida
+120381669,2022-06-05,research,"Van Cortlandt Park, New York, NY, US",40.90167833,-73.87785333,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+120389049,2022-06-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.901345,-73.87772167,,Pityohyphantes,,Arachnida
+120391300,2022-06-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.902455,-73.87968667,,Salticinae,Typical Jumping Spiders,Arachnida
+120391724,2022-06-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.902275,-73.88112,,Pityohyphantes,,Arachnida
+120393924,2022-06-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.90226667,-73.882395,Cobweb Spiders,Theridiidae,Comb-footed Spiders,Arachnida
+120410475,2022-06-05,research,"Van Cortlandt Park, New York, NY, US",40.900145,-73.88909667,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+120415570,2022-06-05,needs_id,"Van Cortlandt Park, New York, NY, US",40.88898667,-73.8937,Meshweavers,Dictynidae,Meshweavers,Arachnida
+120550069,2022-06-06,needs_id,"Van Cortlandt Park, New York, NY, US",40.901855,-73.88629167,,Araneae,Spiders,Arachnida
+120559287,2022-06-06,needs_id,"Van Cortlandt Park, New York, NY, US",40.901745,-73.88641333,Lycosinae,Lycosinae,,Arachnida
+120676382,2022-06-07,research,"Van Cortlandt Park, New York, NY, US",40.90008667,-73.87583833,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+120687379,2022-06-07,needs_id,"Van Cortlandt Park, New York, NY, US",40.89926167,-73.87673833,Tangleweb Spiders,Theridion,,Arachnida
+120688154,2022-06-07,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.889055,-73.89267833,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+120688308,2022-06-07,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88905,-73.8927,,Attulus fasciger,Asiatic Wall Jumping Spider,Arachnida
+120689969,2022-06-07,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88918833,-73.89266167,,Attulus fasciger,Asiatic Wall Jumping Spider,Arachnida
+120690177,2022-06-07,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88914667,-73.89260333,Common Cellar Spiders,Pholcus,Common Cellar Spiders,Arachnida
+120690200,2022-06-07,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88917167,-73.892595,Common Cellar Spiders,Pholcus,Common Cellar Spiders,Arachnida
+120690349,2022-06-07,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88918667,-73.89258667,Common Cellar Spiders,Pholcus,Common Cellar Spiders,Arachnida
+120690486,2022-06-07,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88918333,-73.89257833,,Attulus fasciger,Asiatic Wall Jumping Spider,Arachnida
+120690559,2022-06-07,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.889195,-73.89260333,Common Cellar Spiders,Pholcus,Common Cellar Spiders,Arachnida
+120690580,2022-06-07,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88918833,-73.89258667,Common Cellar Spiders,Pholcus,Common Cellar Spiders,Arachnida
+120690840,2022-06-07,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88913333,-73.89260833,,Attulus fasciger,Asiatic Wall Jumping Spider,Arachnida
+120807856,2022-06-08,research,"Van Cortlandt Park, New York, NY, US",40.89429167,-73.89183,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+120820721,2022-06-08,needs_id,"Van Cortlandt Park, New York, NY, US",40.88967,-73.892905,Zoicinae,Zoicinae,Pirate Wolf Spiders and Allies,Arachnida
+120830211,2022-06-08,needs_id,"Van Cortlandt Lake, New York, NY, US",40.88955333,-73.89313667,,Tetragnatha,,Arachnida
+120858404,2022-06-08,needs_id,"Van Cortlandt Lake, New York, NY, US",40.88946333,-73.89308833,,Pirata,pirate wolf spiders,Arachnida
+120946657,2022-06-09,needs_id,"Van Cortlandt Park, New York, NY, US",40.888145,-73.894945,Common House Spider,Parasteatoda tepidariorum,Common House Spider,Arachnida
+120953464,2022-06-09,research,"Van Cortlandt Lake, New York, NY, US",40.88947167,-73.89316333,Six-spotted Fishing Spider,Dolomedes triton,Six-spotted Fishing Spider,Arachnida
+120994131,2022-06-09,research,"Van Cortlandt Park, New York, NY, US",40.90285333,-73.89418,Bold Jumping Spider,Phidippus audax,Bold Jumping Spider,Arachnida
+120994534,2022-06-09,needs_id,"Van Cortlandt Park, New York, NY, US",40.90283,-73.894295,Wolf Spiders,Lycosidae,Wolf Spiders,Arachnida
+121625808,2022-06-13,needs_id,"Van Cortlandt Park, New York, NY, US",40.90381667,-73.89179167,Anyphaena,Anyphaena,,Arachnida
+121885585,2022-06-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.90350687,-73.88280619,Spiders,Dolomedes tenebrosus,Dark Fishing Spider,Arachnida
+121888955,2022-06-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.89990147,-73.88454708,,Araneoidea,Orbweavers and Allies,Arachnida
+121926657,2022-06-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.90768634,-73.89033013,Metallic Crab Spider,Philodromus marxi,Metallic Crab Spider,Arachnida
+122063117,2022-06-16,research,"Van Cortlandt Park, New York, NY, US",40.90157538,-73.89087223,Dark Fishing Spider,Dolomedes tenebrosus,Dark Fishing Spider,Arachnida
+122638968,2022-06-17,needs_id,"Van Cortlandt Park, New York, NY, US",40.89050129,-73.89493413,,Tutelina elegans,Thin-spined Jumping Spider,Arachnida
+122385232,2022-06-18,research,"Van Cortlandt Park, New York, NY, US",40.90502112,-73.89069057,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+122386335,2022-06-18,research,"Van Cortlandt Park, New York, NY, US",40.90744316,-73.88935665,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+122639317,2022-06-18,research,"Van Cortlandt Park, New York, NY, US",40.90327583,-73.89181578,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+122656546,2022-06-20,research,"Van Cortlandt Park, New York, NY, US",40.89538667,-73.891205,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+122802739,2022-06-21,needs_id,"Van Cortlandt Park, New York, NY, US",40.907895,-73.89323667,,Philodromus marxi,Metallic Crab Spider,Arachnida
+122843055,2022-06-21,needs_id,"Van Cortlandt Park, New York, NY, US",40.908645,-73.89273,Coriarachnini,Coriarachnini,,Arachnida
+122848062,2022-06-21,research,"Van Cortlandt Park, New York, NY, US",40.90953667,-73.89315,Arrowhead Orbweaver,Verrucosa arenata,Arrowhead Orbweaver,Arachnida
+122848370,2022-06-21,research,"Van Cortlandt Park, New York, NY, US",40.90238,-73.89427167,Zebra Jumping Spider,Salticus scenicus,Zebra Jumping Spider,Arachnida
+123085613,2022-06-23,research,"Van Cortlandt Park, New York, NY, US",40.90905,-73.89405833,Golden Jumping Spider,Paraphidippus aurantius,Golden Jumping Spider,Arachnida
+123094283,2022-06-23,research,"Van Cortlandt Park, New York, NY, US",40.90558667,-73.89211333,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+123106680,2022-06-23,needs_id,"Van Cortlandt Park, New York, NY, US",40.90673667,-73.891455,Philodromus,Philodromus,Running Crab Spiders,Arachnida
+124054321,2022-06-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.8898954,-73.89490997,,Naphrys,,Arachnida
+124055239,2022-06-29,needs_id,"Van Cortlandt Park, New York, NY, US",40.88998095,-73.89483251,,Araneidae,Orbweavers,Arachnida
+125031361,2022-07-06,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.88913,-73.89277,Eustala,Eustala,,Arachnida
+125299116,2022-07-08,needs_id,"Van Cortlandt Park, New York, NY, US",40.90920333,-73.89129667,,Clubiona,Leafcurling Sac Spiders,Arachnida
+125299442,2022-07-08,needs_id,"Van Cortlandt Park, New York, NY, US",40.909155,-73.89133667,,Castianeira longipalpus,Long-palped Ant-mimic Sac Spider,Arachnida
+125302795,2022-07-08,needs_id,"Van Cortlandt Park, New York, NY, US",40.90529477,-73.89344163,Orbweavers,Araneidae,Orbweavers,Arachnida
+125305299,2022-07-08,research,"Van Cortlandt Park, New York, NY, US",40.90932,-73.89122,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+125308747,2022-07-08,research,"Van Cortlandt Park, New York, NY, US",40.90889667,-73.890205,flea jumping spider,Naphrys pulex,flea jumping spider,Arachnida
+125310558,2022-07-08,research,"Van Cortlandt Park, New York, NY, US",40.90821167,-73.89063833,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+125313113,2022-07-08,research,"Van Cortlandt Park, New York, NY, US",40.90735553,-73.89357994,Golden Jumping Spider,Paraphidippus aurantius,Golden Jumping Spider,Arachnida
+125645130,2022-07-09,research,"Van Cortlandt Park, New York, NY, US",40.89608333,-73.89167,Thin-spined Jumping Spider,Tutelina elegans,Thin-spined Jumping Spider,Arachnida
+125774401,2022-07-11,research,"Van Cortlandt Park, New York, NY, US",40.90334068,-73.89285774,Dark Fishing Spider,Dolomedes tenebrosus,Dark Fishing Spider,Arachnida
+125866503,2022-07-11,needs_id,"Van Cortlandt Stadium, New York, NY, US",40.8874626,-73.89593336,Typical Orbweavers,Araneinae,Typical Orbweavers,Arachnida
+125868146,2022-07-11,research,"Van Cortlandt Park, New York, NY, US",40.89659492,-73.89104075,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+125926868,2022-07-12,research,"Van Cortlandt Park, New York, NY, US",40.91038833,-73.89462167,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+125949040,2022-07-12,research,"Van Cortlandt Park, New York, NY, US",40.91035,-73.89493667,Spotted Orbweaver,Neoscona crucifera,Spotted Orbweaver,Arachnida
+125949172,2022-07-12,research,"Van Cortlandt Park, New York, NY, US",40.91037,-73.89486167,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+126072790,2022-07-13,research,"Van Cortlandt Park, New York, NY, US",40.90792962,-73.89296342,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+126098876,2022-07-13,needs_id,"Van Cortlandt Park, New York, NY, US",40.90545372,-73.89254882,Spiders,Neriene radiata,Filmy Dome Spider,Arachnida
+126098918,2022-07-13,research,"Van Cortlandt Park, New York, NY, US",40.90537687,-73.8918059,Filmy Dome Spider,Neriene radiata,Filmy Dome Spider,Arachnida
+126098987,2022-07-13,needs_id,"Van Cortlandt Park, New York, NY, US",40.9060629,-73.89171059,Anyphaena,Anyphaena,,Arachnida
+126397792,2022-07-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.89028667,-73.89307167,,Hibana,,Arachnida
+126399080,2022-07-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.90824578,-73.89315263,Mangora,Mangora,,Arachnida
+126961026,2022-07-19,research,"Van Cortlandt Park, New York, NY, US",40.902755,-73.89440333,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+127119025,2022-07-20,research,"Van Cortlandt Park, New York, NY, US",40.90735335,-73.89213325,Green-legged Orbweaver,Mangora maculata,Green-legged Orbweaver,Arachnida
+127155684,2022-07-20,research,"Van Cortlandt Park, New York, NY, US",40.89830828,-73.89043346,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+127694787,2022-07-24,research,"Van Cortlandt Park, New York, NY, US",40.89119847,-73.89399253,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+128011152,2022-07-26,research,"Van Cortlandt Park, New York, NY, US",40.89109305,-73.88400143,Basilica Orbweaver,Mecynogea lemniscata,Basilica Orbweaver,Arachnida
+128383723,2022-07-28,research,"Van Cortlandt Park, New York, NY, US",40.89631862,-73.8914213,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+128867711,2022-07-31,needs_id,"Van Cortlandt Park, New York, NY, US",40.89646264,-73.89125868,,Pelegrina,,Arachnida
+128867954,2022-07-31,research,"Van Cortlandt Park, New York, NY, US",40.89645993,-73.89122592,Bowl-and-doily Spider,Frontinella pyramitela,Bowl-and-doily Spider,Arachnida
+129142592,2022-08-02,needs_id,"Van Cortlandt Park, New York, NY, US",40.90906712,-73.89435008,,Anyphaenidae,Ghost Spiders,Arachnida
+129143117,2022-08-02,research,"Van Cortlandt Park, New York, NY, US",40.90916795,-73.89440948,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+129163550,2022-08-02,research,"Van Cortlandt Park, New York, NY, US",40.90885729,-73.89470501,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+129429696,2022-08-04,research,"Van Cortlandt Park, New York, NY, US",40.90083965,-73.88649695,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+129711736,2022-08-06,research,"Van Cortlandt Park, New York, NY, US",40.89117117,-73.89391423,Spotted Orbweaver,Neoscona crucifera,Spotted Orbweaver,Arachnida
+129884766,2022-08-07,research,"Van Cortlandt Park, New York, NY, US",40.89120153,-73.89388162,Basilica Orbweaver,Mecynogea lemniscata,Basilica Orbweaver,Arachnida
+130381104,2022-08-11,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.89398938,-73.89100186,Tetragnatha elongata,Tetragnatha elongata,Elongate Stilt Spider,Arachnida
+130458512,2022-08-11,research,"Van Cortlandt Park, New York, NY, US",40.890295,-73.89326333,Spotted Orbweaver,Neoscona crucifera,Spotted Orbweaver,Arachnida
+130602339,2022-08-12,research,"Van Cortlandt Park, New York, NY, US",40.90640333,-73.89103,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+130695687,2022-08-12,research,"Van Cortlandt Park, New York, NY, US",40.90585951,-73.89382943,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+130696643,2022-08-13,research,"Van Cortlandt Park Golf Course, New York, NY, US",40.89456229,-73.890089,Basilica Orbweaver,Mecynogea lemniscata,Basilica Orbweaver,Arachnida
+130814007,2022-08-14,research,"Van Cortlandt Park, New York, NY, US",40.89247066,-73.88983228,American Green Crab Spider,Misumessus oblongus,American Green Crab Spider,Arachnida
+131202648,2022-08-17,research,"Van Cortlandt Park, New York, NY, US",40.89771366,-73.89184821,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+131213067,2022-08-17,research,"Van Cortlandt Park, New York, NY, US",40.90645333,-73.89287,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+131246464,2022-08-17,needs_id,"Van Cortlandt Park, New York, NY, US",40.90093667,-73.882745,Cobweb Spiders,Theridiidae,Comb-footed Spiders,Arachnida
+131463094,2022-08-19,research,"Van Cortlandt Park, New York, NY, US",40.90207307,-73.88084172,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+132150522,2022-08-24,needs_id,"Van Cortlandt Park, New York, NY, US",40.89640178,-73.88362238,,Mangora maculata,Green-legged Orbweaver,Arachnida
+132189600,2022-08-24,needs_id,"Van Cortlandt Park, New York, NY, US",40.90722949,-73.89325702,Mangora,Mangora,,Arachnida
+138601153,2022-10-12,needs_id,"Van Cortlandt Park, New York, NY, US",40.90242246,-73.87392693,,Salticidae,Jumping Spiders,Arachnida
+140151271,2022-10-27,needs_id,"Van Cortlandt Park, New York, NY, US",40.90417967,-73.89615931,Wolf Spiders,Lycosidae,Wolf Spiders,Arachnida
+156289018,2023-04-23,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.89266716,-73.88967608,,Araneae,Spiders,Arachnida
+157577069,2023-04-29,research,"Van Cortlandt Park, New York, NY, US",40.90253808,-73.89437168,Basilica Orbweaver,Mecynogea lemniscata,Basilica Orbweaver,Arachnida
+158842964,2023-05-01,needs_id,"Van Cortlandt Park Golf Course, New York, NY, US",40.89659637,-73.88781437,,Araneomorphae,Typical Spiders,Arachnida
+164671718,2023-05-27,research,"Van Cortlandt Park, New York, NY, US",40.88941167,-73.88015,Eastern Parson Spider,Herpyllus ecclesiasticus,Eastern Parson Spider,Arachnida
+167282832,2023-06-13,research,"Van Cortlandt Park, New York, NY, US",40.90739612,-73.89447096,Metallic Crab Spider,Philodromus marxi,Metallic Crab Spider,Arachnida
+168375692,2023-06-18,research,"Van Cortlandt Park, New York, NY, US",40.90614515,-73.89375763,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+176605432,2023-08-04,research,"Van Cortlandt Park, New York, NY, US",40.90254402,-73.89424355,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+178942070,2023-08-17,needs_id,"Van Cortlandt Park, New York, NY, US",40.8888397,-73.89442247,Cobweb Spiders,Theridiidae,Comb-footed Spiders,Arachnida
+182066748,2023-09-06,needs_id,"Van Cortlandt Park, New York, NY, US",40.90083756,-73.89383112,Entelegyne Spiders,Entelegynae,Entelegyne Spiders,Arachnida
+183426400,2023-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.89837167,-73.89549167,Wolf Spiders,Pardosa,Thin-legged Wolf Spiders,Arachnida
+185061029,2023-09-20,needs_id,Van Cortlandt Park,40.889976,-73.892198,Spiders,Araneae,Spiders,Arachnida
+185062841,2023-09-20,needs_id,Van Cortlandt Park,40.890306,-73.89177,Spiders,Araneae,Spiders,Arachnida
+185161383,2023-09-27,research,"Van Cortlandt Park, New York, NY, US",40.89021333,-73.89516333,Bold Jumping Spider,Phidippus audax,Bold Jumping Spider,Arachnida
+205912504,2024-04-07,research,"Van Cortlandt Park, New York, NY, US",40.90005344,-73.88933254,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+208526405,2024-04-21,needs_id,"Van Cortlandt Park, New York, NY, US",40.90474137,-73.89283551,Araneoid Spiders,Araneoidea,Orbweavers and Allies,Arachnida
+209604736,2024-04-26,needs_id,"Van Cortlandt Park, New York, NY, US",40.90277725,-73.894166,Thin-legged Wolf Spiders,Pardosa,Thin-legged Wolf Spiders,Arachnida
+209604969,2024-04-26,needs_id,"Van Cortlandt Park, New York, NY, US",40.90282029,-73.89403447,Thin-legged Wolf Spiders,Pardosa,Thin-legged Wolf Spiders,Arachnida
+210147916,2024-04-27,needs_id,"Van Cortlandt Park, New York, NY, US",40.90286542,-73.8942184,Wolf Spiders,Lycosidae,Wolf Spiders,Arachnida
+210184326,2024-04-27,needs_id,"Van Cortlandt Park, New York, NY, US",40.90275593,-73.89404738,,Naphrys pulex,flea jumping spider,Arachnida
+210431295,2024-04-27,research,"Van Cortlandt Park, New York, NY, US",40.90104427,-73.89281549,Common Cellar Spiders,Pholcus,Common Cellar Spiders,Arachnida
+211638284,2024-04-29,needs_id,"Van Cortlandt Golf House, Bronx, NY 10471, USA",40.88902249,-73.89277519,Wolf Spiders,Lycosidae,Wolf Spiders,Arachnida
+212726972,2024-05-01,research,"Van Cortlandt Park, New York, NY, US",40.90424816,-73.89119516,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+212728065,2024-05-01,research,"Van Cortlandt Park, New York, NY, US",40.90353565,-73.8913301,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+215553224,2024-05-13,needs_id,"Van Cortlandt Park, New York, NY, US",40.90687367,-73.89359583,Meshweavers,Dictynidae,Meshweavers,Arachnida
+215557226,2024-05-13,needs_id,"Van Cortlandt Park, New York, NY, US",40.89711167,-73.883545,Running Crab Spiders,Philodromus,Running Crab Spiders,Arachnida
+215558180,2024-05-13,research,"Van Cortlandt Park, New York, NY, US",40.90778,-73.893875,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+215591679,2024-05-13,needs_id,Van Cortlandt Park,40.894382,-73.888798,Meshweavers,Dictynidae,Meshweavers,Arachnida
+219584039,2024-05-29,needs_id,Van Cortlandt Park,40.891211,-73.890678,Running Crab Spiders,Philodromus,Running Crab Spiders,Arachnida
+219585366,2024-05-29,needs_id,Van Cortlandt Park,40.891148,-73.890853,Meshweavers,Dictynidae,Meshweavers,Arachnida
+220256310,2024-06-03,research,"Van Cortlandt Park, New York, NY, US",40.906005,-73.893705,Dark Fishing Spider,Dolomedes tenebrosus,Dark Fishing Spider,Arachnida
+220477318,2024-06-04,research,"Van Cortlandt Park, New York, NY, US",40.90017833,-73.87423667,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+220477502,2024-06-04,research,"Van Cortlandt Park, New York, NY, US",40.9002,-73.87418333,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+222122763,2024-06-09,research,"Van Cortlandt Park, New York, NY, US",40.90173973,-73.89163601,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+222569022,2024-06-13,research,Van Cortlandt Park,40.889749,-73.893234,Pirate Otter Spider,Pirata piraticus,Pirate Otter Spider,Arachnida
+222753932,2024-06-13,research,Van Cortlandt Park,40.890059,-73.895205,Thin-spined Jumping Spider,Tutelina elegans,Thin-spined Jumping Spider,Arachnida
+224934912,2024-06-24,needs_id,"Van Cortlandt Park, New York, NY, US",40.90281333,-73.87809667,Thin-spined Jumping Spider,Tutelina elegans,Thin-spined Jumping Spider,Arachnida
+236709858,2024-08-19,research,"Van Cortlandt Park, New York, NY, US",40.90013833,-73.87668667,Spotted Orbweaver,Neoscona crucifera,Spotted Orbweaver,Arachnida
+239237285,2024-08-26,research,"Van Cortlandt Park, New York, NY, US",40.90412401,-73.88973916,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+239331999,2024-09-01,research,"Van Cortlandt Park, New York, NY, US",40.888796,-73.894374,Agelenopsis,Agelenopsis,Grass Spiders,Arachnida
+244923526,2024-09-08,research,"Van Cortlandt Park, New York, NY, US",40.90467374,-73.89091775,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+240916690,2024-09-10,needs_id,"Van Cortlandt Park, New York, NY, US",40.90255127,-73.89409653,Spotted Orbweaver,Neoscona crucifera,Spotted Orbweaver,Arachnida
+241325206,2024-09-12,needs_id,"Van Cortlandt Park, New York, NY, US",40.89135068,-73.89489394,,Salticidae,Jumping Spiders,Arachnida
+241712129,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.90105,-73.89168667,Ground Crab Spiders,Xysticus,Ground Crab Spiders,Arachnida
+241712210,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.90098947,-73.8917708,Ground Crab Spiders,Xysticus,Ground Crab Spiders,Arachnida
+241712323,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.901055,-73.8918,Ground Crab Spiders,Xysticus,Ground Crab Spiders,Arachnida
+241712556,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.90090818,-73.89184496,Ground Crab Spiders,Xysticus,Ground Crab Spiders,Arachnida
+241713199,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.89042937,-73.89265594,,Araneae,Spiders,Arachnida
+241713631,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.90112933,-73.89189713,Ground Crab Spiders,Xysticus,Ground Crab Spiders,Arachnida
+241714257,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.89031491,-73.89318466,Running Crab Spiders,Philodromus,Running Crab Spiders,Arachnida
+241714292,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.89018333,-73.89315,,Araneae,Spiders,Arachnida
+241714968,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.89027198,-73.89330215,Typical Spiders,Araneomorphae,Typical Spiders,Arachnida
+241715212,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.90092807,-73.89189125,,Lycosidae,Wolf Spiders,Arachnida
+241715743,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.90101667,-73.8918,,Lycosidae,Wolf Spiders,Arachnida
+241717861,2024-09-14,needs_id,"Van Cortlandt Lake, New York, NY, US",40.89016667,-73.89175333,Spiders,Araneae,Spiders,Arachnida
+241722959,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.89230204,-73.89018398,,Cheiracanthium mildei,Northern Yellow Sac Spider,Arachnida
+241727681,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.89370975,-73.89159398,,Hentzia mitrata,White-jawed Jumping Spider,Arachnida
+241728556,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.90180112,-73.89062115,Orchard Orbweaver,Leucauge venusta,Orchard Orbweaver,Arachnida
+241899123,2024-09-14,needs_id,"Van Cortlandt Park, New York, NY, US",40.895514,-73.8816065,Entelegyne Spiders,Entelegynae,Entelegyne Spiders,Arachnida
+241860691,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.88983012,-73.89269132,Octopus Spiders,Tmarus,Octopus Spiders,Arachnida
+241860782,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.88983667,-73.89263833,Octopus Spiders,Tmarus,Octopus Spiders,Arachnida
+241861094,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.88988917,-73.8926418,Entelegyne Spiders,Entelegynae,Entelegyne Spiders,Arachnida
+241861195,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.88980788,-73.89276263,Spiders,Araneae,Spiders,Arachnida
+241875143,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.8920713,-73.89008654,Basilica Orbweaver,Mecynogea lemniscata,Basilica Orbweaver,Arachnida
+241875611,2024-09-15,research,"Van Cortlandt Park, New York, NY, US",40.89179557,-73.89014714,Basilica Orbweaver,Mecynogea lemniscata,Basilica Orbweaver,Arachnida
+241876580,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.8943839,-73.89194381,,Salticidae,Jumping Spiders,Arachnida
+241879882,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.89631817,-73.89142424,,Xysticus,Ground Crab Spiders,Arachnida
+241880605,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.894455,-73.89193,Typical Jumping Spiders,Salticinae,Typical Jumping Spiders,Arachnida
+241880656,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.89441733,-73.89192766,,Salticidae,Jumping Spiders,Arachnida
+241880744,2024-09-15,research,"Van Cortlandt Park, New York, NY, US",40.89624963,-73.89151397,Marbled Orbweaver,Araneus marmoreus,Marbled Orbweaver,Arachnida
+241882018,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.8959603,-73.89104091,Golden Jumping Spider,Paraphidippus aurantius,Golden Jumping Spider,Arachnida
+241884121,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.89202184,-73.89113747,Spotted Orbweaver,Neoscona crucifera,Spotted Orbweaver,Arachnida
+241884461,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.89200795,-73.89119065,,Araneoidea,Orbweavers and Allies,Arachnida
+241887401,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.89801667,-73.89223667,,Xysticus,Ground Crab Spiders,Arachnida
+241925803,2024-09-15,needs_id,"Van Cortlandt Park, New York, NY, US",40.89837833,-73.89223667,,Tigrosa aspersa,Woodland Giant Wolf Spider,Arachnida
+241930803,2024-09-15,research,"Van Cortlandt Park, New York, NY, US",40.90163,-73.89286167,Spined Micrathena,Micrathena gracilis,Spined Micrathena,Arachnida
+241939931,2024-09-15,research,"Van Cortlandt Park, New York, NY, US",40.89238109,-73.89087142,Woodlouse Spider,Dysdera crocata,Woodlouse Spider,Arachnida
+241986349,2024-09-15,needs_id,"Van Cortlandt Ave W/Bailey Av, Bronx, NY 10463, USA",40.88640502,-73.89492877,Sad Ground Crab Spider,Xysticus funestus,Sad Ground Crab Spider,Arachnida
+245253547,2024-10-02,research,"Van Cortlandt Park, New York, NY, US",40.89125424,-73.89409674,Spotted Orbweaver,Neoscona crucifera,Spotted Orbweaver,Arachnida
+246218708,2024-10-07,needs_id,"Van Cortlandt Park, New York, NY, US",40.89120564,-73.8940818,Spotted Orbweavers,Neoscona crucifera,Spotted Orbweaver,Arachnida

@@ -1,0 +1,23 @@
+id,measure_info,geo_place_name,borough_norm_air,time_period,start_date,data_value,file_name
+7027,ppb,Riverdale and Fieldston (CD8),Bronx,Annual Average 2017,2017-01-01,17.3,Air_Quality_20251018 copy.csv
+6379,ppb,Riverdale and Fieldston (CD8),Bronx,Summer 2017,2017-06-01,20.4,Air_Quality_20251018 copy.csv
+6167,ppb,Riverdale and Fieldston (CD8),Bronx,Winter 2017-18,2017-12-01,21.31,Air_Quality_20251018 copy.csv
+5790,ppb,Riverdale and Fieldston (CD8),Bronx,Annual Average 2018,2018-01-01,15.77,Air_Quality_20251018 copy.csv
+5567,ppb,Riverdale and Fieldston (CD8),Bronx,Summer 2018,2018-06-01,20.8,Air_Quality_20251018 copy.csv
+5153,ppb,Riverdale and Fieldston (CD8),Bronx,Winter 2018-19,2018-12-01,18.31,Air_Quality_20251018 copy.csv
+4900,ppb,Riverdale and Fieldston (CD8),Bronx,Annual Average 2019,2019-01-01,13.48,Air_Quality_20251018 copy.csv
+4182,ppb,Riverdale and Fieldston (CD8),Bronx,Summer 2019,2019-06-01,19.49,Air_Quality_20251018 copy.csv
+3740,ppb,Riverdale and Fieldston (CD8),Bronx,Winter 2019-20,2019-12-01,21.19,Air_Quality_20251018 copy.csv
+3484,ppb,Riverdale and Fieldston (CD8),Bronx,Annual Average 2020,2020-01-01,15.83,Air_Quality_20251018 copy.csv
+3158,ppb,Riverdale and Fieldston (CD8),Bronx,Summer 2020,2020-06-01,20.43,Air_Quality_20251018 copy.csv
+2909,ppb,Riverdale and Fieldston (CD8),Bronx,Winter 2020-21,2020-12-01,17.9706,Air_Quality_20251018 copy.csv
+2613,ppb,Riverdale and Fieldston (CD8),Bronx,Annual Average 2021,2021-01-01,14.7029,Air_Quality_20251018 copy.csv
+2101,ppb,Riverdale and Fieldston (CD8),Bronx,Summer 2021,2021-06-01,19.92,Air_Quality_20251018 copy.csv
+1849,ppb,Riverdale and Fieldston (CD8),Bronx,Winter 2021-22,2021-12-01,19.8306,Air_Quality_20251018 copy.csv
+1671,ppb,Riverdale and Fieldston (CD8),Bronx,Annual Average 2022,2022-01-01,14.4878,Air_Quality_20251018 copy.csv
+1317,ppb,Riverdale and Fieldston (CD8),Bronx,Summer 2022,2022-06-01,20.37,Air_Quality_20251018 copy.csv
+938,ppb,Riverdale and Fieldston (CD8),Bronx,Winter 2022-23,2022-12-01,17.865,Air_Quality_20251018 copy.csv
+517,ppb,Riverdale and Fieldston (CD8),Bronx,Annual Average 2023,2023-01-01,14.5557,Air_Quality_20251018 copy.csv
+271,ppb,Riverdale and Fieldston (CD8),Bronx,Summer 2023,2023-06-01,21.29865,Air_Quality_20251018 copy.csv
+,,,,,,,
+g,,,,,,,
