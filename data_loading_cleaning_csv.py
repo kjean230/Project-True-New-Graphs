@@ -97,3 +97,11 @@ def clean_air_quality_monthly(csv_path: Union[str, Path],
     )
             monthly_aqi = monthly_aqi.sort_values(["year", "month"]).reset_index(drop=True)
             return monthly_aqi
+        
+def clear_weather_monthly (csv_path: Union[str, Path],
+                           start: pd.Timestamp,
+                           cutoff: pd.Timestamp,
+                           station_name: str,) -> pd.DataFrame:
+       # function to clean weather csv file to monthly data
+       # produces a dataframe for final results
+       ...
