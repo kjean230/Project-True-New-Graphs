@@ -102,10 +102,10 @@ def plot_temp_aqi_over_time(monthly_df: pd.DataFrame):
         df["aqi_smooth"],
         label="AQI (3-mo avg, ppb)",
         linewidth=2,
-        color="purple",
+        color="red",
     )
-    ax2.set_ylabel("AQI (ppb)", color="purple")
-    ax2.tick_params(axis="y", labelcolor="purple")
+    ax2.set_ylabel("AQI (ppb)", color="red")
+    ax2.tick_params(axis="y", labelcolor="red")
 
     lines1, labels1 = ax1.get_legend_handles_labels()
     lines2, labels2 = ax2.get_legend_handles_labels()
