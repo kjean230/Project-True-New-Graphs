@@ -1,7 +1,8 @@
 # ml_model.py
 # linear regression models for arthropod abundance vs environmental variables
+
 from pathlib import Path
-from typing import Tuple
+from typing import Tuple, List
 
 import numpy as np
 import pandas as pd
@@ -17,27 +18,37 @@ try:
 except ImportError:
     HAS_SCIPY = False
 
-def _prepare_ml_matrix(
-        df: pd.DataFrame,
-        response_col: str,) -> Tuple[np.ndarray, np.ndarray, pd.DataFrame, list]:
 
+def _prepare_ml_matrix(
+    df: pd.DataFrame,
+    response_col: str,
+) -> Tuple[np.ndarray, np.ndarray, pd.DataFrame, List[str]]:
+    """
+    Build design matrix X and response y for linear regression:
+
+        response_col ~ z(temp_mean) + z(aqi_mean) + z(year) + season dummies
+    """
     required_cols = [response_col, "temp_mean", "aqi_mean", "year", "season_label"]
     for col in required_cols:
         if col not in df.columns:
             raise KeyError(f"Missing required column: {col}")
-        
+
     df_used = df.dropna(subset=required_cols).copy()
     if df_used.empty:
         raise ValueError("No data available after dropping rows with missing values.")
-    
+
     num_cols = ["temp_mean", "aqi_mean", "year"]
     X_num = df_used[num_cols].astype(float).values
 
     scaler = StandardScaler()
     X_num_scaled = scaler.fit_transform(X_num)
-    season_dummies = pd.get_dummies(df_used["season_label"],
-                                    prefix="season",
-                                    drop_first=True,)
+
+    season_dummies = pd.get_dummies(
+        df_used["season_label"],
+        prefix="season",
+        drop_first=True,
+    )
+
     X = np.hstack([X_num_scaled, season_dummies.values])
     feature_names = [f"z_{col}" for col in num_cols] + list(season_dummies.columns)
 
@@ -45,15 +56,15 @@ def _prepare_ml_matrix(
 
     return X, y, df_used, feature_names
 
+
 def _compute_adjusted_r2(r2: float, n: int, p: int) -> float:
     """
     Compute adjusted R^2 given:
-    - r2: plain R^2
-    - n: number of observations
-    - p: number of predictors (columns in X)
+        r2: plain R^2
+        n: number of observations
+        p: number of predictors
     """
     if n <= p + 1:
-        # Not enough samples to compute adjusted R^2 meaningfully
         return float("nan")
     return 1.0 - (1.0 - r2) * (n - 1) / (n - p - 1)
 
@@ -72,6 +83,7 @@ def _plot_residuals_vs_fitted(y_true, y_pred, title: str):
     ax.set_title(title + " — Residuals vs Fitted")
     fig.tight_layout()
     plt.show()
+
 
 def _plot_qq(residuals, title: str):
     """
@@ -98,22 +110,20 @@ def _run_linear_model(
     """
     Core modeling routine:
 
-    - Prepares design matrix (standardized numeric predictors + season dummies).
-    - Fits LinearRegression.
-    - Prints R^2, adjusted R^2, coefficients.
-    - Saves coefficient table and prediction table to CSV.
-    - Shows residual diagnostics.
+    - Prepare X, y.
+    - Fit LinearRegression.
+    - Print R^2, adjusted R^2, coefficients.
+    - Save coefficient table and prediction table to CSV.
+    - Show residual diagnostics.
     """
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Prepare X, y, and associated subset of df
     X, y, df_used, feature_names = _prepare_ml_matrix(
         monthly_df,
         response_col=response_col,
     )
 
-    # Fit model
     model = LinearRegression()
     model.fit(X, y)
 
@@ -123,8 +133,7 @@ def _run_linear_model(
     r2 = r2_score(y, y_pred)
     adj_r2 = _compute_adjusted_r2(r2, n=len(y), p=X.shape[1])
 
-    # Coefficient summary
-    coef_series = pd.Series(model.coef_, index=feature_names)
+    # Coef table
     coef_df = pd.DataFrame(
         {
             "feature": feature_names,
@@ -133,22 +142,23 @@ def _run_linear_model(
     )
     coef_df.loc[len(coef_df)] = ["intercept", model.intercept_]
 
+    coef_df["response"] = response_col
+    coef_df["taxon_label"] = taxon_label
+    coef_df["r2"] = r2
+    coef_df["adjusted_r2"] = adj_r2
+
     # Prediction table
     pred_df = df_used.copy()
     pred_df["fitted"] = y_pred
     pred_df["residual"] = residuals
 
-    # Add metadata columns to coef_df for convenience
-    coef_df["response"] = response_col
-    coef_df["taxon_label"] = taxon_label
-    coef_df["r2"] = r2
-    coef_df["adjusted_r2"] = adj_r2
+    coef_path = output_dir / f"{out_prefix}_coefficients.csv"
     preds_path = output_dir / f"{out_prefix}_predictions.csv"
 
     coef_df.to_csv(coef_path, index=False)
     pred_df.to_csv(preds_path, index=False)
 
-    # Print summary to console
+    # Console summary
     print(f"\n===== Linear model for {taxon_label} ({response_col}) =====")
     print(f"Number of observations used: {len(y)}")
     print(f"R^2:          {r2:.4f}")
@@ -168,15 +178,11 @@ def _run_linear_model(
     _plot_qq(residuals=residuals, title=title)
 
 
-# ---------- Public entrypoints ----------
-
 def run_spider_model(monthly_df: pd.DataFrame, output_dir: Path) -> None:
     """
     Fit and evaluate a linear regression for spider abundance:
 
-    spider_count ~ z(temp_mean) + z(aqi_mean) + z(year) + season dummies
-
-    Saves CSV outputs and shows diagnostics.
+        spider_count ~ z(temp_mean) + z(aqi_mean) + z(year) + season dummies
     """
     if "spider_count" not in monthly_df.columns:
         raise KeyError("'spider_count' not found in monthly_df.")
@@ -188,13 +194,12 @@ def run_spider_model(monthly_df: pd.DataFrame, output_dir: Path) -> None:
         output_dir=output_dir,
     )
 
+
 def run_fly_model(monthly_df: pd.DataFrame, output_dir: Path) -> None:
     """
     Fit and evaluate a linear regression for fly abundance:
 
-    fly_count ~ z(temp_mean) + z(aqi_mean) + z(year) + season dummies
-
-    Saves CSV outputs and shows diagnostics.
+        fly_count ~ z(temp_mean) + z(aqi_mean) + z(year) + season dummies
     """
     if "fly_count" not in monthly_df.columns:
         raise KeyError("'fly_count' not found in monthly_df.")
