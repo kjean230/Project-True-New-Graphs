@@ -45,3 +45,164 @@ def _prepare_ml_matrix(
 
     return X, y, df_used, feature_names
 
+def _compute_adjusted_r2(r2: float, n: int, p: int) -> float:
+    """
+    Compute adjusted R^2 given:
+    - r2: plain R^2
+    - n: number of observations
+    - p: number of predictors (columns in X)
+    """
+    if n <= p + 1:
+        # Not enough samples to compute adjusted R^2 meaningfully
+        return float("nan")
+    return 1.0 - (1.0 - r2) * (n - 1) / (n - p - 1)
+
+
+def _plot_residuals_vs_fitted(y_true, y_pred, title: str):
+    """
+    Residuals vs fitted values plot.
+    """
+    residuals = y_true - y_pred
+
+    fig, ax = plt.subplots(figsize=(6, 5))
+    ax.scatter(y_pred, residuals, alpha=0.7)
+    ax.axhline(0, color="red", linestyle="--", linewidth=1)
+    ax.set_xlabel("Fitted values")
+    ax.set_ylabel("Residuals")
+    ax.set_title(title + " — Residuals vs Fitted")
+    fig.tight_layout()
+    plt.show()
+
+def _plot_qq(residuals, title: str):
+    """
+    QQ plot of residuals using scipy if available.
+    """
+    if not HAS_SCIPY:
+        print("scipy not installed; skipping QQ plot.")
+        return
+
+    fig, ax = plt.subplots(figsize=(6, 5))
+    stats.probplot(residuals, dist="norm", plot=ax)
+    ax.set_title(title + " — QQ Plot of Residuals")
+    fig.tight_layout()
+    plt.show()
+
+
+def _run_linear_model(
+    monthly_df: pd.DataFrame,
+    response_col: str,
+    taxon_label: str,
+    out_prefix: str,
+    output_dir: Path,
+) -> None:
+    """
+    Core modeling routine:
+
+    - Prepares design matrix (standardized numeric predictors + season dummies).
+    - Fits LinearRegression.
+    - Prints R^2, adjusted R^2, coefficients.
+    - Saves coefficient table and prediction table to CSV.
+    - Shows residual diagnostics.
+    """
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Prepare X, y, and associated subset of df
+    X, y, df_used, feature_names = _prepare_ml_matrix(
+        monthly_df,
+        response_col=response_col,
+    )
+
+    # Fit model
+    model = LinearRegression()
+    model.fit(X, y)
+
+    y_pred = model.predict(X)
+    residuals = y - y_pred
+
+    r2 = r2_score(y, y_pred)
+    adj_r2 = _compute_adjusted_r2(r2, n=len(y), p=X.shape[1])
+
+    # Coefficient summary
+    coef_series = pd.Series(model.coef_, index=feature_names)
+    coef_df = pd.DataFrame(
+        {
+            "feature": feature_names,
+            "coefficient": model.coef_,
+        }
+    )
+    coef_df.loc[len(coef_df)] = ["intercept", model.intercept_]
+
+    # Prediction table
+    pred_df = df_used.copy()
+    pred_df["fitted"] = y_pred
+    pred_df["residual"] = residuals
+
+    # Add metadata columns to coef_df for convenience
+    coef_df["response"] = response_col
+    coef_df["taxon_label"] = taxon_label
+    coef_df["r2"] = r2
+    coef_df["adjusted_r2"] = adj_r2
+    preds_path = output_dir / f"{out_prefix}_predictions.csv"
+
+    coef_df.to_csv(coef_path, index=False)
+    pred_df.to_csv(preds_path, index=False)
+
+    # Print summary to console
+    print(f"\n===== Linear model for {taxon_label} ({response_col}) =====")
+    print(f"Number of observations used: {len(y)}")
+    print(f"R^2:          {r2:.4f}")
+    print(f"Adjusted R^2: {adj_r2:.4f}\n")
+
+    print("Coefficients (standardized numeric predictors):")
+    for fname, coef in zip(feature_names, model.coef_):
+        print(f"  {fname:20s} -> {coef: .4f}")
+    print(f"  {'intercept':20s} -> {model.intercept_: .4f}\n")
+
+    print(f"Coefficient summary saved to: {coef_path}")
+    print(f"Predictions (with residuals) saved to: {preds_path}\n")
+
+    # Diagnostics
+    title = f"{taxon_label} abundance model"
+    _plot_residuals_vs_fitted(y_true=y, y_pred=y_pred, title=title)
+    _plot_qq(residuals=residuals, title=title)
+
+
+# ---------- Public entrypoints ----------
+
+def run_spider_model(monthly_df: pd.DataFrame, output_dir: Path) -> None:
+    """
+    Fit and evaluate a linear regression for spider abundance:
+
+    spider_count ~ z(temp_mean) + z(aqi_mean) + z(year) + season dummies
+
+    Saves CSV outputs and shows diagnostics.
+    """
+    if "spider_count" not in monthly_df.columns:
+        raise KeyError("'spider_count' not found in monthly_df.")
+    _run_linear_model(
+        monthly_df=monthly_df,
+        response_col="spider_count",
+        taxon_label="Spider",
+        out_prefix="spider_abundance_model",
+        output_dir=output_dir,
+    )
+
+
+def run_fly_model(monthly_df: pd.DataFrame, output_dir: Path) -> None:
+    """
+    Fit and evaluate a linear regression for fly abundance:
+
+    fly_count ~ z(temp_mean) + z(aqi_mean) + z(year) + season dummies
+
+    Saves CSV outputs and shows diagnostics.
+    """
+    if "fly_count" not in monthly_df.columns:
+        raise KeyError("'fly_count' not found in monthly_df.")
+    _run_linear_model(
+        monthly_df=monthly_df,
+        response_col="fly_count",
+        taxon_label="Fly",
+        out_prefix="fly_abundance_model",
+        output_dir=output_dir,
+    )
