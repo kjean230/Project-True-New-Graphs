@@ -3,39 +3,54 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-try: 
+try:
     from statsmodels.nonparametric.smoothers_lowess import lowess
     HAS_STATSMODELS = True
 except ImportError:
     HAS_STATSMODELS = False
 
+
 def _season_color(season_label: str) -> str:
+    """
+    Map 3-band seasons to colors.
+    """
     if "Season 1 (Jan–Apr)" in season_label:
         return "blue"
     elif "Season 2 (May–Aug)" in season_label:
         return "red"
     else:
         return "green"
-    
+
+
 def _add_season_shading(ax, df: pd.DataFrame, alpha: float = 0.06):
+    """
+    Add vertical bands for each season across years.
+    Uses 'season_label' and 'date_month' columns.
+    """
     df = df.sort_values("date_month")
     grouped = df.groupby(["year", "season_label"], sort=True)
 
-    for (_, seasoon_label), g in grouped: 
+    for (_, season_label), g in grouped:
         if g.empty:
             continue
         start = g["date_month"].min()
         end = g["date_month"].max()
+        # extend to the start of the next month
         end = end + pd.offsets.MonthBegin(1)
-        color = _season_color(seasoon_label)
+        color = _season_color(season_label)
         ax.axvspan(start, end, color=color, alpha=alpha)
 
+
 def _add_lowess_line(ax, x, y, color="black", label="LOWESS"):
+    """
+    Add LOWESS smooth if statsmodels is installed.
+    """
     if not HAS_STATSMODELS:
         print("statsmodels is not installed; skipping LOWESS line.")
         return
-    
+
     import numpy as np
+
     order = np.argsort(x)
     x_sorted = x[order]
     y_sorted = y[order]
@@ -43,8 +58,16 @@ def _add_lowess_line(ax, x, y, color="black", label="LOWESS"):
     smoothed = lowess(y_sorted, x_sorted, frac=0.6, return_sorted=True)
     ax.plot(smoothed[:, 0], smoothed[:, 1], color=color, linewidth=2, label=label)
 
-# ===== graph one: temperature and AQI over time ===== #
+
+# ===== Graph 1: temperature and AQI over time =====
 def plot_temp_aqi_over_time(monthly_df: pd.DataFrame):
+    """
+    Graph 1:
+    - X: date_month
+    - Left Y: temp_mean (3-month rolling avg)
+    - Right Y: aqi_mean (3-month rolling avg)
+    - Season shading: 3-band seasons
+    """
     df = monthly_df.copy()
     df = df.sort_values("date_month")
 
@@ -61,6 +84,7 @@ def plot_temp_aqi_over_time(monthly_df: pd.DataFrame):
 
     fig, ax1 = plt.subplots(figsize=(12, 6))
     _add_season_shading(ax1, df)
+
     ax1.plot(
         df["date_month"],
         df["temp_smooth"],
@@ -91,8 +115,16 @@ def plot_temp_aqi_over_time(monthly_df: pd.DataFrame):
     plt.title("Temperature and AQI over time (2017–2023)")
     plt.show()
 
-# ===== graph two: spider and fly abundances over time ===== #
+
+# ===== Graph 2: spider and fly abundances over time =====
 def plot_spider_fly_over_time(monthly_df: pd.DataFrame):
+    """
+    Graph 2:
+    - X: date_month
+    - Y: abundance (counts)
+    - 3-month rolling mean for spider_count and fly_count
+    - season shading
+    """
     df = monthly_df.copy()
     df = df.sort_values("date_month")
 
@@ -106,6 +138,8 @@ def plot_spider_fly_over_time(monthly_df: pd.DataFrame):
         .rolling(window=3, center=True, min_periods=1)
         .mean()
     )
+
+    # Keep NaN gaps in smoothed series where original counts are NaN
     df.loc[df["spider_count"].isna(), "spider_smooth"] = float("nan")
     df.loc[df["fly_count"].isna(), "fly_smooth"] = float("nan")
 
@@ -136,38 +170,49 @@ def plot_spider_fly_over_time(monthly_df: pd.DataFrame):
     fig.tight_layout()
     plt.show()
 
-# ===== graph three: spider vs fly abundance scatterplot ===== #
-def _prepare_scatter_df(monthly_df: pd.DataFrame,
-                        taxon: str, env: str) -> pd.DataFrame:
+
+# ===== Graph 3: env vs abundance scatterplots =====
+def _prepare_scatter_df(
+    monthly_df: pd.DataFrame,
+    taxon: str,
+    env: str,
+) -> pd.DataFrame:
+    """
+    Prepare scatter data for one taxon and one env variable.
+    """
     df = monthly_df.copy()
+
     if taxon == "spider":
         count_col = "spider_count"
     elif taxon == "fly":
         count_col = "fly_count"
     else:
         raise ValueError("taxon must be 'spider' or 'fly'")
-    
+
     if env == "temp":
         env_col = "temp_mean"
     elif env == "aqi":
         env_col = "aqi_mean"
     else:
         raise ValueError("env must be 'temp' or 'aqi'")
-    
+
     df = df.dropna(subset=[count_col, env_col])
 
     df_scatter = df[["date_month", "season_label", count_col, env_col]].copy()
     df_scatter = df_scatter.rename(columns={count_col: "abundance", env_col: "env"})
     return df_scatter
 
-def _scatter_env_vs_abundance(df_scatter: pd.DataFrame, env_label: str, taxon_label: str):
+
+def _scatter_env_vs_abundance(
+    df_scatter: pd.DataFrame,
+    env_label: str,
+    taxon_label: str,
+):
     """
-    Core function to make a scatter plot + LOWESS trend for a single
-    env/abundance combination, colored by season.
+    Core function: scatter + optional LOWESS, colored by season.
     """
     fig, ax = plt.subplots(figsize=(8, 6))
 
-    # Scatter points by season
     for season in df_scatter["season_label"].unique():
         sub = df_scatter[df_scatter["season_label"] == season]
         if sub.empty:
@@ -181,7 +226,6 @@ def _scatter_env_vs_abundance(df_scatter: pd.DataFrame, env_label: str, taxon_la
             color=color,
         )
 
-    # Add LOWESS trend line, if statsmodels is available and enough points
     if HAS_STATSMODELS and len(df_scatter) > 4:
         x = df_scatter["env"].to_numpy()
         y = df_scatter["abundance"].to_numpy()
@@ -196,17 +240,33 @@ def _scatter_env_vs_abundance(df_scatter: pd.DataFrame, env_label: str, taxon_la
     fig.tight_layout()
     plt.show()
 
+
 def plot_temp_vs_spider_scatter(monthly_df: pd.DataFrame):
     df_scatter = _prepare_scatter_df(monthly_df, taxon="spider", env="temp")
-    _scatter_env_vs_abundance(df_scatter, env_label="Temperature (°F)", taxon_label="Spider")
+    _scatter_env_vs_abundance(
+        df_scatter,
+        env_label="Temperature (°F)",
+        taxon_label="Spider",
+    )
+
 
 def plot_temp_vs_fly_scatter(monthly_df: pd.DataFrame):
     df_scatter = _prepare_scatter_df(monthly_df, taxon="fly", env="temp")
-    _scatter_env_vs_abundance(df_scatter, env_label="Temperature (°F)", taxon_label="Fly")
+    _scatter_env_vs_abundance(
+        df_scatter,
+        env_label="Temperature (°F)",
+        taxon_label="Fly",
+    )
+
 
 def plot_aqi_vs_spider_scatter(monthly_df: pd.DataFrame):
     df_scatter = _prepare_scatter_df(monthly_df, taxon="spider", env="aqi")
-    _scatter_env_vs_abundance(df_scatter, env_label="AQI (ppb)", taxon_label="Spider")
+    _scatter_env_vs_abundance(
+        df_scatter,
+        env_label="AQI (ppb)",
+        taxon_label="Spider",
+    )
+
 
 def plot_aqi_vs_fly_scatter(monthly_df: pd.DataFrame):
     """
@@ -214,4 +274,8 @@ def plot_aqi_vs_fly_scatter(monthly_df: pd.DataFrame):
     AQI (ppb) vs fly abundance (monthly counts), colored by season.
     """
     df_scatter = _prepare_scatter_df(monthly_df, taxon="fly", env="aqi")
-    _scatter_env_vs_abundance(df_scatter, env_label="AQI (ppb)", taxon_label="Fly")
+    _scatter_env_vs_abundance(
+        df_scatter,
+        env_label="AQI (ppb)",
+        taxon_label="Fly",
+    )
