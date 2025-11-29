@@ -1,14 +1,15 @@
 # main_arthropods_cli.py
 """
-Main CLI entrypoint for arthropod–environment graphs.
+Main CLI entrypoint for arthropod–environment graphs and models.
 
 Flow:
 - Build a combined monthly dataframe for 2017–2023.
-- Show a simple text menu.
-- Based on user input, call the appropriate plotting function.
+- Show a text menu.
+- Based on user input, call plotting or ML functions.
 """
 
 from pathlib import Path
+
 import pandas as pd
 
 from monthly_dataset import build_monthly_env_arthropod_df
@@ -21,41 +22,7 @@ from plotting_graphs import (
     plot_aqi_vs_fly_scatter,
 )
 from user_menu import print_menu
-
-
-def main():
-    # --------- Paths to CSVs (adjust if needed) ---------
-    base_dir = Path(__file__).resolve().parent.parent / "Project True Tree Graphs"
-
-    base_path_airtemp = base_dir / "air and temp csvs"
-    base_path_spifly = base_dir / "spider and fly csvs"
-
-    air_quality_csv = base_path_airtemp / "file_of_air_quality copy.csv"
-    temp_csv = base_path_airtemp / "file_of_monthly_weather copy.csv"
-    spider_csv = base_path_spifly / "file_of_spiders - Sheet1 copy.csv"
-    fly_csv = base_path_spifly / "files_of_flies - Sheet1 copy.csv"
-
-    # --------- Analysis window and station ---------
-    start = pd.Timestamp("2017-01-01")
-    cutoff = pd.Timestamp("2023-12-31")
-    station_name = "LAGUARDIA AIRPORT, NY US"
-
-   # main_arthropods_cli.py
-
-from pathlib import Path
-import pandas as pd
-
-from monthly_dataset import build_monthly_env_arthropod_df
-from plotting_graphs import (
-    plot_temp_aqi_over_time,
-    plot_spider_fly_over_time,
-    plot_temp_vs_spider_scatter,
-    plot_temp_vs_fly_scatter,
-    plot_aqi_vs_spider_scatter,
-    plot_aqi_vs_fly_scatter,
-)
-from user_menu import print_menu
-from ml_model import run_spider_model, run_fly_model   # <-- NEW
+from ml_model import run_spider_model, run_fly_model
 
 
 def main():
