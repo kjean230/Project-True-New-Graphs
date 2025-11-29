@@ -102,6 +102,30 @@ def clear_weather_monthly (csv_path: Union[str, Path],
                            start: pd.Timestamp,
                            cutoff: pd.Timestamp,
                            station_name: str,) -> pd.DataFrame:
-       # function to clean weather csv file to monthly data
-       # produces a dataframe for final results
-       ...
+    # function to clean weather csv file to monthly data
+    # produces a dataframe for final results
+    csv_path = Path(csv_path)
+    df = pd.read_csv(csv_path, dtype=str)
+    required_cols = {"stattion_name", "date_month", "TAVG"}
+    missing = required_cols - set(df.columns)
+    if missing:
+        raise KeyError(f"Missing columns in {csv_path.name}: {missing}")
+    df["date_month"] = pd.to_datetime(df["date_month"], errors='coerce')
+    df = df.dropna(subset=["date_month"])
+
+    df["TAVG"] = pd.to_numeric(df["TAVG"], errors='coerce')
+    df = df.dropna(subset=["TAVG"])
+
+    df["station_name"] = df["station_name"].str.strip()
+    station_name_clean = station_name.strip()
+    df = df[df["station_name"] == station_name_clean].copy()
+
+    df = df[
+         (df["date_month"] >= start) & (df["date_month"] <= cutoff) 
+    ].copy()
+
+    df["year"] = df["date_month"].dt.year
+    df["month"] = df["date_month"].dt.month
+
+    monthly_temp = monthly_temp.sort_values(["year", "month"]).reset_index(drop=True)
+    return monthly_temp
