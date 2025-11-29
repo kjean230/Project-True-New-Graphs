@@ -44,3 +44,49 @@ def _add_lowess_line(ax, x, y, color="black", label="LOWESS"):
     ax.plot(smoothed[:, 0], smoothed[:, 1], color=color, linewidth=2, label=label)
 
 # ===== graph one: temperature and AQI over time ===== #
+def plot_temp_aqi_over_time(monthly_df: pd.DataFrame):
+    df = monthly_df.copy()
+    df = df.sort_values("date_month")
+
+    df["temp_smooth"] = (
+        df["temp_mean"]
+        .rolling(window=3, center=True, min_periods=1)
+        .mean()
+    )
+    df["aqi_smooth"] = (
+        df["aqi_mean"]
+        .rolling(window=3, center=True, min_periods=1)
+        .mean()
+    )
+
+    fig, ax1 = plt.subplots(figsize=(12, 6))
+    _add_season_shading(ax1, df)
+    ax1.plot(
+        df["date_month"],
+        df["temp_smooth"],
+        label="Temp (3-mo avg, °F)",
+        linewidth=2,
+        color="black",
+    )
+    ax1.set_xlabel("Month")
+    ax1.set_ylabel("Temperature (°F)", color="black")
+    ax1.tick_params(axis="y", labelcolor="black")
+
+    ax2 = ax1.twinx()
+    ax2.plot(
+        df["date_month"],
+        df["aqi_smooth"],
+        label="AQI (3-mo avg, ppb)",
+        linewidth=2,
+        color="purple",
+    )
+    ax2.set_ylabel("AQI (ppb)", color="purple")
+    ax2.tick_params(axis="y", labelcolor="purple")
+
+    lines1, labels1 = ax1.get_legend_handles_labels()
+    lines2, labels2 = ax2.get_legend_handles_labels()
+    ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")
+
+    fig.tight_layout()
+    plt.title("Temperature and AQI over time (2017–2023)")
+    plt.show()
