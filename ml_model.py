@@ -188,7 +188,6 @@ def run_spider_model(monthly_df: pd.DataFrame, output_dir: Path) -> None:
         output_dir=output_dir,
     )
 
-
 def run_fly_model(monthly_df: pd.DataFrame, output_dir: Path) -> None:
     """
     Fit and evaluate a linear regression for fly abundance:
