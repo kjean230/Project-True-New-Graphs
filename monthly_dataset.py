@@ -2,6 +2,7 @@
 
 from pathlib import Path
 from typing import Union
+
 import pandas as pd
 
 from data_loading_cleaning_csv import (
@@ -10,6 +11,8 @@ from data_loading_cleaning_csv import (
     clean_weather_monthly,
     build_monthly_grid,
 )
+
+
 def _assign_season_label(month: int) -> str:
     if 1 <= month <= 4:
         return "Season 1 (Jan–Apr)"
@@ -27,6 +30,7 @@ def _assign_season_code(month: int) -> int:
     else:
         return 3
 
+
 def build_monthly_env_arthropod_df(
     spider_csv: Union[str, Path],
     fly_csv: Union[str, Path],
@@ -36,9 +40,20 @@ def build_monthly_env_arthropod_df(
     cutoff: pd.Timestamp,
     station_name: str,
 ) -> pd.DataFrame:
+    """
+    Build combined monthly dataframe for 2017–2023 (or any given window):
 
+    Columns include:
+        date_month, year, month
+        spider_count, fly_count
+        aqi_mean, temp_mean
+        season_label, season_code_3band, year_month
+        spider_count_3mo, fly_count_3mo
+    """
+    # Base monthly grid
     base = build_monthly_grid(start, cutoff)
 
+    # Spiders (Arachnida)
     df_spider = clean_observation_csv(
         spider_csv, start=start, cutoff=cutoff, iconic_taxon="Arachnida"
     )
@@ -48,6 +63,7 @@ def build_monthly_env_arthropod_df(
         .reset_index(name="spider_count")
     )
 
+    # Flies (Insecta)
     df_fly = clean_observation_csv(
         fly_csv, start=start, cutoff=cutoff, iconic_taxon="Insecta"
     )
@@ -57,24 +73,34 @@ def build_monthly_env_arthropod_df(
         .reset_index(name="fly_count")
     )
 
+    # Air quality
     df_aqi = clean_air_quality_monthly(aq_csv, start=start, cutoff=cutoff)
     # df_aqi has: [year, month, date_month, aqi_mean]
 
+    # Temperature
     df_temp = clean_weather_monthly(
         temp_csv,
         start=start,
         cutoff=cutoff,
         station_name=station_name,
     )
+    # df_temp has: [year, month, date_month, temp_mean]
 
+    # Merge everything
     df = (
         base
         .merge(spider_monthly, on=["year", "month", "date_month"], how="left")
         .merge(fly_monthly,    on=["year", "month", "date_month"], how="left")
-        .merge(df_aqi[["year", "month", "date_month", "aqi_mean"]],
-               on=["year", "month", "date_month"], how="left")
-        .merge(df_temp[["year", "month", "date_month", "temp_mean"]],
-               on=["year", "month", "date_month"], how="left")
+        .merge(
+            df_aqi[["year", "month", "date_month", "aqi_mean"]],
+            on=["year", "month", "date_month"],
+            how="left",
+        )
+        .merge(
+            df_temp[["year", "month", "date_month", "temp_mean"]],
+            on=["year", "month", "date_month"],
+            how="left",
+        )
     )
 
     df["spider_count"] = pd.to_numeric(df["spider_count"], errors="coerce")
@@ -87,12 +113,12 @@ def build_monthly_env_arthropod_df(
 
     df = df.sort_values("date_month").reset_index(drop=True)
 
+    # Rolling 3-month mean counts (optional extra columns)
     df["spider_count_3mo"] = (
         df["spider_count"]
         .rolling(window=3, center=True, min_periods=1)
         .mean()
     )
-
     df["fly_count_3mo"] = (
         df["fly_count"]
         .rolling(window=3, center=True, min_periods=1)
