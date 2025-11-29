@@ -155,7 +155,43 @@ def _prepare_scatter_df(monthly_df: pd.DataFrame,
         raise ValueError("env must be 'temp' or 'aqi'")
     
     df = df.dropna(subset=[count_col, env_col])
-    
+
     df_scatter = df[["date_month", "season_label", count_col, env_col]].copy()
     df_scatter = df_scatter.rename(columns={count_col: "abundance", env_col: "env"})
     return df_scatter
+
+def _scatter_env_vs_abundance(df_scatter: pd.DataFrame, env_label: str, taxon_label: str):
+    """
+    Core function to make a scatter plot + LOWESS trend for a single
+    env/abundance combination, colored by season.
+    """
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    # Scatter points by season
+    for season in df_scatter["season_label"].unique():
+        sub = df_scatter[df_scatter["season_label"] == season]
+        if sub.empty:
+            continue
+        color = _season_color(season)
+        ax.scatter(
+            sub["env"],
+            sub["abundance"],
+            label=season,
+            alpha=0.7,
+            color=color,
+        )
+
+    # Add LOWESS trend line, if statsmodels is available and enough points
+    if HAS_STATSMODELS and len(df_scatter) > 4:
+        x = df_scatter["env"].to_numpy()
+        y = df_scatter["abundance"].to_numpy()
+        _add_lowess_line(ax, x, y, color="black", label="LOWESS trend")
+
+    ax.set_xlabel(env_label)
+    ax.set_ylabel(f"{taxon_label} abundance (count per month)")
+    ax.set_yscale("linear")
+    ax.legend(loc="best")
+    ax.set_title(f"{taxon_label} abundance vs {env_label}")
+
+    fig.tight_layout()
+    plt.show()
