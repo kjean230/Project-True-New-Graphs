@@ -135,3 +135,27 @@ def plot_spider_fly_over_time(monthly_df: pd.DataFrame):
     plt.title("Spider and fly abundance over time (2017–2023)")
     fig.tight_layout()
     plt.show()
+
+# ===== graph three: spider vs fly abundance scatterplot ===== #
+def _prepare_scatter_df(monthly_df: pd.DataFrame,
+                        taxon: str, env: str) -> pd.DataFrame:
+    df = monthly_df.copy()
+    if taxon == "spider":
+        count_col = "spider_count"
+    elif taxon == "fly":
+        count_col = "fly_count"
+    else:
+        raise ValueError("taxon must be 'spider' or 'fly'")
+    
+    if env == "temp":
+        env_col = "temp_mean"
+    elif env == "aqi":
+        env_col = "aqi_mean"
+    else:
+        raise ValueError("env must be 'temp' or 'aqi'")
+    
+    df = df.dropna(subset=[count_col, env_col])
+    
+    df_scatter = df[["date_month", "season_label", count_col, env_col]].copy()
+    df_scatter = df_scatter.rename(columns={count_col: "abundance", env_col: "env"})
+    return df_scatter
