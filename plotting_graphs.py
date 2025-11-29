@@ -195,3 +195,23 @@ def _scatter_env_vs_abundance(df_scatter: pd.DataFrame, env_label: str, taxon_la
 
     fig.tight_layout()
     plt.show()
+
+def plot_temp_vs_spider_scatter(monthly_df: pd.DataFrame):
+    df_scatter = _prepare_scatter_df(monthly_df, taxon="spider", env="temp")
+    _scatter_env_vs_abundance(df_scatter, env_label="Temperature (°F)", taxon_label="Spider")
+
+def plot_temp_vs_fly_scatter(monthly_df: pd.DataFrame):
+    df_scatter = _prepare_scatter_df(monthly_df, taxon="fly", env="temp")
+    _scatter_env_vs_abundance(df_scatter, env_label="Temperature (°F)", taxon_label="Fly")
+
+def plot_aqi_vs_spider_scatter(monthly_df: pd.DataFrame):
+    df_scatter = _prepare_scatter_df(monthly_df, taxon="spider", env="aqi")
+    _scatter_env_vs_abundance(df_scatter, env_label="AQI (ppb)", taxon_label="Spider")
+
+def plot_aqi_vs_fly_scatter(monthly_df: pd.DataFrame):
+    """
+    Graph 3D:
+    AQI (ppb) vs fly abundance (monthly counts), colored by season.
+    """
+    df_scatter = _prepare_scatter_df(monthly_df, taxon="fly", env="aqi")
+    _scatter_env_vs_abundance(df_scatter, env_label="AQI (ppb)", taxon_label="Fly")
