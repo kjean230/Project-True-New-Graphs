@@ -134,7 +134,7 @@ def build_monthly_grid(start: pd.Timestamp,
                        cutoff: pd.Timestamp,) -> pd.DataFrame:
     # function to build a monthly grid dataframe from start to cutoff dates
     all_months = pd.date_range(start=start, end=cutoff, freq='MS')
-    base = pd.DateFrame({"date_month": all_months})
+    base = pd.DataFrame({"date_month": all_months})
     base["year"] = base["date_month"].dt.year
-    base["month"] = base["base_month"].dt.month
+    base["month"] = base["date_month"].dt.month
     return base
