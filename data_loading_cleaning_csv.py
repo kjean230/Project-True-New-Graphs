@@ -106,7 +106,7 @@ def clean_weather_monthly (csv_path: Union[str, Path],
     # produces a dataframe for final results
     csv_path = Path(csv_path)
     df = pd.read_csv(csv_path, dtype=str)
-    required_cols = {"stattion_name", "date_month", "TAVG"}
+    required_cols = {"station_name", "date_month", "TAVG"}
     missing = required_cols - set(df.columns)
     if missing:
         raise KeyError(f"Missing columns in {csv_path.name}: {missing}")
