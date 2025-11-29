@@ -129,3 +129,12 @@ def clear_weather_monthly (csv_path: Union[str, Path],
 
     monthly_temp = monthly_temp.sort_values(["year", "month"]).reset_index(drop=True)
     return monthly_temp
+
+def build_monthly_grid(start: pd.Timestamp,
+                       cutoff: pd.Timestamp,) -> pd.DataFrame:
+    # function to build a monthly grid dataframe from start to cutoff dates
+    all_months = pd.date_range(start=start, end=cutoff, freq='MS')
+    base = pd.DateFrame({"date_month": all_months})
+    base["year"] = base["date_month"].dt.year
+    base["month"] = base["base_month"].dt.month
+    return base
