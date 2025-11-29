@@ -29,3 +29,18 @@ def _add_season_shading(ax, df: pd.DataFrame, alpha: float = 0.06):
         end = end + pd.offsets.MonthBegin(1)
         color = _season_color(seasoon_label)
         ax.axvspan(start, end, color=color, alpha=alpha)
+
+def _add_lowess_line(ax, x, y, color="black", label="LOWESS"):
+    if not HAS_STATSMODELS:
+        print("statsmodels is not installed; skipping LOWESS line.")
+        return
+    
+    import numpy as np
+    order = np.argsort(x)
+    x_sorted = x[order]
+    y_sorted = y[order]
+
+    smoothed = lowess(y_sorted, x_sorted, frac=0.6, return_sorted=True)
+    ax.plot(smoothed[:, 0], smoothed[:, 1], color=color, linewidth=2, label=label)
+
+# ===== graph one: temperature and AQI over time ===== #
