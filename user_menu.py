@@ -11,6 +11,7 @@ GRAPH_MENU = {
     "8": "ML: Linear regression for fly abundance",
 }
 
+
 def print_menu():
     print("\n=== Arthropods & Environment Graph / Model Menu ===")
     for key in sorted(GRAPH_MENU.keys(), key=int):
