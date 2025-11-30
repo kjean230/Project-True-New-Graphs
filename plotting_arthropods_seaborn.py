@@ -204,3 +204,12 @@ x="date_month",
     fig.tight_layout()
     plt.show()
 
+# scatter plots
+def plot_temp_vs_spider_scatter_seaborn(monthly_df: pd.DataFrame):
+    """Graph 3A (seaborn): Temp vs spider abundance."""
+    df_scatter = _prepare_scatter_df(monthly_df, taxon="spider", env="temp")
+    _scatter_env_vs_abundance_seaborn(
+        df_scatter,
+        env_label="Temperature (°F)",
+        taxon_label="Spider",
+    )
