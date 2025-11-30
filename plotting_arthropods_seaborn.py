@@ -214,11 +214,11 @@ def plot_temp_vs_spider_scatter_seaborn(monthly_df: pd.DataFrame):
         taxon_label="Spider",
     )
 
-def plot_temp_vs_spider_scatter_seaborn(monthly_df: pd.DataFrame):
-    """Graph 3A (seaborn): Temp vs spider abundance."""
-    df_scatter = _prepare_scatter_df(monthly_df, taxon="spider", env="temp")
+def plot_temp_vs_fly_scatter_seaborn(monthly_df: pd.DataFrame):
+    """Graph 3B (seaborn): Temp vs fly abundance."""
+    df_scatter = _prepare_scatter_df(monthly_df, taxon="fly", env="temp")
     _scatter_env_vs_abundance_seaborn(
         df_scatter,
         env_label="Temperature (°F)",
-        taxon_label="Spider",
+        taxon_label="Fly",
     )
