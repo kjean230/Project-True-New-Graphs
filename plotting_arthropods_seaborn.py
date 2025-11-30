@@ -222,3 +222,12 @@ def plot_temp_vs_fly_scatter_seaborn(monthly_df: pd.DataFrame):
         env_label="Temperature (°F)",
         taxon_label="Fly",
     )
+
+def plot_aqi_vs_spider_scatter_seaborn(monthly_df: pd.DataFrame):
+    """Graph 3C (seaborn): AQI vs spider abundance."""
+    df_scatter = _prepare_scatter_df(monthly_df, taxon="spider", env="aqi")
+    _scatter_env_vs_abundance_seaborn(
+        df_scatter,
+        env_label="AQI (ppb)",
+        taxon_label="Spider",
+    )
