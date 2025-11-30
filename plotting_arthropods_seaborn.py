@@ -150,3 +150,57 @@ def plot_temp_aqi_over_time_seaborn(monthly_df: pd.DataFrame):
     plt.title("Temperature and AQI over time (2017–2023) – seaborn")
     fig.tight_layout()
     plt.show()
+
+def plot_spider_fly_over_time_seaborn(monthly_df: pd.DataFrame):
+    """
+    Graph 2 (seaborn):
+    - X: date_month
+    - Y: smoothed counts (3-mo rolling)
+    - Two lines: spiders (black), flies (orange)
+    - Season shading.
+    """
+    df = monthly_df.copy().sort_values("date_month")
+
+    df["spider_smooth"] = (
+        df["spider_count"]
+        .rolling(window=3, center=True, min_periods=1)
+        .mean()
+    )
+    df["fly_smooth"] = (
+        df["fly_count"]
+        .rolling(window=3, center=True, min_periods=1)
+        .mean()
+    )
+
+    df.loc[df["spider_count"].isna(), "spider_smooth"] = float("nan")
+    df.loc[df["fly_count"].isna(), "fly_smooth"] = float("nan")
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    _add_season_shading(ax, df)
+
+    sns.lineplot(
+        data=df,
+        x="date_month",
+        y="spider_smooth",
+        ax=ax,
+        color="black",
+        label="Spiders (3-mo avg, count)",
+    )
+    sns.lineplot(
+        data=df,
+x="date_month",
+        y="fly_smooth",
+        ax=ax,
+        color="orange",
+        label="Flies (3-mo avg, count)",
+    )
+
+    ax.set_xlabel("Month")
+    ax.set_ylabel("Abundance (count per month)")
+    ax.legend(loc="upper left")
+
+    plt.title("Spider and fly abundance over time (2017–2023) – seaborn")
+    fig.tight_layout()
+    plt.show()
+
