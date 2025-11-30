@@ -92,3 +92,61 @@ def _scatter_env_vs_abundance_seaborn(df_scatter: pd.DataFrame,
         ax.legend(handles=handles, labels=labels, loc="best")
         fig.tight_layout()
         plt.show()
+
+# ---- graph on temp & air quality over time ---- #
+def plot_temp_aqi_over_time_seaborn(monthly_df: pd.DataFrame):
+    """
+    Graph 1 (seaborn):
+    - X: date_month
+    - Left Y: temp_smooth (3-mo rolling)
+    - Right Y: aqi_smooth (3-mo rolling)
+    - Season shading.
+    """
+    df = monthly_df.copy().sort_values("date_month")
+
+    df["temp_smooth"] = (
+        df["temp_mean"]
+        .rolling(window=3, center=True, min_periods=1)
+        .mean()
+    )
+    df["aqi_smooth"] = (
+        df["aqi_mean"]
+        .rolling(window=3, center=True, min_periods=1)
+        .mean()
+    )
+
+    fig, ax1 = plt.subplots(figsize=(12, 6))
+
+    _add_season_shading(ax1, df)
+
+    sns.lineplot(
+        data=df,
+        x="date_month",
+        y="temp_smooth",
+        ax=ax1,
+        color="black",
+        label="Temp (3-mo avg, °F)",
+    )
+    ax1.set_xlabel("Month")
+    ax1.set_ylabel("Temperature (°F)", color="black")
+    ax1.tick_params(axis="y", labelcolor="black")
+
+    ax2 = ax1.twinx()
+    sns.lineplot(
+        data=df,
+        x="date_month",
+        y="aqi_smooth",
+        ax=ax2,
+        color="purple",
+        label="AQI (3-mo avg, ppb)",
+    )
+    ax2.set_ylabel("AQI (ppb)", color="purple")
+    ax2.tick_params(axis="y", labelcolor="purple")
+
+    lines1, labels1 = ax1.get_legend_handles_labels()
+    lines2, labels2 = ax2.get_legend_handles_labels()
+    ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")
+
+    plt.title("Temperature and AQI over time (2017–2023) – seaborn")
+    fig.tight_layout()
+    plt.show()
