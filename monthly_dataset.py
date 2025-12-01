@@ -14,12 +14,19 @@ from data_loading_cleaning_csv import (
 
 
 def _assign_season_label(month: int) -> str:
+    """
+    3 broad seasons:
+      Season 1: Jan–Apr
+      Season 2: May–Aug
+      Season 3: Sep–Dec
+    Stored as ASCII labels to match plotting code.
+    """
     if 1 <= month <= 4:
-        return "Season 1 (Jan–Apr)"
+        return "Season 1 (Jan-Apr)"
     elif 5 <= month <= 8:
-        return "Season 2 (May–Aug)"
+        return "Season 2 (May-Aug)"
     else:
-        return "Season 3 (Sep–Dec)"
+        return "Season 3 (Sep-Dec)"
 
 
 def _assign_season_code(month: int) -> int:
@@ -75,7 +82,6 @@ def build_monthly_env_arthropod_df(
 
     # Air quality
     df_aqi = clean_air_quality_monthly(aq_csv, start=start, cutoff=cutoff)
-    # df_aqi has: [year, month, date_month, aqi_mean]
 
     # Temperature
     df_temp = clean_weather_monthly(
@@ -84,7 +90,6 @@ def build_monthly_env_arthropod_df(
         cutoff=cutoff,
         station_name=station_name,
     )
-    # df_temp has: [year, month, date_month, temp_mean]
 
     # Merge everything
     df = (
@@ -113,7 +118,7 @@ def build_monthly_env_arthropod_df(
 
     df = df.sort_values("date_month").reset_index(drop=True)
 
-    # Rolling 3-month mean counts (optional extra columns)
+    # Rolling 3-month mean counts
     df["spider_count_3mo"] = (
         df["spider_count"]
         .rolling(window=3, center=True, min_periods=1)
