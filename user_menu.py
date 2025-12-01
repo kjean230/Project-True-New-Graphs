@@ -10,7 +10,6 @@ GRAPH_MENU = {
     "4": "Graph 3B (matplotlib): Temperature vs fly abundance (scatter)",
     "5": "Graph 3C (matplotlib): AQI vs spider abundance (scatter)",
     "6": "Graph 3D (matplotlib): AQI vs fly abundance (scatter)",
-
     "7": "Graph 1 (seaborn): Temperature and AQI over time",
     "8": "Graph 2 (seaborn): Spider and fly abundance over time",
     "9": "Graph 3A (seaborn): Temperature vs spider abundance (scatter)",
@@ -18,6 +17,7 @@ GRAPH_MENU = {
     "11": "Graph 3C (seaborn): AQI vs spider abundance (scatter)",
     "12": "Graph 3D (seaborn): AQI vs fly abundance (scatter)",
 }
+
 
 def print_menu():
     print("\n=== Arthropods & Environment Graph Menu ===")
