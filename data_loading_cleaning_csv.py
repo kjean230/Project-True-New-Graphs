@@ -163,13 +163,6 @@ def clean_weather_monthly(
 
     Expected columns:
         station_name, date_month, TAVG (°F)
-
-    Steps:
-    - parse date_month
-    - numeric TAVG
-    - filter station_name
-    - restrict to [start, cutoff]
-    - group by (year, month, date_month) to get temp_mean
     """
     csv_path = Path(csv_path)
     df = pd.read_csv(csv_path, dtype=str)
