@@ -1,18 +1,20 @@
 # main_arthropods_cli.py
 """
-Main CLI entrypoint for arthropod–environment graphs and models.
+Main CLI entrypoint for arthropod–environment graphs.
 
 Flow:
 - Build a combined monthly dataframe for 2017–2023.
-- Show a text menu.
-- Based on user input, call plotting or ML functions.
+- Show a simple text menu.
+- Based on user input, call the appropriate plotting function
+  (matplotlib or seaborn).
 """
 
 from pathlib import Path
-
 import pandas as pd
 
 from monthly_dataset import build_monthly_env_arthropod_df
+
+# matplotlib-based plots
 from plotting_graphs import (
     plot_temp_aqi_over_time,
     plot_spider_fly_over_time,
@@ -21,8 +23,18 @@ from plotting_graphs import (
     plot_aqi_vs_spider_scatter,
     plot_aqi_vs_fly_scatter,
 )
+
+# seaborn-based plots
+from plotting_arthropods_seaborn import (
+    plot_temp_aqi_over_time_seaborn,
+    plot_spider_fly_over_time_seaborn,
+    plot_temp_vs_spider_scatter_seaborn,
+    plot_temp_vs_fly_scatter_seaborn,
+    plot_aqi_vs_spider_scatter_seaborn,
+    plot_aqi_vs_fly_scatter_seaborn,
+)
+
 from user_menu import print_menu
-from ml_model import run_spider_model, run_fly_model
 
 
 def main():
@@ -55,19 +67,16 @@ def main():
     )
     print("Done. Rows in monthly_df:", len(monthly_df))
 
-    # Directory for model outputs (CSV summaries)
-    model_output_dir = base_dir / "model_outputs"
-    model_output_dir.mkdir(parents=True, exist_ok=True)
-
     # --------- Interactive menu loop ---------
     while True:
         print_menu()
-        choice = input("Select a graph/model number (or Q to quit): ").strip()
+        choice = input("Select a graph number (or Q to quit): ").strip()
 
         if choice.lower() in {"q", "quit", "exit"}:
             print("Exiting.")
             break
 
+        # matplotlib graphs
         if choice == "1":
             plot_temp_aqi_over_time(monthly_df)
         elif choice == "2":
@@ -80,10 +89,21 @@ def main():
             plot_aqi_vs_spider_scatter(monthly_df)
         elif choice == "6":
             plot_aqi_vs_fly_scatter(monthly_df)
+
+        # seaborn graphs
         elif choice == "7":
-            run_spider_model(monthly_df, output_dir=model_output_dir)
+            plot_temp_aqi_over_time_seaborn(monthly_df)
         elif choice == "8":
-            run_fly_model(monthly_df, output_dir=model_output_dir)
+            plot_spider_fly_over_time_seaborn(monthly_df)
+        elif choice == "9":
+            plot_temp_vs_spider_scatter_seaborn(monthly_df)
+        elif choice == "10":
+            plot_temp_vs_fly_scatter_seaborn(monthly_df)
+        elif choice == "11":
+            plot_aqi_vs_spider_scatter_seaborn(monthly_df)
+        elif choice == "12":
+            plot_aqi_vs_fly_scatter_seaborn(monthly_df)
+
         else:
             print("Unrecognized option. Please try again.")
 
