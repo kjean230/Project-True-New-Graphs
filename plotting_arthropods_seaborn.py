@@ -305,9 +305,12 @@ def _scatter_time_vs_env_seaborn(df_obs_env: pd.DataFrame,
         y = env_col (temp_mean or aqi_mean)
         hue = season_label
 
-    Adds optional LOWESS line (y vs numeric time).
+    Adds season shading and optional LOWESS line (y vs numeric time).
     """
     fig, ax = plt.subplots(figsize=(12, 6))
+
+    # Add season shading like Graph 1
+    _add_season_shading(ax, df_obs_env)
 
     # Scatter: one point per observation
     sns.scatterplot(
