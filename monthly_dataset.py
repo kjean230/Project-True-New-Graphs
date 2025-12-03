@@ -1,4 +1,5 @@
 # monthly_dataset.py
+# Build combined monthly dataframe for arthropods + environment.
 
 from pathlib import Path
 from typing import Union
@@ -14,13 +15,6 @@ from data_loading_cleaning_csv import (
 
 
 def _assign_season_label(month: int) -> str:
-    """
-    3 broad seasons:
-      Season 1: Jan–Apr
-      Season 2: May–Aug
-      Season 3: Sep–Dec
-    Stored as ASCII labels to match plotting code.
-    """
     if 1 <= month <= 4:
         return "Season 1 (Jan-Apr)"
     elif 5 <= month <= 8:
@@ -50,14 +44,13 @@ def build_monthly_env_arthropod_df(
     """
     Build combined monthly dataframe for 2017–2023 (or any given window):
 
-    Columns include:
+    Columns:
         date_month, year, month
         spider_count, fly_count
         aqi_mean, temp_mean
         season_label, season_code_3band, year_month
         spider_count_3mo, fly_count_3mo
     """
-    # Base monthly grid
     base = build_monthly_grid(start, cutoff)
 
     # Spiders (Arachnida)
@@ -80,7 +73,7 @@ def build_monthly_env_arthropod_df(
         .reset_index(name="fly_count")
     )
 
-    # Air quality
+    # AQI
     df_aqi = clean_air_quality_monthly(aq_csv, start=start, cutoff=cutoff)
 
     # Temperature
@@ -91,7 +84,6 @@ def build_monthly_env_arthropod_df(
         station_name=station_name,
     )
 
-    # Merge everything
     df = (
         base
         .merge(spider_monthly, on=["year", "month", "date_month"], how="left")
@@ -118,7 +110,6 @@ def build_monthly_env_arthropod_df(
 
     df = df.sort_values("date_month").reset_index(drop=True)
 
-    # Rolling 3-month mean counts
     df["spider_count_3mo"] = (
         df["spider_count"]
         .rolling(window=3, center=True, min_periods=1)
