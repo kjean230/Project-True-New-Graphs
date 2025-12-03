@@ -1,21 +1,12 @@
-"""
-Main CLI entrypoint for arthropod–environment graphs.
-
-Flow:
-- Build a combined monthly dataframe for 2017–2023.
-- Build raw spider/fly observation dataframes for time-based seaborn plots.
-- Show a simple text menu.
-- Based on user input, call the appropriate plotting function
-  (matplotlib or seaborn).
-"""
+# main_arthropods_cli.py
+# CLI entrypoint for arthropod–environment graphs.
 
 from pathlib import Path
 import pandas as pd
 
-from monthly_dataset import build_monthly_env_arthropod_df
 from data_loading_cleaning_csv import clean_observation_csv
+from monthly_dataset import build_monthly_env_arthropod_df
 
-# matplotlib-based plots
 from plotting_graphs import (
     plot_temp_aqi_over_time,
     plot_spider_fly_over_time,
@@ -25,7 +16,6 @@ from plotting_graphs import (
     plot_aqi_vs_fly_scatter,
 )
 
-# seaborn-based plots (monthly)
 from plotting_arthropods_seaborn import (
     plot_temp_aqi_over_time_seaborn,
     plot_spider_fly_over_time_seaborn,
@@ -33,7 +23,6 @@ from plotting_arthropods_seaborn import (
     plot_temp_vs_fly_scatter_seaborn,
     plot_aqi_vs_spider_scatter_seaborn,
     plot_aqi_vs_fly_scatter_seaborn,
-    # new observation-level seaborn plots
     plot_spider_temp_time_scatter_seaborn,
     plot_spider_aqi_time_scatter_seaborn,
     plot_fly_temp_time_scatter_seaborn,
@@ -44,7 +33,6 @@ from user_menu import print_menu
 
 
 def main():
-    # --------- Paths to CSVs (adjust if needed) ---------
     base_dir = Path(__file__).resolve().parent.parent / "Project True Tree Graphs"
 
     base_path_airtemp = base_dir / "air and temp csvs"
@@ -55,12 +43,10 @@ def main():
     spider_csv = base_path_spifly / "file_of_spiders - Sheet1 copy.csv"
     fly_csv = base_path_spifly / "files_of_flies - Sheet1 copy.csv"
 
-    # --------- Analysis window and station ---------
     start = pd.Timestamp("2017-01-01")
     cutoff = pd.Timestamp("2023-12-31")
     station_name = "LAGUARDIA AIRPORT, NY US"
 
-    # --------- Build the combined monthly dataframe ---------
     print("Building combined monthly dataframe (this may take a moment)...")
     monthly_df = build_monthly_env_arthropod_df(
         spider_csv=spider_csv,
@@ -73,23 +59,14 @@ def main():
     )
     print("Done. Rows in monthly_df:", len(monthly_df))
 
-    # --------- Build observation-level dataframes for seaborn time plots ---------
-    print("Cleaning raw spider and fly observation CSVs for time-based plots...")
+    # Observation-level dataframes for graphs 13–16
     spider_obs_df = clean_observation_csv(
-        csv_path=spider_csv,
-        start=start,
-        cutoff=cutoff,
-        iconic_taxon="Arachnida",
+        spider_csv, start=start, cutoff=cutoff, iconic_taxon="Arachnida"
     )
     fly_obs_df = clean_observation_csv(
-        csv_path=fly_csv,
-        start=start,
-        cutoff=cutoff,
-        iconic_taxon="Insecta",
+        fly_csv, start=start, cutoff=cutoff, iconic_taxon="Insecta"
     )
-    print("Done. Spider obs rows:", len(spider_obs_df), "| Fly obs rows:", len(fly_obs_df))
 
-    # --------- Interactive menu loop ---------
     while True:
         print_menu()
         choice = input("Select a graph number (or Q to quit): ").strip()
@@ -98,7 +75,7 @@ def main():
             print("Exiting.")
             break
 
-        # matplotlib graphs
+        # Matplotlib graphs
         if choice == "1":
             plot_temp_aqi_over_time(monthly_df)
         elif choice == "2":
@@ -112,7 +89,7 @@ def main():
         elif choice == "6":
             plot_aqi_vs_fly_scatter(monthly_df)
 
-        # seaborn graphs (monthly)
+        # Seaborn graphs (monthly-level)
         elif choice == "7":
             plot_temp_aqi_over_time_seaborn(monthly_df)
         elif choice == "8":
@@ -126,7 +103,7 @@ def main():
         elif choice == "12":
             plot_aqi_vs_fly_scatter_seaborn(monthly_df)
 
-        # seaborn graphs (observation-level time vs env)
+        # Seaborn graphs (observation-level time vs env)
         elif choice == "13":
             plot_spider_temp_time_scatter_seaborn(spider_obs_df, monthly_df)
         elif choice == "14":
