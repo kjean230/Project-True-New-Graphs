@@ -1,8 +1,13 @@
 # plotting_arthropods_seaborn.py
+# Seaborn-based versions of the graphs, including observation-level time scatters.
 
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 import seaborn as sns
+
+sns.set(style="whitegrid")
 
 try:
     from statsmodels.nonparametric.smoothers_lowess import lowess
@@ -10,16 +15,11 @@ try:
 except ImportError:
     HAS_STATSMODELS = False
 
-import matplotlib.dates as mdates
-
-sns.set(style="whitegrid")
-
 SEASON_PALETTE = {
-    "Season 1 (Jan–Apr)": "blue",
-    "Season 2 (May–Aug)": "red",
-    "Season 3 (Sep–Dec)": "green",
+    "Season 1 (Jan-Apr)": "blue",
+    "Season 2 (May-Aug)": "red",
+    "Season 3 (Sep-Dec)": "green",
 }
-
 
 
 def _season_color(season_label: str) -> str:
@@ -41,10 +41,7 @@ def _add_season_shading(ax, df: pd.DataFrame, alpha: float = 0.06):
 
 def _add_lowess_line(ax, x, y, color="black", label="LOWESS"):
     if not HAS_STATSMODELS:
-        print("statsmodels is not imported")
         return
-
-    import numpy as np
     order = np.argsort(x)
     x_sorted = x[order]
     y_sorted = y[order]
@@ -52,12 +49,7 @@ def _add_lowess_line(ax, x, y, color="black", label="LOWESS"):
     ax.plot(smoothed[:, 0], smoothed[:, 1], color=color, linewidth=2, label=label)
 
 
-def _prepare_scatter_df(
-    monthly_df: pd.DataFrame,
-    taxon: str,
-    env: str,
-) -> pd.DataFrame:
-    df = monthly_df.copy()
+def _prepare_scatter_df(monthly_df: pd.DataFrame, taxon: str, env: str) -> pd.DataFrame:
     if taxon == "spider":
         count_col = "spider_count"
     elif taxon == "fly":
@@ -72,18 +64,17 @@ def _prepare_scatter_df(
     else:
         raise ValueError("env must be 'temp' or 'aqi'")
 
-    df = df.dropna(subset=[count_col, env_col])
+    df = monthly_df.copy().dropna(subset=[count_col, env_col])
     df_scatter = df[["date_month", "season_label", count_col, env_col]].copy()
     df_scatter = df_scatter.rename(columns={count_col: "abundance", env_col: "env"})
     return df_scatter
 
 
 def _scatter_env_vs_abundance_seaborn(
-    df_scatter: pd.DataFrame,
-    env_label: str,
-    taxon_label: str,
+    df_scatter: pd.DataFrame, env_label: str, taxon_label: str
 ):
     fig, ax = plt.subplots(figsize=(8, 6))
+
     sns.scatterplot(
         data=df_scatter,
         x="env",
@@ -106,18 +97,13 @@ def _scatter_env_vs_abundance_seaborn(
 
     handles, labels = ax.get_legend_handles_labels()
     ax.legend(handles=handles, labels=labels, loc="best")
+
     fig.tight_layout()
     plt.show()
 
 
+# ----- Graph 7: temp + AQI over time -----
 def plot_temp_aqi_over_time_seaborn(monthly_df: pd.DataFrame):
-    """
-    Graph 1 (seaborn):
-    - X: date_month
-    - Left Y: temp_smooth (3-mo rolling)
-    - Right Y: aqi_smooth (3-mo rolling)
-    - Season shading.
-    """
     df = monthly_df.copy().sort_values("date_month")
 
     df["temp_smooth"] = (
@@ -168,14 +154,8 @@ def plot_temp_aqi_over_time_seaborn(monthly_df: pd.DataFrame):
     plt.show()
 
 
+# ----- Graph 8: spider + fly over time -----
 def plot_spider_fly_over_time_seaborn(monthly_df: pd.DataFrame):
-    """
-    Graph 2 (seaborn):
-    - X: date_month
-    - Y: smoothed counts (3-mo rolling)
-    - Two lines: spiders (black), flies (orange)
-    - Season shading.
-    """
     df = monthly_df.copy().sort_values("date_month")
 
     df["spider_smooth"] = (
@@ -222,6 +202,7 @@ def plot_spider_fly_over_time_seaborn(monthly_df: pd.DataFrame):
     plt.show()
 
 
+# ----- Graph 9–12: env vs abundance scatters -----
 def plot_temp_vs_spider_scatter_seaborn(monthly_df: pd.DataFrame):
     df_scatter = _prepare_scatter_df(monthly_df, taxon="spider", env="temp")
     _scatter_env_vs_abundance_seaborn(
@@ -257,93 +238,8 @@ def plot_aqi_vs_fly_scatter_seaborn(monthly_df: pd.DataFrame):
         taxon_label="Fly",
     )
 
-# === NEW: observation-level time scatterplots (seaborn) ===
 
-from datetime import datetime
-import numpy as np
-
-def _merge_obs_with_env(monthly_df: pd.DataFrame,
-                        obs_df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Merge raw observation rows with monthly environment data.
-
-    Assumes:
-    - obs_df has an 'observed_on' column (datetime or parseable).
-    - monthly_df has columns:
-        date_month, temp_mean, aqi_mean, season_label
-    """
-    df_obs = obs_df.copy()
-
-    # Ensure observed_on is datetime
-    df_obs["observed_on"] = pd.to_datetime(df_obs["observed_on"], errors="coerce")
-    df_obs = df_obs.dropna(subset=["observed_on"])
-
-    # Derive month-start to join with monthly env table
-    df_obs["date_month"] = df_obs["observed_on"].values.astype("datetime64[M]")
-
-    env_cols = ["date_month", "temp_mean", "aqi_mean", "season_label"]
-    missing_env = [c for c in env_cols if c not in monthly_df.columns]
-    if missing_env:
-        raise KeyError(f"monthly_df is missing required columns: {missing_env}")
-
-    env = monthly_df[env_cols].drop_duplicates()
-
-    merged = df_obs.merge(env, on="date_month", how="left")
-
-    # Keep only rows where we actually have environment data
-    merged = merged.dropna(subset=["temp_mean", "aqi_mean", "season_label"])
-
-    # Sort by time
-    merged = merged.sort_values("observed_on").reset_index(drop=True)
-    return merged
-
-
-def _scatter_time_vs_env_seaborn(df_obs_env: pd.DataFrame,
-                                 env_col: str,
-                                 env_label: str,
-                                 title_suffix: str):
-    """
-    Core plotting routine for:
-        x = date_month (monthly values)
-        y = env_col (temp_mean or aqi_mean)
-        hue = season_label
-
-    Adds season shading and optional LOWESS line (y vs numeric time).
-    """
-    fig, ax = plt.subplots(figsize=(12, 6))
-
-    # Add season shading like Graph 1
-    _add_season_shading(ax, df_obs_env)
-
-    # Scatter: one point per observation
-    sns.scatterplot(
-        data=df_obs_env,
-        x="date_month",
-        y=env_col,
-        hue="season_label",
-        palette=SEASON_PALETTE,
-        alpha=0.6,
-        ax=ax,
-    )
-
-    # LOWESS on numeric time if available
-    if HAS_STATSMODELS and len(df_obs_env) > 4:
-        # Convert datetime to numeric (ordinal) for smoothing
-        x_num = df_obs_env["date_month"].map(datetime.toordinal).to_numpy()
-        y = df_obs_env[env_col].to_numpy()
-        _add_lowess_line(ax, x_num, y, color="black", label="LOWESS trend")
-
-    ax.set_xlabel("Month")
-    ax.set_ylabel(env_label)
-    ax.set_title(title_suffix)
-
-    handles, labels = ax.get_legend_handles_labels()
-    ax.legend(handles=handles, labels=labels, loc="best")
-
-    fig.tight_layout()
-    plt.show()
-
-
+# ----- Graph 13–16: obs-level time vs env scatters -----
 def _scatter_time_env_obs_seaborn(
     obs_df: pd.DataFrame,
     monthly_df: pd.DataFrame,
@@ -353,23 +249,21 @@ def _scatter_time_env_obs_seaborn(
 ):
     """
     Observation-level scatter:
-    x  = calendar month (date_month)
-    y  = env_col (temp_mean or aqi_mean) taken from monthly_df
-    hue= season_label from monthly_df
+      x  = date_month (calendar months)
+      y  = env_col from monthly_df (temp_mean or aqi_mean)
+      hue= season_label from monthly_df
     """
-    # Lookup table: month -> env + season
-    env_lookup = monthly_df[["date_month", "season_label", env_col]].dropna(subset=[env_col])
+    env_lookup = monthly_df[["date_month", "season_label", env_col]].dropna(
+        subset=[env_col]
+    )
 
-    # Join each observation to its month’s environment + season
     df = obs_df.merge(env_lookup, on="date_month", how="left")
     df = df.dropna(subset=[env_col])
 
     fig, ax = plt.subplots(figsize=(12, 6))
 
-    # Season shading based on monthly_df (same as graphs 1–2)
     _add_season_shading(ax, monthly_df)
 
-    # Scatter: true calendar dates on x-axis
     sns.scatterplot(
         data=df,
         x="date_month",
@@ -380,15 +274,10 @@ def _scatter_time_env_obs_seaborn(
         ax=ax,
     )
 
-    # LOWESS trend across time if available
     if HAS_STATSMODELS and len(df) > 4:
-        from statsmodels.nonparametric.smoothers_lowess import lowess
-
-        # Convert dates to numeric for LOWESS
         x_num = mdates.date2num(df["date_month"])
         y_val = df[env_col].to_numpy()
-
-        order = x_num.argsort()
+        order = np.argsort(x_num)
         smoothed = lowess(y_val[order], x_num[order], frac=0.6, return_sorted=True)
         ax.plot(
             mdates.num2date(smoothed[:, 0]),
@@ -402,7 +291,6 @@ def _scatter_time_env_obs_seaborn(
     ax.set_ylabel(env_label)
     ax.set_title(f"{taxon_label} observations: {env_label.lower()} over time")
 
-    # Tidy x-axis date formatting
     ax.xaxis.set_major_locator(mdates.YearLocator())
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
     fig.autofmt_xdate()
@@ -416,7 +304,6 @@ def _scatter_time_env_obs_seaborn(
 
 def plot_spider_temp_time_scatter_seaborn(spider_obs_df: pd.DataFrame,
                                           monthly_df: pd.DataFrame):
-    """Graph 4A: spider obs date vs temperature (seaborn)."""
     _scatter_time_env_obs_seaborn(
         obs_df=spider_obs_df,
         monthly_df=monthly_df,
@@ -428,7 +315,6 @@ def plot_spider_temp_time_scatter_seaborn(spider_obs_df: pd.DataFrame,
 
 def plot_spider_aqi_time_scatter_seaborn(spider_obs_df: pd.DataFrame,
                                          monthly_df: pd.DataFrame):
-    """Graph 4B: spider obs date vs air quality (seaborn)."""
     _scatter_time_env_obs_seaborn(
         obs_df=spider_obs_df,
         monthly_df=monthly_df,
@@ -440,7 +326,6 @@ def plot_spider_aqi_time_scatter_seaborn(spider_obs_df: pd.DataFrame,
 
 def plot_fly_temp_time_scatter_seaborn(fly_obs_df: pd.DataFrame,
                                        monthly_df: pd.DataFrame):
-    """Graph 4C: fly obs date vs temperature (seaborn)."""
     _scatter_time_env_obs_seaborn(
         obs_df=fly_obs_df,
         monthly_df=monthly_df,
@@ -452,7 +337,6 @@ def plot_fly_temp_time_scatter_seaborn(fly_obs_df: pd.DataFrame,
 
 def plot_fly_aqi_time_scatter_seaborn(fly_obs_df: pd.DataFrame,
                                       monthly_df: pd.DataFrame):
-    """Graph 4D: fly obs date vs air quality (seaborn)."""
     _scatter_time_env_obs_seaborn(
         obs_df=fly_obs_df,
         monthly_df=monthly_df,
