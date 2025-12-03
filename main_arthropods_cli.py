@@ -1,9 +1,9 @@
-# main_arthropods_cli.py
 """
 Main CLI entrypoint for arthropod–environment graphs.
 
 Flow:
 - Build a combined monthly dataframe for 2017–2023.
+- Build raw spider/fly observation dataframes for time-based seaborn plots.
 - Show a simple text menu.
 - Based on user input, call the appropriate plotting function
   (matplotlib or seaborn).
@@ -13,6 +13,7 @@ from pathlib import Path
 import pandas as pd
 
 from monthly_dataset import build_monthly_env_arthropod_df
+from data_loading_cleaning_csv import clean_observation_csv
 
 # matplotlib-based plots
 from plotting_graphs import (
@@ -24,7 +25,7 @@ from plotting_graphs import (
     plot_aqi_vs_fly_scatter,
 )
 
-# seaborn-based plots
+# seaborn-based plots (monthly)
 from plotting_arthropods_seaborn import (
     plot_temp_aqi_over_time_seaborn,
     plot_spider_fly_over_time_seaborn,
@@ -32,6 +33,11 @@ from plotting_arthropods_seaborn import (
     plot_temp_vs_fly_scatter_seaborn,
     plot_aqi_vs_spider_scatter_seaborn,
     plot_aqi_vs_fly_scatter_seaborn,
+    # new observation-level seaborn plots
+    plot_spider_temp_time_scatter_seaborn,
+    plot_spider_aqi_time_scatter_seaborn,
+    plot_fly_temp_time_scatter_seaborn,
+    plot_fly_aqi_time_scatter_seaborn,
 )
 
 from user_menu import print_menu
@@ -67,6 +73,22 @@ def main():
     )
     print("Done. Rows in monthly_df:", len(monthly_df))
 
+    # --------- Build observation-level dataframes for seaborn time plots ---------
+    print("Cleaning raw spider and fly observation CSVs for time-based plots...")
+    spider_obs_df = clean_observation_csv(
+        csv_path=spider_csv,
+        start=start,
+        cutoff=cutoff,
+        iconic_taxon="Arachnida",
+    )
+    fly_obs_df = clean_observation_csv(
+        csv_path=fly_csv,
+        start=start,
+        cutoff=cutoff,
+        iconic_taxon="Insecta",
+    )
+    print("Done. Spider obs rows:", len(spider_obs_df), "| Fly obs rows:", len(fly_obs_df))
+
     # --------- Interactive menu loop ---------
     while True:
         print_menu()
@@ -90,7 +112,7 @@ def main():
         elif choice == "6":
             plot_aqi_vs_fly_scatter(monthly_df)
 
-        # seaborn graphs
+        # seaborn graphs (monthly)
         elif choice == "7":
             plot_temp_aqi_over_time_seaborn(monthly_df)
         elif choice == "8":
@@ -103,6 +125,16 @@ def main():
             plot_aqi_vs_spider_scatter_seaborn(monthly_df)
         elif choice == "12":
             plot_aqi_vs_fly_scatter_seaborn(monthly_df)
+
+        # seaborn graphs (observation-level time vs env)
+        elif choice == "13":
+            plot_spider_temp_time_scatter_seaborn(spider_obs_df, monthly_df)
+        elif choice == "14":
+            plot_spider_aqi_time_scatter_seaborn(spider_obs_df, monthly_df)
+        elif choice == "15":
+            plot_fly_temp_time_scatter_seaborn(fly_obs_df, monthly_df)
+        elif choice == "16":
+            plot_fly_aqi_time_scatter_seaborn(fly_obs_df, monthly_df)
 
         else:
             print("Unrecognized option. Please try again.")
