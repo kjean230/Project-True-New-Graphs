@@ -301,7 +301,7 @@ def _scatter_time_vs_env_seaborn(df_obs_env: pd.DataFrame,
                                  title_suffix: str):
     """
     Core plotting routine for:
-        x = observed_on (time)
+        x = date_month (monthly values)
         y = env_col (temp_mean or aqi_mean)
         hue = season_label
 
@@ -312,7 +312,7 @@ def _scatter_time_vs_env_seaborn(df_obs_env: pd.DataFrame,
     # Scatter: one point per observation
     sns.scatterplot(
         data=df_obs_env,
-        x="observed_on",
+        x="date_month",
         y=env_col,
         hue="season_label",
         palette=SEASON_PALETTE,
@@ -323,11 +323,11 @@ def _scatter_time_vs_env_seaborn(df_obs_env: pd.DataFrame,
     # LOWESS on numeric time if available
     if HAS_STATSMODELS and len(df_obs_env) > 4:
         # Convert datetime to numeric (ordinal) for smoothing
-        x_num = df_obs_env["observed_on"].map(datetime.toordinal).to_numpy()
+        x_num = df_obs_env["date_month"].map(datetime.toordinal).to_numpy()
         y = df_obs_env[env_col].to_numpy()
         _add_lowess_line(ax, x_num, y, color="black", label="LOWESS trend")
 
-    ax.set_xlabel("Observation date")
+    ax.set_xlabel("Month")
     ax.set_ylabel(env_label)
     ax.set_title(title_suffix)
 
@@ -344,7 +344,7 @@ def plot_spider_temp_time_scatter_seaborn(spider_obs_df: pd.DataFrame,
                                           monthly_df: pd.DataFrame):
     """
     Seaborn scatter:
-        X: exact spider observation date
+        X: month (date_month from monthly dataframe)
         Y: monthly mean temperature (temp_mean)
         Color: season_label (3-band seasons)
 
@@ -364,7 +364,7 @@ def plot_spider_aqi_time_scatter_seaborn(spider_obs_df: pd.DataFrame,
                                          monthly_df: pd.DataFrame):
     """
     Seaborn scatter:
-        X: exact spider observation date
+        X: month (date_month from monthly dataframe)
         Y: monthly AQ (aqi_mean)
         Color: season_label (3-band seasons)
     """
@@ -383,7 +383,7 @@ def plot_fly_temp_time_scatter_seaborn(fly_obs_df: pd.DataFrame,
                                        monthly_df: pd.DataFrame):
     """
     Seaborn scatter:
-        X: exact fly observation date
+        X: month (date_month from monthly dataframe)
         Y: monthly mean temperature (temp_mean)
         Color: season_label (3-band seasons)
     """
@@ -400,7 +400,7 @@ def plot_fly_aqi_time_scatter_seaborn(fly_obs_df: pd.DataFrame,
                                       monthly_df: pd.DataFrame):
     """
     Seaborn scatter:
-        X: exact fly observation date
+        X: month (date_month from monthly dataframe)
         Y: monthly AQ (aqi_mean)
         Color: season_label (3-band seasons)
     """
