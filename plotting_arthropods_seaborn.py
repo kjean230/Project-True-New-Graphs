@@ -253,3 +253,161 @@ def plot_aqi_vs_fly_scatter_seaborn(monthly_df: pd.DataFrame):
         env_label="AQI (ppb)",
         taxon_label="Fly",
     )
+
+# === NEW: observation-level time scatterplots (seaborn) ===
+
+from datetime import datetime
+import numpy as np
+
+def _merge_obs_with_env(monthly_df: pd.DataFrame,
+                        obs_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Merge raw observation rows with monthly environment data.
+
+    Assumes:
+    - obs_df has an 'observed_on' column (datetime or parseable).
+    - monthly_df has columns:
+        date_month, temp_mean, aqi_mean, season_label
+    """
+    df_obs = obs_df.copy()
+
+    # Ensure observed_on is datetime
+    df_obs["observed_on"] = pd.to_datetime(df_obs["observed_on"], errors="coerce")
+    df_obs = df_obs.dropna(subset=["observed_on"])
+
+    # Derive month-start to join with monthly env table
+    df_obs["date_month"] = df_obs["observed_on"].values.astype("datetime64[M]")
+
+    env_cols = ["date_month", "temp_mean", "aqi_mean", "season_label"]
+    missing_env = [c for c in env_cols if c not in monthly_df.columns]
+    if missing_env:
+        raise KeyError(f"monthly_df is missing required columns: {missing_env}")
+
+    env = monthly_df[env_cols].drop_duplicates()
+
+    merged = df_obs.merge(env, on="date_month", how="left")
+
+    # Keep only rows where we actually have environment data
+    merged = merged.dropna(subset=["temp_mean", "aqi_mean", "season_label"])
+
+    # Sort by time
+    merged = merged.sort_values("observed_on").reset_index(drop=True)
+    return merged
+
+
+def _scatter_time_vs_env_seaborn(df_obs_env: pd.DataFrame,
+                                 env_col: str,
+                                 env_label: str,
+                                 title_suffix: str):
+    """
+    Core plotting routine for:
+        x = observed_on (time)
+        y = env_col (temp_mean or aqi_mean)
+        hue = season_label
+
+    Adds optional LOWESS line (y vs numeric time).
+    """
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    # Scatter: one point per observation
+    sns.scatterplot(
+        data=df_obs_env,
+        x="observed_on",
+        y=env_col,
+        hue="season_label",
+        palette=SEASON_PALETTE,
+        alpha=0.6,
+        ax=ax,
+    )
+
+    # LOWESS on numeric time if available
+    if HAS_STATSMODELS and len(df_obs_env) > 4:
+        # Convert datetime to numeric (ordinal) for smoothing
+        x_num = df_obs_env["observed_on"].map(datetime.toordinal).to_numpy()
+        y = df_obs_env[env_col].to_numpy()
+        _add_lowess_line(ax, x_num, y, color="black", label="LOWESS trend")
+
+    ax.set_xlabel("Observation date")
+    ax.set_ylabel(env_label)
+    ax.set_title(title_suffix)
+
+    handles, labels = ax.get_legend_handles_labels()
+    ax.legend(handles=handles, labels=labels, loc="best")
+
+    fig.tight_layout()
+    plt.show()
+
+
+# ---------- Spider: time vs temperature / AQI ----------
+
+def plot_spider_temp_time_scatter_seaborn(spider_obs_df: pd.DataFrame,
+                                          monthly_df: pd.DataFrame):
+    """
+    Seaborn scatter:
+        X: exact spider observation date
+        Y: monthly mean temperature (temp_mean)
+        Color: season_label (3-band seasons)
+
+    Each point = one spider observation, inheriting temp_mean
+    from its month.
+    """
+    df_obs_env = _merge_obs_with_env(monthly_df, spider_obs_df)
+    _scatter_time_vs_env_seaborn(
+        df_obs_env=df_obs_env,
+        env_col="temp_mean",
+        env_label="Temperature (°F)",
+        title_suffix="Spider observations: temperature over time",
+    )
+
+
+def plot_spider_aqi_time_scatter_seaborn(spider_obs_df: pd.DataFrame,
+                                         monthly_df: pd.DataFrame):
+    """
+    Seaborn scatter:
+        X: exact spider observation date
+        Y: monthly AQ (aqi_mean)
+        Color: season_label (3-band seasons)
+    """
+    df_obs_env = _merge_obs_with_env(monthly_df, spider_obs_df)
+    _scatter_time_vs_env_seaborn(
+        df_obs_env=df_obs_env,
+        env_col="aqi_mean",
+        env_label="AQI (ppb)",
+        title_suffix="Spider observations: air quality over time",
+    )
+
+
+# ---------- Fly: time vs temperature / AQI ----------
+
+def plot_fly_temp_time_scatter_seaborn(fly_obs_df: pd.DataFrame,
+                                       monthly_df: pd.DataFrame):
+    """
+    Seaborn scatter:
+        X: exact fly observation date
+        Y: monthly mean temperature (temp_mean)
+        Color: season_label (3-band seasons)
+    """
+    df_obs_env = _merge_obs_with_env(monthly_df, fly_obs_df)
+    _scatter_time_vs_env_seaborn(
+        df_obs_env=df_obs_env,
+        env_col="temp_mean",
+        env_label="Temperature (°F)",
+        title_suffix="Fly observations: temperature over time",
+    )
+
+
+def plot_fly_aqi_time_scatter_seaborn(fly_obs_df: pd.DataFrame,
+                                      monthly_df: pd.DataFrame):
+    """
+    Seaborn scatter:
+        X: exact fly observation date
+        Y: monthly AQ (aqi_mean)
+        Color: season_label (3-band seasons)
+    """
+    df_obs_env = _merge_obs_with_env(monthly_df, fly_obs_df)
+    _scatter_time_vs_env_seaborn(
+        df_obs_env=df_obs_env,
+        env_col="aqi_mean",
+        env_label="AQI (ppb)",
+        title_suffix="Fly observations: air quality over time",
+    )
