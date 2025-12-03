@@ -1,6 +1,5 @@
 # data_loading_cleaning_csv.py
-# file to clean csv files and load them into pandas dataframes for future use
-# cleaning four csv files
+# Utility functions to clean CSVs and load them into pandas DataFrames.
 
 from pathlib import Path
 from typing import Union, Optional
@@ -18,12 +17,12 @@ def clean_observation_csv(
     Clean iNaturalist observation CSV (spiders, flies, etc.).
 
     Steps:
-    - Read CSV as strings.
-    - Optionally filter on iconic_taxon_name (e.g., "Arachnida", "Insecta").
-    - Parse observed_on to datetime and drop invalid.
-    - Restrict to [start, cutoff].
-    - Add year, month, date_month (month start).
-    - Sort by observed_on.
+      - Read CSV as strings.
+      - Optionally filter on iconic_taxon_name (e.g., "Arachnida", "Insecta").
+      - Parse observed_on to datetime and drop invalid.
+      - Restrict to [start, cutoff].
+      - Add year, month, date_month (month start).
+      - Sort by observed_on.
     """
     csv_file = Path(csv_path)
     df = pd.read_csv(csv_file, dtype=str)
@@ -68,14 +67,14 @@ def clean_air_quality_monthly(
 
     Expand each row into monthly records:
 
-        - "Winter": Dec(start year), Jan(next year), Feb(next year)
+        - "Winter": Dec(start year), Jan and Feb of next year
         - "Summer": Jun, Jul, Aug of that year
         - "Annual": Jan–Dec of that year
 
     Then:
-    - filter to [start, cutoff]
-    - convert data_value to numeric
-    - group by (year, month, date_month) and average to aqi_mean
+      - filter to [start, cutoff]
+      - convert data_value to numeric
+      - group by (year, month, date_month) and average to aqi_mean
     """
     csv_path = Path(csv_path)
     df = pd.read_csv(csv_path, dtype=str)
@@ -98,16 +97,13 @@ def clean_air_quality_monthly(
         start_date_row = row["start_date"]
         data_value = row["data_value"]
 
-        # Map time_period to specific months
         if "Winter" in period:
-            # Dec of start year, Jan and Feb of next year
             months = [
                 start_date_row,
                 start_date_row + pd.DateOffset(months=1),
                 start_date_row + pd.DateOffset(months=2),
             ]
         elif "Summer" in period:
-            # Jun, Jul, Aug of that year
             months = [
                 start_date_row,
                 start_date_row + pd.DateOffset(months=1),
@@ -119,7 +115,6 @@ def clean_air_quality_monthly(
                 for m in range(1, 13)
             ]
         else:
-            # Ignore other time_period labels, if any
             continue
 
         for date_month in months:
