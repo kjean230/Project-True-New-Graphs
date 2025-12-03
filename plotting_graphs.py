@@ -1,4 +1,5 @@
 # plotting_graphs.py
+# Matplotlib-based plots for graphs 1–3 (env + abundance).
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -11,23 +12,15 @@ except ImportError:
 
 
 def _season_color(season_label: str) -> str:
-    """
-    Map 3-band seasons to colors.
-    """
-    if season_label == "Season 1 (Jan-Apr)":
+    if "Season 1 (Jan-Apr)" in season_label:
         return "blue"
-    elif season_label == "Season 2 (May-Aug)":
+    elif "Season 2 (May-Aug)" in season_label:
         return "red"
-    elif season_label == "Season 3 (Sep-Dec)":
+    else:
         return "green"
-    return "gray"
 
 
 def _add_season_shading(ax, df: pd.DataFrame, alpha: float = 0.06):
-    """
-    Add vertical bands for each season across years.
-    Uses 'season_label' and 'date_month' columns.
-    """
     df = df.sort_values("date_month")
     grouped = df.groupby(["year", "season_label"], sort=True)
 
@@ -35,8 +28,7 @@ def _add_season_shading(ax, df: pd.DataFrame, alpha: float = 0.06):
         if g.empty:
             continue
         start = g["date_month"].min()
-        end = g["date_month"].max()
-        end = end + pd.offsets.MonthBegin(1)
+        end = g["date_month"].max() + pd.offsets.MonthBegin(1)
         color = _season_color(season_label)
         ax.axvspan(start, end, color=color, alpha=alpha)
 
@@ -47,19 +39,18 @@ def _add_lowess_line(ax, x, y, color="black", label="LOWESS"):
         return
 
     import numpy as np
+
     order = np.argsort(x)
     x_sorted = x[order]
     y_sorted = y[order]
+
     smoothed = lowess(y_sorted, x_sorted, frac=0.6, return_sorted=True)
     ax.plot(smoothed[:, 0], smoothed[:, 1], color=color, linewidth=2, label=label)
 
 
+# ----- Graph 1: temp + AQI over time -----
 def plot_temp_aqi_over_time(monthly_df: pd.DataFrame):
-    """
-    Graph 1: temp vs AQI over time (3-mo rolling).
-    """
-    df = monthly_df.copy()
-    df = df.sort_values("date_month")
+    df = monthly_df.copy().sort_values("date_month")
 
     df["temp_smooth"] = (
         df["temp_mean"]
@@ -101,17 +92,14 @@ def plot_temp_aqi_over_time(monthly_df: pd.DataFrame):
     lines2, labels2 = ax2.get_legend_handles_labels()
     ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")
 
-    fig.tight_layout()
     plt.title("Temperature and AQI over time (2017–2023)")
+    fig.tight_layout()
     plt.show()
 
 
+# ----- Graph 2: spider + fly over time -----
 def plot_spider_fly_over_time(monthly_df: pd.DataFrame):
-    """
-    Graph 2: spider & fly abundance over time (3-mo rolling).
-    """
-    df = monthly_df.copy()
-    df = df.sort_values("date_month")
+    df = monthly_df.copy().sort_values("date_month")
 
     df["spider_smooth"] = (
         df["spider_count"]
@@ -155,6 +143,7 @@ def plot_spider_fly_over_time(monthly_df: pd.DataFrame):
     plt.show()
 
 
+# ----- Graph 3: env vs abundance scatter -----
 def _prepare_scatter_df(
     monthly_df: pd.DataFrame,
     taxon: str,
@@ -177,6 +166,7 @@ def _prepare_scatter_df(
         raise ValueError("env must be 'temp' or 'aqi'")
 
     df = df.dropna(subset=[count_col, env_col])
+
     df_scatter = df[["date_month", "season_label", count_col, env_col]].copy()
     df_scatter = df_scatter.rename(columns={count_col: "abundance", env_col: "env"})
     return df_scatter
