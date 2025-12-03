@@ -16,10 +16,11 @@ GRAPH_MENU = {
     "11": "Graph 3C (seaborn): AQI vs spider abundance (scatter)",
     "12": "Graph 3D (seaborn): AQI vs fly abundance (scatter)",
 
-    "13": "Graph 4A (seaborn): Spider obs date vs temperature",
-    "14": "Graph 4B (seaborn): Spider obs date vs AQI",
-    "15": "Graph 4C (seaborn): Fly obs date vs temperature",
-    "16": "Graph 4D (seaborn): Fly obs date vs AQI",
+    "13": "Graph 4A (seaborn): Spider observations vs temperature",
+    "14": "Graph 4B (seaborn): Spider observations vs AQI",
+    "15": "Graph 4C (seaborn): Fly observations vs temperature",
+    "16": "Graph 4D (seaborn): Fly observations vs AQI",
+
 }
 
 

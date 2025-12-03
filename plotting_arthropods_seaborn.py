@@ -248,11 +248,23 @@ def _scatter_time_env_obs_seaborn(
     taxon_label: str,
 ):
     """
-    Observation-level scatter:
-      x  = date_month (calendar months)
-      y  = env_col from monthly_df (temp_mean or aqi_mean)
-      hue= season_label from monthly_df
+    Observation-level scatter for graphs 13–16.
+
+    New behavior (Option 1):
+      x  = environmental variable from monthly_df (temp_mean or aqi_mean)
+      y  = constant (1) per observation, jittered for visibility
+      hue= season_label (joined in by month)
+
+    This shows where individual arthropod observations occur along the
+    environmental gradient, colored by season.
     """
+    if "date_month" not in obs_df.columns:
+        raise KeyError(
+            "obs_df must contain a 'date_month' column (month-start) "
+            "from clean_observation_csv."
+        )
+
+    # Look up env + season by month
     env_lookup = monthly_df[["date_month", "season_label", env_col]].dropna(
         subset=[env_col]
     )
@@ -260,47 +272,46 @@ def _scatter_time_env_obs_seaborn(
     df = obs_df.merge(env_lookup, on="date_month", how="left")
     df = df.dropna(subset=[env_col])
 
-    fig, ax = plt.subplots(figsize=(12, 6))
+    if df.empty:
+        raise ValueError(
+            f"No observations could be matched to monthly {env_col} values."
+        )
 
-    _add_season_shading(ax, monthly_df)
+    # Constant y = 1 with small vertical jitter so points don't overlap
+    rng = np.random.default_rng(seed=42)
+    df["y_jitter"] = 1.0 + rng.uniform(-0.15, 0.15, size=len(df))
+
+    fig, ax = plt.subplots(figsize=(12, 5))
 
     sns.scatterplot(
         data=df,
-        x="date_month",
-        y=env_col,
+        x=env_col,
+        y="y_jitter",
         hue="season_label",
         palette=SEASON_PALETTE,
         alpha=0.7,
         ax=ax,
+        edgecolor=None,
+        s=40,
     )
 
-    if HAS_STATSMODELS and len(df) > 4:
-        x_num = mdates.date2num(df["date_month"])
-        y_val = df[env_col].to_numpy()
-        order = np.argsort(x_num)
-        smoothed = lowess(y_val[order], x_num[order], frac=0.6, return_sorted=True)
-        ax.plot(
-            mdates.num2date(smoothed[:, 0]),
-            smoothed[:, 1],
-            color="black",
-            linewidth=2,
-            label="LOWESS trend",
-        )
+    ax.set_xlabel(env_label)
+    ax.set_ylabel(f"{taxon_label} observations (jittered)")
+    ax.set_yticks([])  # y is just a jitter axis, not a numeric quantity
+    ax.set_title(f"{taxon_label} observations across {env_label.lower()}")
 
-    ax.set_xlabel("Month")
-    ax.set_ylabel(env_label)
-    ax.set_title(f"{taxon_label} observations: {env_label.lower()} over time")
+    # Tighten x-limits slightly around the data
+    x_min = df[env_col].min()
+    x_max = df[env_col].max()
+    pad = (x_max - x_min) * 0.03 if x_max > x_min else 1.0
+    ax.set_xlim(x_min - pad, x_max + pad)
 
-    ax.xaxis.set_major_locator(mdates.YearLocator())
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
-    fig.autofmt_xdate()
-
+    # Legend cleanup
     handles, labels = ax.get_legend_handles_labels()
-    ax.legend(handles=handles, labels=labels, loc="best")
+    ax.legend(handles=handles, labels=labels, title="Season", loc="best")
 
     fig.tight_layout()
     plt.show()
-
 
 def plot_spider_temp_time_scatter_seaborn(spider_obs_df: pd.DataFrame,
                                           monthly_df: pd.DataFrame):
