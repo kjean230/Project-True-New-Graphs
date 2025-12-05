@@ -170,19 +170,19 @@ def load_tree_data(
 
 def plot_condition_distribution(all_trees_df: pd.DataFrame) -> None:
     """
-    Plot condition distribution per species (percentage of trees per condition group),
-    with bars grouped by condition group and species, and stacked by original
-    TPCondition subcategories.
+    Plot condition distribution per species (percentage of trees per condition group).
 
     - X-axis: condition_group (Good, Fair, Poor, Dead)
-    - For each group: 2 bars (Paper birch, Red maple)
-    - Each bar is stacked by TPCondition (e.g., Excellent vs Good within Good group)
+    - Hue: species_label (Paper birch, Red maple)
     - Y-axis: percentage of trees within each species.
+
+    This is a simpler grouped bar chart: four condition groups on the x-axis,
+    two bars per group (one per species). No stacking by TPCondition.
     """
     df = all_trees_df.copy()
 
-    # Drop rows without a condition_group; we only use Good/Fair/Poor/Dead
-    df = df.dropna(subset=["condition_group", "species_label", "TPCondition"])
+    # Drop rows without a condition_group or species_label
+    df = df.dropna(subset=["condition_group", "species_label"])
 
     # Restrict to the four main groups, in case there are other values
     df = df[df["condition_group"].isin(CONDITION_GROUP_ORDER)]
@@ -190,17 +190,17 @@ def plot_condition_distribution(all_trees_df: pd.DataFrame) -> None:
     if df.empty:
         raise ValueError("No rows with valid condition_group found for plotting.")
 
-    # Total trees per species (for percentage scaling)
-    species_totals = df.groupby("species_label").size().to_dict()
-
-    # Count by (condition_group, species_label, TPCondition)
+    # Count trees per species and condition group
     counts = (
-        df.groupby(["condition_group", "species_label", "TPCondition"])
+        df.groupby(["species_label", "condition_group"])
         .size()
         .reset_index(name="count")
     )
 
-    # Convert counts to percentage of species
+    # Total trees per species for percentage scaling
+    species_totals = counts.groupby("species_label")["count"].sum().to_dict()
+
+    # Convert counts to percentage of each species
     counts["percent"] = counts.apply(
         lambda row: (row["count"] / species_totals[row["species_label"]]) * 100.0,
         axis=1,
@@ -208,64 +208,30 @@ def plot_condition_distribution(all_trees_df: pd.DataFrame) -> None:
 
     # Ensure consistent ordering
     species_order = ["Paper birch", "Red maple"]
-    tpconditions_order = list(CONDITION_COLOR_MAP.keys())
+    condition_order = CONDITION_GROUP_ORDER
 
-    # Prepare plotting
-    fig, ax = plt.subplots(figsize=(10, 6))
-
-    num_groups = len(CONDITION_GROUP_ORDER)
-    num_species = len(species_order)
-    bar_width = 0.35
-
-    # X positions for each condition_group
-    group_positions = np.arange(num_groups)
-
-    for i, condition_group in enumerate(CONDITION_GROUP_ORDER):
-        for j, species in enumerate(species_order):
-            x_pos = group_positions[i] + (j - (num_species - 1) / 2) * bar_width
-
-            # Filter for this condition_group & species
-            sub = counts[
-                (counts["condition_group"] == condition_group)
-                & (counts["species_label"] == species)
-            ]
-
-            if sub.empty:
-                continue
-
-            # Stack by TPCondition in a fixed order
-            bottom = 0.0
-            for tpcond in tpconditions_order:
-                sub_seg = sub[sub["TPCondition"] == tpcond]
-                if sub_seg.empty:
-                    continue
-
-                height = float(sub_seg["percent"].iloc[0])
-                ax.bar(
-                    x_pos,
-                    height,
-                    bar_width,
-                    bottom=bottom,
-                    color=CONDITION_COLOR_MAP.get(tpcond, "#999999"),
-                    edgecolor="black",
-                    linewidth=0.3,
-                    label=tpcond if (i == 0 and j == 0) else None,  # legend only once
-                )
-                bottom += height
-
-    ax.set_xticks(group_positions)
-    ax.set_xticklabels(CONDITION_GROUP_ORDER)
-    ax.set_xlabel("Condition group")
-    ax.set_ylabel("Percentage of trees within species (%)")
-    ax.set_title(
-        "Condition distribution per species\n"
-        "(stacked by original TPCondition categories)"
+    counts["species_label"] = pd.Categorical(
+        counts["species_label"], categories=species_order, ordered=True
+    )
+    counts["condition_group"] = pd.Categorical(
+        counts["condition_group"], categories=condition_order, ordered=True
     )
 
-    # Build legend from TPCondition colors
-    handles, labels = ax.get_legend_handles_labels()
-    if handles:
-        ax.legend(handles, labels, title="TPCondition", loc="upper right")
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    sns.barplot(
+        data=counts,
+        x="condition_group",
+        y="percent",
+        hue="species_label",
+        ax=ax,
+    )
+
+    ax.set_xlabel("Condition group")
+    ax.set_ylabel("Percentage of trees within species (%)")
+    ax.set_title("Condition distribution per species")
+
+    ax.legend(title="Species", loc="upper right")
 
     fig.tight_layout()
     plt.show()
