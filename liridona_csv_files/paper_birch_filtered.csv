@@ -1,0 +1,4 @@
+id,Name,description,timestamp,begin,end,altitudeMode,tessellate,extrude,visibility,drawOrder,icon,OBJECTID,DBH,TPStructure,TPCondition,StumpDiameter,PlantingSpaceGlobalID,GlobalID,GenusSpecies,CreatedDate,UpdatedDate,PlantedDate,RiskRating,RiskRatingDate,Lat,Long
+Paper_Birch_Filtered.1,,,,,,,-1,0,-1,,,5079892,6,Full,Good,,2873B6CC-055E-4035-852A-55CBFEBF303E,913671CE-B787-4973-A1BF-3B4EC69208F6,Betula papyrifera - paper birch,39:55.0,39:59.0,,,,-73.89662014,40.89116665
+Paper_Birch_Filtered.2,,,,,,,-1,0,-1,,,5083132,5,Full,Good,,1BD352BD-11F0-4837-8CD9-11DE06690063,B738DC3D-B17E-4CE1-A420-8E083CAD62AE,Betula papyrifera - paper birch,"03:45.0",24:09.0,,4,24:09.0,-73.8719015,40.90002733
+Paper_Birch_Filtered.3,,,,,,,-1,0,-1,,,5588044,18,Full,Good,0,ED91A618-F21A-432F-BEBC-913D4E1DEE03,92006DCA-F0C6-4843-BE77-B049F5D2221F,Betula papyrifera - paper birch,11:11.0,,,,,-73.89368409,40.89099932
