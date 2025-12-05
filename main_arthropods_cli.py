@@ -29,6 +29,12 @@ from plotting_arthropods_seaborn import (
     plot_fly_aqi_time_scatter_seaborn,
 )
 
+from trees_graphs_liri import (
+    load_tree_data,
+    plot_condition_distribution,
+    plot_risk_rating_distribution,
+)
+
 from user_menu import print_menu
 
 
@@ -37,11 +43,16 @@ def main():
 
     base_path_airtemp = base_dir / "air and temp csvs"
     base_path_spifly = base_dir / "spider and fly csvs"
+    base_path_trees = base_dir / "liridona_csv_files"  # adjust folder name if needed
 
     air_quality_csv = base_path_airtemp / "file_of_air_quality copy.csv"
     temp_csv = base_path_airtemp / "file_of_monthly_weather copy.csv"
     spider_csv = base_path_spifly / "file_of_spiders - Sheet1 copy.csv"
     fly_csv = base_path_spifly / "files_of_flies - Sheet1 copy.csv"
+
+    # adjust filenames here to match your actual tree CSVs on disk
+    birch_csv = base_path_trees / "paper_birch_filtered.csv"
+    maple_csv = base_path_trees / "Red Maple filtered.csv"
 
     start = pd.Timestamp("2017-01-01")
     cutoff = pd.Timestamp("2023-12-31")
@@ -66,6 +77,11 @@ def main():
     fly_obs_df = clean_observation_csv(
         fly_csv, start=start, cutoff=cutoff, iconic_taxon="Insecta"
     )
+
+    # Unified tree DataFrame for graphs 17–18
+    print("Loading tree inventory data (Paper birch and Red maple)...")
+    all_trees_df = load_tree_data(birch_csv, maple_csv)
+    print("Done. Rows in all_trees_df:", len(all_trees_df))
 
     while True:
         print_menu()
@@ -112,6 +128,12 @@ def main():
             plot_fly_temp_time_scatter_seaborn(fly_obs_df, monthly_df)
         elif choice == "16":
             plot_fly_aqi_time_scatter_seaborn(fly_obs_df, monthly_df)
+
+        # Tree graphs (Paper birch vs Red maple)
+        elif choice == "17":
+            plot_condition_distribution(all_trees_df)
+        elif choice == "18":
+            plot_risk_rating_distribution(all_trees_df)
 
         else:
             print("Unrecognized option. Please try again.")
