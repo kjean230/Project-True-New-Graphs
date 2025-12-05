@@ -170,14 +170,11 @@ def load_tree_data(
 
 def plot_condition_distribution(all_trees_df: pd.DataFrame) -> None:
     """
-    Plot condition distribution per species (percentage of trees per condition group).
+    Plot condition distribution per species (number of trees per condition group).
 
     - X-axis: condition_group (Good, Fair, Poor, Dead)
     - Hue: species_label (Paper birch, Red maple)
-    - Y-axis: percentage of trees within each species.
-
-    This is a simpler grouped bar chart: four condition groups on the x-axis,
-    two bars per group (one per species). No stacking by TPCondition.
+    - Y-axis: count of trees in that condition group for that species.
     """
     df = all_trees_df.copy()
 
@@ -190,20 +187,11 @@ def plot_condition_distribution(all_trees_df: pd.DataFrame) -> None:
     if df.empty:
         raise ValueError("No rows with valid condition_group found for plotting.")
 
-    # Count trees per species and condition group
+    # Count trees per species and condition group (raw counts)
     counts = (
         df.groupby(["species_label", "condition_group"])
         .size()
         .reset_index(name="count")
-    )
-
-    # Total trees per species for percentage scaling
-    species_totals = counts.groupby("species_label")["count"].sum().to_dict()
-
-    # Convert counts to percentage of each species
-    counts["percent"] = counts.apply(
-        lambda row: (row["count"] / species_totals[row["species_label"]]) * 100.0,
-        axis=1,
     )
 
     # Ensure consistent ordering
@@ -222,19 +210,20 @@ def plot_condition_distribution(all_trees_df: pd.DataFrame) -> None:
     sns.barplot(
         data=counts,
         x="condition_group",
-        y="percent",
+        y="count",
         hue="species_label",
         ax=ax,
     )
 
     ax.set_xlabel("Condition group")
-    ax.set_ylabel("Percentage of trees within species (%)")
-    ax.set_title("Condition distribution per species")
+    ax.set_ylabel("Number of trees")
+    ax.set_title("Condition distribution per species (counts)")
 
     ax.legend(title="Species", loc="upper right")
 
     fig.tight_layout()
     plt.show()
+
 
 
 def plot_risk_rating_distribution(all_trees_df: pd.DataFrame) -> None:
