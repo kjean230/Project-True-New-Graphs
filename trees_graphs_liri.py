@@ -175,6 +175,7 @@ def plot_condition_distribution(all_trees_df: pd.DataFrame) -> None:
     - X-axis: condition_group (Good, Fair, Poor, Dead)
     - Hue: species_label (Paper birch, Red maple)
     - Y-axis: count of trees in that condition group for that species.
+    - Each bar is annotated with its count.
     """
     df = all_trees_df.copy()
 
@@ -215,6 +216,21 @@ def plot_condition_distribution(all_trees_df: pd.DataFrame) -> None:
         ax=ax,
     )
 
+    # Annotate each bar with its count
+    for p in ax.patches:
+        height = p.get_height()
+        if np.isnan(height) or height == 0:
+            continue
+        x = p.get_x() + p.get_width() / 2
+        ax.text(
+            x,
+            height,
+            f"{int(height)}",
+            ha="center",
+            va="bottom",
+            fontsize=9,
+        )
+
     ax.set_xlabel("Condition group")
     ax.set_ylabel("Number of trees")
     ax.set_title("Condition distribution per species (counts)")
@@ -223,8 +239,6 @@ def plot_condition_distribution(all_trees_df: pd.DataFrame) -> None:
 
     fig.tight_layout()
     plt.show()
-
-
 
 def plot_risk_rating_distribution(all_trees_df: pd.DataFrame) -> None:
     """
