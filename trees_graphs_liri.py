@@ -240,14 +240,17 @@ def plot_condition_distribution(all_trees_df: pd.DataFrame) -> None:
     fig.tight_layout()
     plt.show()
 
-def plot_risk_rating_distribution(all_trees_df: pd.DataFrame) -> None:
+def plot_high_risk_proportion(all_trees_df: pd.DataFrame, high_threshold: int = 7) -> None:
     """
-    Plot count of trees per risk rating, grouped by species.
+    Plot the proportion of high-risk trees for each species.
 
-    - X-axis: RiskRating (integer categories)
-    - Y-axis: count of trees
-    - Hue: species_label ("Paper birch", "Red maple")
-    - Missing RiskRating values are ignored (dropped).
+    - High-risk is defined as RiskRating >= high_threshold (default: 7).
+    - X-axis: species_label ("Paper birch", "Red maple")
+    - Y-axis: percentage of trees in the high-risk category for that species.
+
+    This graph is designed to directly address:
+      Hypothesis 2: Red maple trees will have a lower proportion of high-risk
+      ratings than paper birch trees.
     """
     df = all_trees_df.copy()
 
@@ -258,34 +261,252 @@ def plot_risk_rating_distribution(all_trees_df: pd.DataFrame) -> None:
     if df.empty:
         raise ValueError("No rows with valid RiskRating found for plotting.")
 
-    # Make sure RiskRating is treated as a category for x-axis ordering
-    df["RiskRating"] = df["RiskRating"].astype(int)
+    # Only use the two focal species
+    df = df[df["species_label"].isin(["Paper birch", "Red maple"])].copy()
+    if df.empty:
+        raise ValueError("No rows for Paper birch or Red maple after filtering.")
 
-    # Aggregate counts by rating and species
-    counts = (
-        df.groupby(["RiskRating", "species_label"])
-        .size()
-        .reset_index(name="count")
+    # Define high-risk flag
+    df["is_high_risk"] = df["RiskRating"] >= high_threshold
+
+    # For each species, compute total trees and high-risk trees
+    summary = (
+        df.groupby("species_label")["is_high_risk"]
+        .agg(
+            total_trees="count",
+            high_risk_count="sum",
+        )
+        .reset_index()
     )
 
-    # Ensure risk ratings are sorted
-    counts = counts.sort_values("RiskRating")
+    # Convert to percentage
+    summary["high_risk_percent"] = (
+        summary["high_risk_count"] / summary["total_trees"] * 100.0
+    )
 
-    fig, ax = plt.subplots(figsize=(10, 6))
+    # Ensure consistent species order
+    species_order = ["Paper birch", "Red maple"]
+    summary["species_label"] = pd.Categorical(
+        summary["species_label"], categories=species_order, ordered=True
+    )
+
+    fig, ax = plt.subplots(figsize=(8, 6))
 
     sns.barplot(
-        data=counts,
-        x="RiskRating",
-        y="count",
-        hue="species_label",
+        data=summary,
+        x="species_label",
+        y="high_risk_percent",
         ax=ax,
     )
 
-    ax.set_xlabel("Risk rating")
-    ax.set_ylabel("Number of trees")
-    ax.set_title("Count of trees per risk rating by species")
+    # Annotate bars with percentage and counts (e.g., "18% (9/50)")
+    for p, (_, row) in zip(ax.patches, summary.iterrows()):
+        height = p.get_height()
+        if np.isnan(height):
+            continue
 
-    ax.legend(title="Species", loc="upper right")
+        text_label = f"{height:.1f}%\n({int(row['high_risk_count'])}/{int(row['total_trees'])})"
+        x = p.get_x() + p.get_width() / 2
+        ax.text(
+            x,
+            height,
+            text_label,
+            ha="center",
+            va="bottom",
+            fontsize=9,
+        )
+
+    ax.set_xlabel("Species")
+    ax.set_ylabel("High-risk trees (%)")
+    ax.set_title(
+        f"Proportion of high-risk trees per species\n"
+        f"(RiskRating ≥ {high_threshold})"
+    )
+
+    fig.tight_layout()
+    plt.show()
+
+def plot_dbh_distribution(all_trees_df: pd.DataFrame) -> None:
+    """
+    Plot DBH (diameter at breast height) distribution per species.
+
+    - X-axis: species_label ("Paper birch", "Red maple")
+    - Y-axis: DBH
+    - Uses a violin plot with boxplot overlay to show distribution shape
+      and central tendency.
+    """
+    df = all_trees_df.copy()
+
+    # Coerce DBH to numeric and drop missing
+    df["DBH"] = pd.to_numeric(df["DBH"], errors="coerce")
+    df = df.dropna(subset=["DBH", "species_label"])
+
+    # Focus on the two focal species
+    df = df[df["species_label"].isin(["Paper birch", "Red maple"])].copy()
+
+    if df.empty:
+        raise ValueError("No rows with valid DBH for Paper birch or Red maple.")
+
+    species_order = ["Paper birch", "Red maple"]
+    df["species_label"] = pd.Categorical(
+        df["species_label"], categories=species_order, ordered=True
+    )
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    # Violin plot for distribution shape
+    sns.violinplot(
+        data=df,
+        x="species_label",
+        y="DBH",
+        inner=None,
+        ax=ax,
+    )
+
+    # Boxplot overlay for medians and quartiles
+    sns.boxplot(
+        data=df,
+        x="species_label",
+        y="DBH",
+        width=0.2,
+        showcaps=True,
+        boxprops={"facecolor": "white", "zorder": 3},
+        showfliers=False,
+        whiskerprops={"linewidth": 1.5},
+        ax=ax,
+    )
+
+    ax.set_xlabel("Species")
+    ax.set_ylabel("DBH (inches)")
+    ax.set_title("DBH distribution per species")
+
+    fig.tight_layout()
+    plt.show()
+
+
+def plot_high_risk_prop(all_trees_df: pd.DataFrame, high_threshold: int = 7) -> None:
+    """
+    Plot the proportion of high-risk trees for each species.
+
+    - High-risk is defined as RiskRating >= high_threshold (default: 7).
+    - X-axis: species_label ("Paper birch", "Red maple")
+    - Y-axis: percentage of trees in the high-risk category for that species.
+    - Bars annotated with percent and counts (e.g., "18.0% (9/50)").
+
+    This directly addresses Hypothesis 2:
+      Red maple trees will have a lower proportion of high-risk ratings
+      than paper birch trees.
+    """
+    df = all_trees_df.copy()
+
+    # Coerce RiskRating to numeric and drop missing
+    df["RiskRating"] = pd.to_numeric(df["RiskRating"], errors="coerce")
+    df = df.dropna(subset=["RiskRating", "species_label"])
+
+    # Focus on focal species
+    df = df[df["species_label"].isin(["Paper birch", "Red maple"])].copy()
+    if df.empty:
+        raise ValueError("No rows with valid RiskRating for Paper birch or Red maple.")
+
+    # High-risk flag
+    df["is_high_risk"] = df["RiskRating"] >= high_threshold
+
+    # Summarize per species
+    summary = (
+        df.groupby("species_label")["is_high_risk"]
+        .agg(
+            total_trees="count",
+            high_risk_count="sum",
+        )
+        .reset_index()
+    )
+
+    summary["high_risk_percent"] = (
+        summary["high_risk_count"] / summary["total_trees"] * 100.0
+    )
+
+    species_order = ["Paper birch", "Red maple"]
+    summary["species_label"] = pd.Categorical(
+        summary["species_label"], categories=species_order, ordered=True
+    )
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    sns.barplot(
+        data=summary,
+        x="species_label",
+        y="high_risk_percent",
+        ax=ax,
+    )
+
+    # Annotate bars with percent and counts
+    for p, (_, row) in zip(ax.patches, summary.iterrows()):
+        height = p.get_height()
+        if np.isnan(height):
+            continue
+
+        text_label = f"{height:.1f}%\n({int(row['high_risk_count'])}/{int(row['total_trees'])})"
+        x = p.get_x() + p.get_width() / 2
+        ax.text(
+            x,
+            height,
+            text_label,
+            ha="center",
+            va="bottom",
+            fontsize=9,
+        )
+
+    ax.set_xlabel("Species")
+    ax.set_ylabel("High-risk trees (%)")
+    ax.set_title(
+        f"Proportion of high-risk trees per species\n"
+        f"(RiskRating ≥ {high_threshold})"
+    )
+
+    fig.tight_layout()
+    plt.show()
+
+
+def plot_tree_spatial_distribution(all_trees_df: pd.DataFrame) -> None:
+    """
+    Plot spatial distribution of trees by species using Lat/Long.
+
+    - X-axis: longitude (Long)
+    - Y-axis: latitude (Lat)
+    - Color (hue): species_label ("Paper birch", "Red maple")
+
+    This gives a map-like scatter showing where each species occurs
+    in the study area.
+    """
+    df = all_trees_df.copy()
+
+    # Coerce coordinates to numeric
+    df["Lat"] = pd.to_numeric(df["Lat"], errors="coerce")
+    df["Long"] = pd.to_numeric(df["Long"], errors="coerce")
+
+    df = df.dropna(subset=["Lat", "Long", "species_label"])
+    df = df[df["species_label"].isin(["Paper birch", "Red maple"])].copy()
+
+    if df.empty:
+        raise ValueError("No rows with valid Lat/Long for Paper birch or Red maple.")
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    sns.scatterplot(
+        data=df,
+        x="Long",
+        y="Lat",
+        hue="species_label",
+        s=30,
+        alpha=0.7,
+        ax=ax,
+    )
+
+    ax.set_xlabel("Longitude")
+    ax.set_ylabel("Latitude")
+    ax.set_title("Spatial distribution of Paper birch and Red maple")
+
+    ax.legend(title="Species", loc="best")
 
     fig.tight_layout()
     plt.show()

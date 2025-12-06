@@ -32,7 +32,10 @@ from plotting_arthropods_seaborn import (
 from trees_graphs_liri import (
     load_tree_data,
     plot_condition_distribution,
-    plot_risk_rating_distribution,
+    plot_high_risk_proportion,
+    plot_tree_spatial_distribution,
+    plot_dbh_distribution,
+    plot_high_risk_prop,
 )
 
 from user_menu import print_menu
@@ -133,7 +136,17 @@ def main():
         elif choice == "17":
             plot_condition_distribution(all_trees_df)
         elif choice == "18":
-            plot_risk_rating_distribution(all_trees_df)
+            plot_high_risk_proportion(all_trees_df)
+
+        # new graphs
+        elif choice == "19":
+            plot_tree_spatial_distribution(all_trees_df)
+
+        elif choice == "20":
+            plot_dbh_distribution(all_trees_df)
+
+        elif choice == "21":
+            plot_high_risk_prop(all_trees_df)
 
         else:
             print("Unrecognized option. Please try again.")
