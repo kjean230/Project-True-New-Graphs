@@ -21,6 +21,16 @@ GRAPH_MENU = {
     "15": "Graph 4C (seaborn): Fly observations vs temperature",
     "16": "Graph 4D (seaborn): Fly observations vs AQI",
 
+    "17": "Tree Graph 1: Condition distribution (Paper Birch vs Red Maple)",
+    "18": "Tree Graph 2: High risk proportion",
+    "19": "Tree Graph 3: Spatial distribution",
+    "20": "Tree Graph 4: DBH distribution",
+    "21": "Tree Graph 5: High risk proportion (alternative)",
+
+    "22": "ML Model: Spider abundance regression (with diagnostic plots)",
+    "23": "ML Model: Fly abundance regression (with diagnostic plots)",
+    "24": "ML Model: Temperature-AQI relationship (with diagnostic plots)",
+
 }
 
 

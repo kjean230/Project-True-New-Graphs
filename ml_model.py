@@ -210,3 +210,153 @@ def run_fly_model(monthly_df: pd.DataFrame, output_dir: Path) -> None:
         out_prefix="fly_abundance_model",
         output_dir=output_dir,
     )
+
+def run_temp_aqi_model(monthly_df: pd.DataFrame, output_dir: Path) -> None:
+    """
+    Fit and evaluate a linear regression modeling the relationship
+    between temperature and air quality:
+
+        aqi_mean ~ z(temp_mean) + z(year) + season dummies
+
+    This model examines how temperature predicts air quality levels,
+    controlling for year and seasonal effects.
+    """
+    if "temp_mean" not in monthly_df.columns:
+        raise KeyError("'temp_mean' not found in monthly_df.")
+    if "aqi_mean" not in monthly_df.columns:
+        raise KeyError("'aqi_mean' not found in monthly_df.")
+
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Prepare data
+    required_cols = ["temp_mean", "aqi_mean", "year", "season_label"]
+    df_used = monthly_df.dropna(subset=required_cols).copy()
+
+    if df_used.empty:
+        raise ValueError("No data available after dropping rows with missing values.")
+
+    # Standardize predictors
+    num_cols = ["temp_mean", "year"]
+    X_num = df_used[num_cols].astype(float).values
+
+    scaler = StandardScaler()
+    X_num_scaled = scaler.fit_transform(X_num)
+
+    # Season dummies
+    season_dummies = pd.get_dummies(
+        df_used["season_label"],
+        prefix="season",
+        drop_first=True,
+    )
+
+    X = np.hstack([X_num_scaled, season_dummies.values])
+    feature_names = [f"z_{col}" for col in num_cols] + list(season_dummies.columns)
+
+    y = df_used["aqi_mean"].astype(float).values
+
+    # Fit model
+    model = LinearRegression()
+    model.fit(X, y)
+
+    y_pred = model.predict(X)
+    residuals = y - y_pred
+
+    r2 = r2_score(y, y_pred)
+    adj_r2 = _compute_adjusted_r2(r2, n=len(y), p=X.shape[1])
+
+    # Coefficient table
+    coef_df = pd.DataFrame(
+        {
+            "feature": feature_names,
+            "coefficient": model.coef_,
+        }
+    )
+    coef_df.loc[len(coef_df)] = ["intercept", model.intercept_]
+
+    coef_df["response"] = "aqi_mean"
+    coef_df["model_type"] = "Temperature-AQI relationship"
+    coef_df["r2"] = r2
+    coef_df["adjusted_r2"] = adj_r2
+
+    # Prediction table
+    pred_df = df_used.copy()
+    pred_df["fitted_aqi"] = y_pred
+    pred_df["residual"] = residuals
+
+    coef_path = output_dir / "temp_aqi_relationship_coefficients.csv"
+    preds_path = output_dir / "temp_aqi_relationship_predictions.csv"
+
+    coef_df.to_csv(coef_path, index=False)
+    pred_df.to_csv(preds_path, index=False)
+
+    # Console summary
+    print("\n===== Temperature-AQI Relationship Model =====")
+    print(f"Number of observations used: {len(y)}")
+    print(f"R^2:          {r2:.4f}")
+    print(f"Adjusted R^2: {adj_r2:.4f}\n")
+
+    print("Coefficients (standardized predictors):")
+    for fname, coef in zip(feature_names, model.coef_):
+        print(f"  {fname:20s} -> {coef: .4f}")
+    print(f"  {'intercept':20s} -> {model.intercept_: .4f}\n")
+
+    print(f"Coefficient summary saved to: {coef_path}")
+    print(f"Predictions (with residuals) saved to: {preds_path}\n")
+
+    # Diagnostics
+    title = "Temperature-AQI relationship model"
+    _plot_residuals_vs_fitted(y_true=y, y_pred=y_pred, title=title)
+    _plot_qq(residuals=residuals, title=title)
+
+    # Additional scatter plot: actual temp vs AQI with fitted line
+    _plot_temp_aqi_scatter_with_fit(df_used, y_pred)
+
+
+def _plot_temp_aqi_scatter_with_fit(df: pd.DataFrame, y_pred: np.ndarray):
+    """
+    Scatter plot of temperature vs AQI with the fitted regression line.
+    """
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    # Color points by season
+    season_colors = {
+        "Season 1 (Jan-Apr)": "blue",
+        "Season 2 (May-Aug)": "red",
+        "Season 3 (Sep-Dec)": "green",
+    }
+
+    for season, color in season_colors.items():
+        mask = df["season_label"] == season
+        ax.scatter(
+            df.loc[mask, "temp_mean"],
+            df.loc[mask, "aqi_mean"],
+            c=color,
+            label=season,
+            alpha=0.6,
+            s=50,
+        )
+
+    # Sort by temperature for line plot
+    df_sorted = df.copy()
+    df_sorted["fitted_aqi"] = y_pred
+    df_sorted = df_sorted.sort_values("temp_mean")
+
+    # Plot fitted line
+    ax.plot(
+        df_sorted["temp_mean"],
+        df_sorted["fitted_aqi"],
+        color="black",
+        linewidth=2,
+        label="Fitted regression line",
+        linestyle="--",
+    )
+
+    ax.set_xlabel("Temperature (°F)", fontsize=12)
+    ax.set_ylabel("AQI (ppb)", fontsize=12)
+    ax.set_title("Temperature vs Air Quality with Fitted Regression Line", fontsize=14)
+    ax.legend(loc="best", fontsize=10)
+    ax.grid(True, alpha=0.3)
+
+    fig.tight_layout()
+    plt.show()

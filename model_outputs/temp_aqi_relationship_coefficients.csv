@@ -1,0 +1,6 @@
+feature,coefficient,response,model_type,r2,adjusted_r2
+z_temp_mean,-0.2963633344569752,aqi_mean,Temperature-AQI relationship,0.30613122964887196,0.2709986336817263
+z_year,-0.5633489294558379,aqi_mean,Temperature-AQI relationship,0.30613122964887196,0.2709986336817263
+season_Season 2 (May-Aug),1.5575104932423705,aqi_mean,Temperature-AQI relationship,0.30613122964887196,0.2709986336817263
+season_Season 3 (Sep-Dec),-0.3061320406484433,aqi_mean,Temperature-AQI relationship,0.30613122964887196,0.2709986336817263
+intercept,15.874453908659163,aqi_mean,Temperature-AQI relationship,0.30613122964887196,0.2709986336817263

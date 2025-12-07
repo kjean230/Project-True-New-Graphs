@@ -119,40 +119,82 @@ def plot_temp_aqi_over_time_seaborn(monthly_df: pd.DataFrame):
 
     fig, ax1 = plt.subplots(figsize=(12, 6))
 
-    _add_season_shading(ax1, df)
-
+    # Temperature line (distinct color)
     sns.lineplot(
         data=df,
         x="date_month",
         y="temp_smooth",
         ax=ax1,
-        color="black",
+        color="blue",
         label="Temp (3-mo avg, °F)",
     )
-    ax1.set_xlabel("Month")
-    ax1.set_ylabel("Temperature (°F)", color="black")
-    ax1.tick_params(axis="y", labelcolor="black")
+    ax1.set_xlabel("Time Fluctuation", fontsize=14)
+    ax1.set_ylabel("Temperature (°F)", color="blue", fontsize=14)
+    ax1.tick_params(axis="y", labelcolor="blue", labelsize=12)
 
+    # AQI line (different color)
     ax2 = ax1.twinx()
     sns.lineplot(
         data=df,
         x="date_month",
         y="aqi_smooth",
         ax=ax2,
-        color="purple",
+        color="red",
         label="AQI (3-mo avg, ppb)",
     )
-    ax2.set_ylabel("AQI (ppb)", color="purple")
-    ax2.tick_params(axis="y", labelcolor="purple")
+    ax2.set_ylabel("AQI (ppb)", color="red", fontsize=14)
+    ax2.tick_params(axis="y", labelcolor="red", labelsize=12)
 
+    # X-axis: 3 ticks per year (Jan, May, Sept), with month abbreviations
+    ax1.xaxis.set_major_locator(mdates.MonthLocator(bymonth=[1, 5, 9]))
+    ax1.xaxis.set_major_formatter(mdates.DateFormatter("%b"))
+    ax1.tick_params(axis="x", labelsize=12, rotation=45)
+
+    # Add year labels centered under each year's span of months
+    from matplotlib.transforms import blended_transform_factory
+
+    years = df["date_month"].dt.year.unique()
+    transform = blended_transform_factory(ax1.transData, ax1.transAxes)
+
+    for year in years:
+        year_mask = df["date_month"].dt.year == year
+        year_dates = df.loc[year_mask, "date_month"]
+        if year_dates.empty:
+            continue
+        x_center = year_dates.min() + (year_dates.max() - year_dates.min()) / 2
+
+        ax1.text(
+            x_center,
+            -0.30,  # further below month tick labels to form a second "axis" line
+            str(year),
+            ha="center",
+            va="top",
+            fontsize=12,
+            transform=transform,
+            clip_on=False,
+        )
+
+    # Remove default legends (if they exist)
+    leg1 = ax1.get_legend()
+    if leg1 is not None:
+        leg1.remove()
+    leg2 = ax2.get_legend()
+    if leg2 is not None:
+        leg2.remove()
+
+    # Create single combined legend on the upper right
     lines1, labels1 = ax1.get_legend_handles_labels()
     lines2, labels2 = ax2.get_legend_handles_labels()
-    ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")
+    ax1.legend(
+        lines1 + lines2,
+        labels1 + labels2,
+        loc="upper right",
+        fontsize=12,
+    )
 
-    plt.title("Temperature and AQI over time (2017–2023) – seaborn")
+    plt.title("Temperature and AQI over time (2017–2023) – seaborn", fontsize=16)
     fig.tight_layout()
     plt.show()
-
 
 # ----- Graph 8: spider + fly over time -----
 def plot_spider_fly_over_time_seaborn(monthly_df: pd.DataFrame):
@@ -174,7 +216,7 @@ def plot_spider_fly_over_time_seaborn(monthly_df: pd.DataFrame):
 
     fig, ax = plt.subplots(figsize=(12, 6))
 
-    _add_season_shading(ax, df)
+    # _add_season_shading(ax, df)
 
     sns.lineplot(
         data=df,
@@ -189,18 +231,25 @@ def plot_spider_fly_over_time_seaborn(monthly_df: pd.DataFrame):
         x="date_month",
         y="fly_smooth",
         ax=ax,
-        color="orange",
+        color="red",  # changed from orange to red
         label="Flies (3-mo avg, count)",
     )
 
-    ax.set_xlabel("Month")
-    ax.set_ylabel("Abundance (count per month)")
-    ax.legend(loc="upper left")
+    # Axis labels with larger font size
+    ax.set_xlabel("Years", fontsize=18)
+    ax.set_ylabel("Abundance (count per month)", fontsize=20)
 
-    plt.title("Spider and fly abundance over time (2017–2023) – seaborn")
+    # Tick label font size
+    ax.tick_params(axis="both", labelsize=14)
+
+    # Legend with larger font size
+    legend = ax.legend(loc="upper left", fontsize=18, title_fontsize=14)
+
+    # Title with larger font size
+    plt.title("Spider and fly abundance over time (2017–2023) – seaborn", fontsize=18)
+
     fig.tight_layout()
     plt.show()
-
 
 # ----- Graph 9–12: env vs abundance scatters -----
 def plot_temp_vs_spider_scatter_seaborn(monthly_df: pd.DataFrame):

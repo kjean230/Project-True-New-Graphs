@@ -29,6 +29,12 @@ from plotting_arthropods_seaborn import (
     plot_fly_aqi_time_scatter_seaborn,
 )
 
+from ml_model import (
+    run_spider_model,
+    run_fly_model,
+    run_temp_aqi_model,
+)
+
 from trees_graphs_liri import (
     load_tree_data,
     plot_condition_distribution,
@@ -56,6 +62,9 @@ def main():
     # adjust filenames here to match your actual tree CSVs on disk
     birch_csv = base_path_trees / "paper_birch_filtered.csv"
     maple_csv = base_path_trees / "Red Maple filtered.csv"
+
+    # ML model output directory
+    model_output_dir = base_dir / "model_outputs"
 
     start = pd.Timestamp("2017-01-01")
     cutoff = pd.Timestamp("2023-12-31")
@@ -147,6 +156,14 @@ def main():
 
         elif choice == "21":
             plot_high_risk_prop(all_trees_df)
+
+        # ML Models
+        elif choice == "22":
+            run_spider_model(monthly_df, model_output_dir)
+        elif choice == "23":
+            run_fly_model(monthly_df, model_output_dir)
+        elif choice == "24":
+            run_temp_aqi_model(monthly_df, model_output_dir)
 
         else:
             print("Unrecognized option. Please try again.")
